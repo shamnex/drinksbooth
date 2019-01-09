@@ -1,0 +1,17 @@
+{
+    "name": "drinks booth",
+    "type": "static",
+    "static": {
+      "public": "dist",
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    "alias": "drinskbooth",
+    "files": [
+      "dist"
+    ]
+  }

@@ -1,0 +1,22 @@
+@mixin absolutecenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin absolute-v-center {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+}
+
+@mixin shadow {
+    box-shadow: 0.5rem 0.5rem 2rem rgba(($color-black), 0.2);
+    transition: all 0.4s ease;
+
+    &:hover {
+        box-shadow: 0.2rem 0.2rem 2rem rgba(($color-black), 0.1);
+    }
+}

@@ -1,0 +1,22 @@
+.link {
+    color: $color-primary;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  
+    transition: all 0.2s ease;
+    &::before {
+      width: 0%;
+      transition: all 0.2s ease;
+      content: "";
+      transition: all 0.2s ease;
+      height: 100%;
+      background-color: rgba($color-secondary, 0.3);
+      position: absolute;
+    }
+    &:hover {
+      &::before {
+        width: 60%;
+      }
+    }
+  }

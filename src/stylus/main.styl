@@ -1,0 +1,67 @@
+@import '~vuetify/src/stylus/settings/_variables'
+@import '~vuetify/src/stylus/components/_text-fields'
+ 
+$material-light.background = #F4F5FA
+$body-font-family = 'Montserrat', sans-serif;
+$alert-font-size = 18px
+$heading-font-family := $body-font-family
+
+$heading-font-family =  'Montserrat', sans-serif;
+
+$grid-breakpoints = {
+  xs: 0
+  sm: 600px
+  md: 960px
+  lg: (1280px - 16px) // Desktop gets a 16dp reduction
+  xl: (1440px - 16px) // https://material.io/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
+}
+
+$grid-gutter = 8px
+$grid-columns = 12
+$grid-gutters = {
+  xs: ($grid-gutter / 4)
+  sm: ($grid-gutter / 2)
+  md: $grid-gutter
+  lg: ($grid-gutter * 2)
+  xl: ($grid-gutter * 3)
+}
+
+$container-max-widths = {
+  md: $grid-breakpoints.md
+  lg: $grid-breakpoints.lg
+  xl: $grid-breakpoints.xl
+}
+
+$button-border-radius = 0
+$button-color = $material-light.fg-color
+$button-background-color = #999999
+$button-height = 36px
+$button-font-size = 14px
+$button-font-weight = 500
+$button-margin-y = 6px
+$button-margin-x = 8px
+$button-margin = $button-margin-y $button-margin-x
+$button-min-width = 88px
+$button-small-padding = 0 8px
+$button-padding = 0 16px
+$button-large-padding = 0 32px
+$button-text-transform = uppercase
+
+$button-small-height = 28px
+$button-small-font-size = 13px
+
+$button-large-height = 60px
+
+$button-floating-width = 56px
+$button-floating-icon-height = 24px
+$button-floating-icon-width = 24px
+$button-floating-small-width = 40px
+$button-floating-large-width = 72px
+$button-floating-small-icon-width = 18px
+$button-floating-large-icon-width := 30px
+
+ 
+@import '~vuetify/src/stylus/main'
+@import '~vuetify/src/stylus/components/_text-fields'
+// Or for a-la-carte:
+@import '~vuetify/src/stylus/app'

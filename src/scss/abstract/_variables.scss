@@ -1,0 +1,54 @@
+
+
+$color-primary: #4A5378;
+$color-secondary:#5F86AD;
+$color-error: #FF5252;
+$color-info: #2196F3;
+$color-success: #4CAF50;
+$color-warning: #FFC107;
+$color-white: #fff;
+$color-black: #464855;
+$color-background: #F4F5FA;
+$color-tertiary: #232F32;
+
+$color-gradient: linear-gradient(to bottom right, $color-primary, #4A5378, $color-secondary);
+
+$color-gradient-2: linear-gradient(to bottom right, #232F32, #414355, $color-secondary);
+
+
+$box-shadow: 0 20px 20px rgba($color-primary, 0.05);
+$box-shadow-inverse: 0 -20px 20px rgba($color-primary, 0.05);
+
+
+// $grid-breakpoints = {
+//     xs: 0
+//     sm: 600px
+//     md: 960px
+//     lg: (1280px - 16px) // Desktop gets a 16dp reduction
+//     xl: (1440px - 16px) // https://material.io/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
+//   }
+@mixin respond($breakpoint) {
+  
+    @if $breakpoint == xs {
+        @media (max-width: 600px ) {
+            @content 
+        }
+    }
+    @if $breakpoint == sm {
+        @media (max-width: 960px) {
+            @content 
+        }
+    }
+    @if $breakpoint ==  md  {
+        @media (max-width: 1280px) {
+            @content 
+        }
+    }
+    @if $breakpoint == uhd
+     {
+        @media (min-width: 1440px) {
+            @content 
+        }
+    }
+
+}

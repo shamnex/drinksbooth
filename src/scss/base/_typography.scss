@@ -1,0 +1,117 @@
+// @font-face {
+//     font-family: "Taken By Vultures";
+//     src: url("../assets/fonts/taken_by_vultures.otf") format('otf');
+//   }
+.stylish-header {
+    font-family: "Dynalight";
+    color: $color-primary;
+    font-size: 86px;
+    position: relative;
+    @include respond(md) {
+        font-size: 60px;
+    }
+    @include respond(sm) {
+        font-size: 48px;
+    } // @include respond(xs) {
+    //     font-size: 40px;
+    // }
+    &--sm {
+        transform: scale(.8); // line-height: 1;
+        margin-bottom: 10px;
+    }
+    &--border-bottom {
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            height: 100%;
+            left: 50%;
+            transform: translate3d(-50%, 10%, 0);
+            border-bottom: solid 5px $color-primary;
+        }
+    }
+    &--border-bottom-white {
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            height: 100%;
+            left: 50%;
+            transform: translate3d(-50%, 10%, 0);
+            border-bottom: solid 5px $color-white;
+        }
+    }
+}
+
+// .stylish-header {
+//     font-family: "Taken By Vultures";
+//     font-size: 32px;
+//     color: $color-primary;
+//     font-size: 70px;
+//     margin-bottom:20px;
+// }
+.heading {
+    font-family: "Dynalight";
+    font-size: 32px;
+    font-weight: 300;
+    color: $color-primary;
+    margin-bottom: 20px;
+    &::before {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        border-bottom: solid 15px $color-primary;
+    }
+}
+
+.heading-primary {
+    font-family: "Montserrat";
+    font-size: 48px;
+    font-weight: 300;
+    color: $color-black;
+    margin-bottom: 20px;
+    @include respond(md) {
+        font-size: 36px;
+    }
+    @include respond(sm) {
+        font-size: 24px;
+    }
+    &--bold {
+        font-weight: 700;
+        color: $color-primary;
+    }
+}
+
+.heading-secondary {
+    font-family: "Montserrat";
+    font-size: 36px;
+    font-weight: 300;
+    color: $color-black;
+    margin-bottom: 20px;
+    @include respond(md) {
+        font-size: 24px;
+    }
+    @include respond(sm) {
+        font-size: 20px;
+    }
+
+}
+
+.heading-tertiary {
+    font-family: "Montserrat";
+    font-size: 24px;
+    font-weight: 300;
+    color: $color-black;
+    @include respond(md) {
+        font-size: 18px;
+    }
+    @include respond(sm) {
+        font-size: 16px;
+    }
+    &--bold {
+        font-weight: 700;
+        color: $color-primary;
+    }
+}

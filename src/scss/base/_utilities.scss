@@ -1,0 +1,62 @@
+.color-white, {
+    color: #fff !important;
+}
+.color-tertiary {
+    color: $color-tertiary !important;
+}
+.color-secondary {
+    color: $color-secondary !important;
+}
+.color-primary {
+    color: $color-primary !important;
+}
+.background-white, {
+    background-color: #fff !important;
+}
+.background-tertiary {
+    background-color: $color-tertiary !important;
+}
+.background-secondary {
+    background-color: $color-secondary !important;
+}
+.background-primary {
+    background-color: $color-primary !important;
+}
+.background-gradient-2 {
+    background: $color-gradient-2 !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+
+
+.image-overlay {
+    &::after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        opacity: 0.6;
+        background-image: $color-gradient-2;
+      }
+    
+}
+
+.text-shadow__white {
+    text-shadow: 2px 2px $color-white;
+}
+.text-bold {
+    font-weight: 700;
+}
+
+.no-shadow {
+    box-shadow: none !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
