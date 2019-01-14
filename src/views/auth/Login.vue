@@ -8,15 +8,15 @@
           <v-flex :xs8="!$vuetify.breakpoint.smAndDown">
             <div class="login-form pt-5 pb-5 pl-sm-1 pr-sm-1">
               <div
-                class="stylish-header stylish-header--sm mb-5 stylish-header--border-bottom text-xs-center"
-              >Create an account</div>
+                class="stylish-header stylish-header--sm  pb-3 stylish-header--border-bottom text-xs-center"
+              >Sign up</div>
               <form>
                 <v-text-field
                   append-icon="email"
                   flat
                   border
                   color="secondary"
-                  outline
+                  
                   v-model="email"
                   class="mb-0"
                   :error-messages="emailErrors"
@@ -34,7 +34,7 @@
                   type="password"
                   v-model="password"
                   :error-messages="passwordErrors"
-                  outline
+                  
                   label="Password"
                   required
                   @input="$v.password.$touch()"
@@ -49,7 +49,7 @@
                   type="password"
                   v-model="confPassword"
                   :error-messages="passwordErrors"
-                  outline
+                  
                   label="Confirm Password"
                   required
                   @input="$v.confPassword.$touch()"
@@ -64,7 +64,7 @@
                   v-model="password"
                   :error-messages="passwordErrors"
                   :background-color="$vuetify.breakpoint.smAndDown?'rgba(255,255,255,0.9)': ''"
-                  :outline="!$vuetify.breakpoint.smAndDown"
+                  :="!$vuetify.breakpoint.smAndDown"
                   label="Password"
                   required
                   @input="$v.password.$touch()"
@@ -72,8 +72,7 @@
                 <v-btn
                   flat
                   block
-                  large
-                  class="mt-0 mb-3 button button--block button__primary"
+                  class="mt-0 mb-3 mt-2 button button--block button__primary"
                   @click="submit"
                 >{{!isLogin? "Register": "Login"}}</v-btn>
                 <v-layout align-end just>
@@ -85,7 +84,7 @@
             </div>
 
             <div class="login-image"></div>
-            <div class="pa-3">Don't have an account?
+             <div>Already have an account?
               <div @click="isLogin = !isLogin" class="link">{{isLogin? "Register": "Login"}}</div>
             </div>
           </v-flex>
@@ -105,7 +104,7 @@
                   flat
                   border
                   color="secondary"
-                  outline
+                  
                   v-model="email"
                   class="mb-0"
                   :error-messages="emailErrors"
@@ -123,7 +122,7 @@
                   type="password"
                   v-model="password"
                   :error-messages="passwordErrors"
-                  outline
+                  
                   label="Password"
                   required
                   @input="$v.password.$touch()"
@@ -138,7 +137,7 @@
                   v-model="password"
                   :error-messages="passwordErrors"
                   :background-color="$vuetify.breakpoint.smAndDown?'rgba(255,255,255,0.9)': ''"
-                  :outline="!$vuetify.breakpoint.smAndDown"
+                  :="!$vuetify.breakpoint.smAndDown"
                   label="Password"
                   required
                   @input="$v.password.$touch()"
@@ -146,7 +145,7 @@
                 <v-btn
                   flat
                   block
-                  large
+                  
                   class="mt-0 mb-3 button button--block button__primary"
                   @click="submit"
                 >{{!isLogin? "Register": "Login"}}</v-btn>

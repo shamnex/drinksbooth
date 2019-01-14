@@ -25,11 +25,55 @@
 .background-gradient-2 {
     background: $color-gradient-2 !important;
 }
+.background-light {
+    background: rgba($color-secondary, 0.05);
+}
+.background-light-2 {
+    background: rgba($color-secondary, 0.01);
+}
+.background-gradient-2-light {
+    background: $color-gradient-2-light;
+}
 
 .text-center {
     text-align: center;
 }
 
+.box-shadow-hover {
+    z-index: 2;
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.5s ease;
+    &:hover {
+    //   transform: translateY(-5px);
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 150px;
+        bottom: 0;
+        width: 100%;
+        z-index: 0;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 70%;
+        width: 60%;
+        z-index: -1;
+        opacity: 0;
+        background-color: transparent;
+        transition: all 0.3s ease; // box-shadow: 0 0 40px  darken($color-secondary, 10);
+        box-shadow: 0 30px 50px -30px darken($color-secondary, 0);
+    }
+    &:hover::after {
+        opacity: 1;
+    }
+}
 
 
 
