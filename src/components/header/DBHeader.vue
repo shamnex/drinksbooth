@@ -1,13 +1,13 @@
 <template     
 >
-
   <v-toolbar
     :dark="!isWhite"
     class="db-navbar"
     height="90"
     color="transparent"
+    :class="{'fixed': isWhite}"
     flat
-
+    fixed
   >
     <v-toolbar-side-icon
       flat
@@ -94,7 +94,7 @@ export default {
       scrollOffset: null,
 
       userMenuItems: [
-        { title: "Login / Signup", link: "/login" },
+        { title: "Login / Signup", link: "/login" }
         // { title: "Favorites", link: "/favorites" }
       ]
     };
@@ -114,12 +114,10 @@ export default {
     toggleSearch(event) {
       this.$store.commit("toggleSearch");
     },
-    onScroll(e) {
-      this.scrollOffset =
-        window.pageYOffset || document.documentElement.scrollTop;
-
-        console.lg(this.scrollOffset);
-    },
+    // onScroll(e) {
+    //   this.scrollOffset =
+    //     window.pageYOffset || document.documentElement.scrollTop;
+    // },
     navigato(e) {
       let route = `${e.target.textContent
         .replace(/&nbsp;/g, " ")
@@ -128,8 +126,6 @@ export default {
         .join()
         .toString()
         .toLocaleLowerCase()}`;
-
-      console.dir(route);
 
       switch (route) {
         case "home":
@@ -183,8 +179,57 @@ export default {
   max-width: 1440px;
   margin: 0 auto;
   left: 50%;
-  position: absolute;
+  position: fixed;
   transform: translateX(-50%) !important;
+
+  &.fixed {
+    position: fixed;
+    transition: all 0.3s ease;
+    &::before {
+    box-shadow: 0 20px 20px rgba($color-primary, 0.1) !important;
+      content: "";
+      background: rgba(white, 0.9) !important;
+      width: 305vw !important;
+      height: 100%;
+      position: absolute;
+      left: -40%;
+    }
+  
+
+    a {
+      text-decoration: none;
+      text-align: center !important;
+
+      &.router-link-exact-active,
+      &.router-link-active {
+        transition: all 0.4s ease;
+        font-weight: 700;
+        color: $color-primary;
+        &::before {
+          content: "";
+          padding: 15px 10px;
+          width: 10px;
+          border-bottom: solid 2px $color-primary;
+          position: absolute;
+          text-align: center;
+          height: 100%;
+          margin: 0 auto;
+          border-bottom: solid 2px $color-primary;
+        }
+
+        &.link-primary {
+          &::before {
+            content: "";
+
+            border-bottom: solid 2px $color-primary;
+            padding: 5px;
+          }
+          font-weight: 700;
+          color: $color-primary;
+        }
+      }
+    }
+  }
 
   &-link {
     text-transform: uppercase;

@@ -45,7 +45,7 @@
         </v-flex>-->
         <v-flex class="shop-main" xs12>
           <v-layout
-            :column="$vuetify.breakpoint.mdAndDown"
+            :column="$vuetify.breakpoint.smAndDown"
             v-if="routeName !== 'Shop'"
             class="shop-header shop-header-category"
             align-center
@@ -54,7 +54,7 @@
             <v-flex class="shop-header-category__title">
               <div
                 class="stylish-header"
-                v-bind:class="{'stylish-header--border-bottom': $vuetify.breakpoint.mdAndDown }"
+                v-bind:class="{'stylish-header--border-bottom': $vuetify.breakpoint.smAndDown }"
               >{{routeName}}</div>
             </v-flex>
 
@@ -211,7 +211,7 @@ export default {
           top: 50%;
           transform: translateY(-50%);
           border-right: solid 2px rgba($color-secondary, 0.2);
-          @include respond(md) {
+          @include respond(sm) {
             display: none;
           }
         }

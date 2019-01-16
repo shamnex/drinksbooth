@@ -15,9 +15,7 @@
         <v-icon color="#fff" large>close</v-icon>
       </v-btn>
 
-      <div
-        class="sidebar-cart-title heading-secondary heading-secondary--bold ml-5 text-center"
-      >SHOPPING CART</div>
+      <div class="sidebar-cart-title stylish-header text-center">Shopping Cart</div>
     </div>
     <div ref="sideBarCart" class="sidebar-cart-content">
       <v-container class="sidebar-cart-body">
@@ -50,8 +48,9 @@
                   :image="item.image"
                 ></item-card>-->
                 <div class="item-card-4 item-card-4--cart">
-                  <div class="item-card-4__image">
+                  <div @click="goto('buy/'+item.cart_product.id)" class="item-card-4__image">
                     <img :src="item.cart_product.prod_image" alt srcset>
+                    <div class="image__bg"></div>
                   </div>
 
                   <v-layout class="item-card-4__info" column align-baseline>
@@ -74,7 +73,7 @@
                   <v-layout align-baseline justify-space-between class="item-card-4__ctas">
                     <v-flex>
                       <v-btn
-                      :disabled="item.cart_product_quantity ===1"
+                        :disabled="item.cart_product_quantity ===1"
                         @click="decrement(item)"
                         style="z-index: 200"
                         la
@@ -288,12 +287,9 @@ export default {
 
   &-title {
     overflow-x: hidden;
-    transform: translate3d(0, -30px, 0);
-
-    @include respond(sm) {
-      //   width: 80vw;
-      // transform: scale(0.9);
-    }
+    transform: translate3d(0px, -60px, 0);
+    font-size: 30px;
+    // border-bottom: solid 10px $color-primary;
   }
 
   &-header {
@@ -301,24 +297,33 @@ export default {
     width: 400px;
     position: fixed;
     right: 0;
-    @include respond(md) {
-        height: 100px;
+    height: 70px;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 5px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: $color-gradient-2;
     }
+
     background-color: transparent;
     box-shadow: $box-shadow;
     transform: translate3d(100vw, 0, 0);
 
     // @include shadow;
     background-image: linear-gradient(
-        to right,
+      to right,
       rgba($color-white, 0.6),
       rgba($color-white, 1),
       rgba($color-white, 1),
       rgba($color-white, 0.6)
     );
     @include respond(sm) {
-        width: 80vw;
-    max-width: 400px;
+      width: 80vw;
+      max-width: 400px;
       transform: translate3d(110vw, 0, 0);
     }
   }
@@ -334,7 +339,7 @@ export default {
     transform: translate3d(100vw, 0, 0);
 
     @include respond(sm) {
-    max-width: 400px;
+      max-width: 400px;
       width: 80vw;
     }
 
@@ -344,12 +349,10 @@ export default {
   }
   &-body {
     position: absolute;
-    top: 120px;
+    margin-top: 30px;
     @include respond(md) {
-      top: 60px;
     }
     @include respond(sm) {
-      top: 70px;
     }
   }
   &-content {
@@ -364,16 +367,16 @@ export default {
     background: $color-background;
     transform: translate3d(110vw, 0, 0);
     @include respond(sm) {
-    max-width: calc(400px + 20vw);
+      max-width: calc(400px + 20vw);
       width: 100vw;
     }
     &-main {
-    max-width: 400px;
+      max-width: 400px;
       padding-bottom: 100px;
       transform: scale(0.9) translate3d(-20px, 0, 0);
       @include respond(sm) {
-          padding-right: 0;
-    max-width: 400px;
+        padding-right: 0;
+        max-width: 400px;
         width: 85vw;
         transform: scale(0.9) translate3d(-20px, 0, 0);
       }
@@ -478,26 +481,34 @@ export default {
   }
 
   &__image {
+    cursor: pointer;
     img {
+      &:hover {
+        transform: scale(1.8);
+      }
+
       position: absolute;
+      height: 100%;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+      width: auto;
+      transition: all 0.3s ease;
+    }
+    & .image__bg {
+      position: absolute;
+      height: 100px;
+
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100px;
       background-image: linear-gradient(
         to bottom right,
         rgba($color-primary, 0.2),
         rgba(#4a5378, 0.5),
         rgba($color-secondary, 0.1)
       );
-      height: 100%;
-      left: 0;
-      bottom: 0;
-      width: auto;
-
-      &::before {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: auto;
-      }
     }
   }
 

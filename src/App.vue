@@ -1,10 +1,7 @@
 <template>
-  <div
-    v-on:scroll="onScroll"
-    class="body"
-    v-bind:class="{ 'disableScroll': isCartOpen || isSearchOpen }"
-  >
-    <v-app>
+  <div  v-bind:class="{ 'disableScroll': isCartOpen || isSearchOpen }">
+    <v-app
+    class="body" id="#app">
       <cart></cart>
 
       <transition name="fade">
@@ -70,7 +67,7 @@
       <db-header
         v-if="!$route.fullPath.includes('/chat')"
         @drawerToggle="drawer = !drawer"
-        :isWhite="isHeaderDark"
+        :isWhite="isHeaderDark || scrollOffset > 300"
       ></db-header>
       <v-navigation-drawer class="drawer" v-model="drawer" absolute temporary>
         <v-layout column class="drawer-items-list">
@@ -180,6 +177,9 @@ export default {
       filter: "contrast(160%) brightness(40%)",
       transition: "all .3s linear"
     };
+
+  window.addEventListener('scroll', this.onScroll);
+
   },
   data() {
     return {
@@ -249,7 +249,7 @@ export default {
       this.snackbar = false;
     },
     searchInput(e) {
-        this.$router.replace(this.$route.path + `?search=${e.target.value}`)
+      this.$router.replace(this.$route.path + `?search=${e.target.value}`);
     },
     setFontLoaded() {
       this.$emit("font-loaded");
@@ -261,8 +261,6 @@ export default {
     onScroll(e) {
       this.scrollOffset =
         window.pageYOffset || document.documentElement.scrollTop;
-
-      console.lg(this.scrollOffset);
     }
   },
   computed: {
@@ -290,14 +288,11 @@ export default {
       return this.$store.state.searchOpen;
     },
 
-    
-
     cart() {
       return this.$store.state.itemsInCart;
     }
   },
   watch: {
-    
     isCartOpen(newCount, oldCount) {
       this.blurConfig.filter = " contrast(160%) brightness(40%)";
       this.blurConfig.isBlurred = this.isCartOpen;
@@ -318,15 +313,11 @@ export default {
 
       //   this.blurConfig.filter = "blur(5px) contrast(160%) brightness(40%)";
     },
-    lastItemIncart(newValue, oldValue) {
-
-    
-    },
+    lastItemIncart(newValue, oldValue) {},
     $route(to, from) {
       window.scrollTo(0, 0);
-      console.log(to.query.search);
-    },
-
+    //   console.log(to.query.search);
+    }
   }
 };
 </script>

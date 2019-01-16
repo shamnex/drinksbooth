@@ -5,10 +5,10 @@
 .stylish-header {
     font-family: "Dynalight";
     color: $color-primary;
-    font-size: 86px;
+    font-size: 66px;
     position: relative;
     @include respond(md) {
-        font-size: 60px;
+        font-size: 55px;
     }
     @include respond(sm) {
         font-size: 48px;

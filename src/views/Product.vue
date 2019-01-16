@@ -188,11 +188,10 @@ export default {
   created() {
     const id = this.$route.params.buydrink;
     ProductsApi.getProductById(id).then(res => {
-      console.log(res);
       this.product = res;
     });
 
-    OrdersAPi.getOrder().then(order => console.log(order));
+    OrdersAPi.getOrder();
   },
 
   data() {
@@ -256,13 +255,11 @@ export default {
 
   watch: {
     routeName(to, from) {
-      console.log(to);
       this.loading = true;
       this.product = null;
       const id = this.$route.params.buydrink;
       ProductsApi.getProductById(id).then(res => {
         this.loading = false;
-        console.log(res);
         this.product = res;
       });
     },
@@ -296,10 +293,10 @@ export default {
 @import "../scss/abstract/_variables";
 @import "../scss/abstract/_mixins";
 .header {
-  background: $color-white;
+  background: transparent;
   z-index: 1;
   height: 100px;
-  box-shadow: $box-shadow;
+//   box-shadow: $box-shadow;
   width: 100vw;
 }
 

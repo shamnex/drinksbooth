@@ -14,9 +14,10 @@
            class="categories-header__link" :to="'/shop/'+cat" append @click="goTo(cat)">{{cat}}</router-link> -->
 
      <swiper :options="swiperOption" ref="mySwiper">
-        <swiper-slide class="categories-header__link"  :key="index" v-for="(cat, index) of categories">
+        <swiper-slide class="categories-header__link "  :key="index" v-for="(cat, index) of categories">
             <router-link
-           class="categories-header__link" :to="'/shop/'+cat" append @click="goTo(cat)">{{cat}}</router-link>
+            style="font-size: 16px"
+           class="link categories-header__link" :to="'/shop/'+cat" append @click="goTo(cat)">{{cat}}</router-link>
         </swiper-slide>
     </swiper>
   </div>
@@ -108,9 +109,9 @@ export default {
   );
 
   &__link {
-    padding: 15px 0;
     color: rgba(#fff, 0.7);
-    margin: 0 10px;
+    margin: 2px 10px;
+
     cursor: pointer;
     text-align: center;
     width: 250px;

@@ -4,8 +4,17 @@
 .color-tertiary {
     color: $color-tertiary !important;
 }
+.color-info {
+    color: $color-info !important;
+}
 .color-secondary {
     color: $color-secondary !important;
+}
+.color-warning {
+    color: $color-warning !important;
+}
+.color-error {
+    color: $color-error !important;
 }
 .color-primary {
     color: $color-primary !important;
@@ -103,4 +112,15 @@
 
 .no-margin {
     margin: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+.no-padding {
+    padding: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
 }

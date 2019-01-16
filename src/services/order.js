@@ -18,13 +18,10 @@ export default {
 
   getOrder (customer) {
     const order = (localStorage.getItem('drinks-booth-order-id'))
-    console.log(order)
     return new Promise((resolve, reject) => {
       if (order === null) {
-        // console.log('hello')
         return this.createOrder(customer)
       } else {
-        // console.log('hi')
         resolve(JSON.parse(order))
       }
     })
