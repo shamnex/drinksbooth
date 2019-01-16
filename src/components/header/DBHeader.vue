@@ -54,22 +54,38 @@
     </v-toolbar-items>
     <v-toolbar-items>
       <v-spacer></v-spacer>
-      <v-btn @click="toggleSearch" :flat="isWhite" icon>
-        <v-icon :color="isWhite?'primary': '#fff'">search</v-icon>
-      </v-btn>
+
       <v-menu transition="slide-y-transition" bottom>
-        <v-btn slot="activator" :flat="isWhite" icon>
-          <v-icon :color="isWhite?'primary': '#fff'">account_circle</v-icon>
+        <v-btn slot="activator" :flat="isWhite">
+          <v-layout v-if="getUser">
+            <div class="link text-bold text-secondary"
+              v-bind:style="{ color: isWhite? '#4A5378': 'white',  }"
+            >Hi! {{getUser.first_name || Guest}} </div>
+            <!-- <v-avatar size="28"  :color="!isWhite?'primary': '#fff'"> -->
+            <!-- <span
+              v-bind:style="{ color: !isWhite? '#4A5378': 'white',  }"
+              class="headline"
+            >
+            {{getUser[0].first_name}}
+            </span>-->
+            <!-- </v-avatar> -->
+          </v-layout>
+
+          <v-icon v-else :color="isWhite?'primary': '#fff'">account_circle</v-icon>
         </v-btn>
 
         <v-list>
-          <v-list-tile v-for="(item, i) in userMenuItems" :key="i">
+          <v-list-tile>
             <v-list-tile-title>
-              <router-link class="link" :to="item.link">{{ item.title }}</router-link>
+              <router-link class="link" to="item.link">Login/Signup</router-link>
             </v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
+
+      <v-btn @click="toggleSearch" :flat="isWhite" icon>
+        <v-icon :color="isWhite?'primary': '#fff'">search</v-icon>
+      </v-btn>
 
       <v-btn @click="toggleOpenCart" :flat="isWhite" icon>
         <span
@@ -83,6 +99,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import AuthService from "@/services/auth";
 export default {
   name: "DbHeader",
   components: {},
@@ -159,6 +177,8 @@ export default {
   watch: {
     $route(to, from) {}
   },
+  mounted() {},
+  created() {},
 
   props: {
     isWhite: {
@@ -167,7 +187,12 @@ export default {
     }
   },
 
-  computed: {}
+  computed: {
+    ...mapGetters({
+      lastItemIncart: "lastItemIncart",
+      getUser: "getUser"
+    })
+  }
 };
 </script>
 
@@ -186,7 +211,7 @@ export default {
     position: fixed;
     transition: all 0.3s ease;
     &::before {
-    box-shadow: 0 20px 20px rgba($color-primary, 0.1) !important;
+      box-shadow: 0 20px 20px rgba($color-primary, 0.1) !important;
       content: "";
       background: rgba(white, 0.9) !important;
       width: 305vw !important;
@@ -194,7 +219,6 @@ export default {
       position: absolute;
       left: -40%;
     }
-  
 
     a {
       text-decoration: none;

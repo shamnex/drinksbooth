@@ -5,9 +5,13 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post('/account-login', payload)
         .then(res => {
-          const parsed = JSON.stringify(res.data)
-          localStorage.setItem('drinks-booth-user-id', parsed)
-          resolve()
+          if (res.data.status === 'success') {
+            const parsed = JSON.stringify(res.data)
+            localStorage.setItem('drinks-booth-user-id', parsed)
+            return resolve(res.data.data)
+          } else {
+            reject(res.data)
+          }
         })
         .catch(err => reject(err))
     })
@@ -16,16 +20,20 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post('/accounts', payload)
         .then(res => {
-          const parsed = JSON.stringify(res.data)
-          localStorage.setItem('drinks-booth-user-id', parsed)
-          resolve()
+          if (res.status === 'success') {
+            const parsed = JSON.stringify(res.data)
+            localStorage.setItem('drinks-booth-user-id', parsed)
+            return resolve(res.data)
+          } else {
+            reject(res)
+          }
         })
         .catch(err => reject(err))
     })
   },
 
   getUser () {
-    return (localStorage.getItem('drinks-booth-user-id'))
+    return JSON.parse(localStorage.getItem('drinks-booth-user-id'))
   }
 
   //   getOrderTotal (order) {

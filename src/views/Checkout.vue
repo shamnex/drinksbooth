@@ -632,7 +632,6 @@ export default {
       return errors;
     },
     itemsInCart() {
-      console.log(this.$store.state.itemsInCart);
       return this.$store.state.itemsInCart;
     },
     remainingAmount() {

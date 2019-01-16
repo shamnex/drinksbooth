@@ -251,7 +251,6 @@ export default {
     },
 
     $store(newValue, OldValue) {
-      console.log(newValue);
     }
   },
 

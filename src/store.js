@@ -14,6 +14,7 @@ export default new Vuex.Store({
     searchOpen: false,
     currentProduct: null,
     order: '',
+    user: '',
     itemsInCart: [
 
     ],
@@ -47,6 +48,9 @@ export default new Vuex.Store({
 
     setProduct (state, product) {
       state.currentProduct = product
+    },
+    setUser (state, user) {
+      state.user = user
     },
     setAllProducts (state, product) {
       state.products = product
@@ -84,6 +88,9 @@ export default new Vuex.Store({
     },
     getAllProducts (state) {
       return state.products
+    },
+    getUser (state) {
+      return state.user
     }
   }
 })

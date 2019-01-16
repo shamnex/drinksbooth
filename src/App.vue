@@ -1,7 +1,6 @@
 <template>
-  <div  v-bind:class="{ 'disableScroll': isCartOpen || isSearchOpen }">
-    <v-app
-    class="body" id="#app">
+  <div v-bind:class="{ 'disableScroll': isCartOpen || isSearchOpen }">
+    <v-app class="body" id="#app">
       <cart></cart>
 
       <transition name="fade">
@@ -151,6 +150,8 @@ import store from "./store.js";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import { mapGetters } from "vuex";
 
+import AuthService from "@/services/auth";
+
 export default {
   name: "App",
   components: {
@@ -178,8 +179,7 @@ export default {
       transition: "all .3s linear"
     };
 
-  window.addEventListener('scroll', this.onScroll);
-
+    window.addEventListener("scroll", this.onScroll);
   },
   data() {
     return {
@@ -243,6 +243,10 @@ export default {
       ]
     };
   },
+  created() {
+    const user = AuthService.getUser()
+    this.$store.commit('setUser', user.data[0])
+  },
   methods: {
     viewCart() {
       this.$store.commit("toggleCart");
@@ -263,9 +267,11 @@ export default {
         window.pageYOffset || document.documentElement.scrollTop;
     }
   },
+
   computed: {
     ...mapGetters({
-      lastItemIncart: "lastItemIncart"
+      lastItemIncart: "lastItemIncart",
+      getUser: "getUser"
     }),
     isHeaderDark: {
       // getter
@@ -273,6 +279,7 @@ export default {
         return (
           this.$route.fullPath.includes("/buy/") ||
           this.$route.fullPath.includes("/login") ||
+          this.$route.fullPath.includes("/signup") ||
           this.$route.fullPath.includes("/chat") ||
           this.$route.fullPath.includes("/search") ||
           this.$route.fullPath.includes("/favorites") ||
@@ -316,7 +323,7 @@ export default {
     lastItemIncart(newValue, oldValue) {},
     $route(to, from) {
       window.scrollTo(0, 0);
-    //   console.log(to.query.search);
+      //   console.log(to.query.search);
     }
   }
 };

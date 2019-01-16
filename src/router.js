@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import authService from '@/services/auth'
 
 Vue.use(Router)
 
@@ -20,7 +21,7 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "product" */ './views/Product.vue')
     },
     {
-      name: 'shop',
+      name: '',
       path: '/shop',
       component: () => import(/* webpackChunkName: "shopeHome" */ './views/shop/ShopHome.vue'),
       children: [
@@ -47,6 +48,7 @@ const router = new Router({
       name: 'checkout',
       meta: {
         requiresAuth: true
+
       },
 
       // route level code-splitting
@@ -81,12 +83,26 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
+      isAuth: true,
+
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "login" */ './views/auth/Login.vue'),
       meta: {
-        guest: true
+        isAuth: true
+      }
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "login" */ './views/auth/Signup.vue'),
+      meta: {
+        isAuth: true
       }
     }
   ]
@@ -94,45 +110,23 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (localStorage.getItem('drinksBoothJwt') === null) {
+    if (authService.getUser() === null) {
       next({
         path: '/login',
         query: { nextUrl: '/checkout' }
       })
-    }
-  } else {
-      next();
-  }
-  if (to.name === 'login') {
-  }
+    } else {
+      // let user = authService.getUser()
 
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     if (localStorage.getItem('jwt') == null) {
-//       next({
-//         path: '/login',
-//         params: { nextUrl: to.fullPath }
-//       })
-//     } else {
-//       let user = JSON.parse(localStorage.getItem('user'))
-//       if (to.matched.some(record => record.meta.is_admin)) {
-//         if (user.is_admin === 1) {
-//           next()
-//         } else {
-//           next({ name: 'userboard' })
-//         }
-//       } else {
-//         next()
-//       }
-//     }
-//   } else if (to.matched.some(record => record.meta.guest)) {
-//     if (localStorage.getItem('jwt') == null) {
-//       next()
-//     } else {
-//       next({ name: 'userboard' })
-//     }
-//   } else {
-//     next()
-//   }
+      next()
+    }
+  } else if (to.matched.some(record => record.meta.isAuth)) {
+    next({
+      path: '/'
+    })
+  } else {
+    next()
+  }
 })
 
 export default router

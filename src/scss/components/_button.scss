@@ -37,7 +37,16 @@
             transition: all 0.3s ease;
             // box-shadow: 0 0 40px  darken($color-secondary, 10);
             box-shadow: 0 30px 50px -30px darken($color-secondary, 10);
-          }
+        }
+        
+        &[disabled] {
+            color: #fff;
+            background: rgba($color-secondary, 0.2);
+            & a {
+                
+                color: #fff !important;
+              }
+        }
 
     
 

@@ -4,26 +4,62 @@
       <div class="header"></div>
 
       <v-container column class="login-card">
-        <div v-if="loading" class="loading">
+        <div class="loading">
           <v-layout column class justify-center fill-height align-center>
             <v-progress-circular :size="50" color="primary pb-5" indeterminate></v-progress-circular>
-            <div
-              class="mt-2 stylish-header stylish-header--xs text-xs-center"
-            >Chill!, we are creating your account</div>
+            <div class="mt-2 stylish-header stylish-header--xs">Chill!, we are creating your account</div>
           </v-layout>
         </div>
         <v-layout align-center>
-          <v-flex :xs7="!$vuetify.breakpoint.smAndDown">
-            <div class="login-form pt-2 pb-5 pl-2">
+          <v-flex :xs6="!$vuetify.breakpoint.smAndDown">
+            <div class="login-form pb-3 pl-3">
               <div
-                class="stylish-header stylish-header--sm mb-3 stylish-header--border-bottom text-xs-center"
-              >Welcome back</div>
+                class="stylish-header stylish-header--sm pb-1 stylish-header--border-bottom text-xs-center"
+              >Sign up</div>
 
               <p v-if="isCheckout" class="color-error text-xs-center">
-                Please Login
+                Please Sign up
                 to continue
               </p>
+
               <form>
+                <v-text-field
+                  flat
+                  border
+                  color="secondary"
+                  v-model="firstName"
+                  class="mb-0"
+                  :error-messages="nameErrors"
+                  label="Name"
+                  required
+                  @input="$v.firstName.$touch()"
+                ></v-text-field>
+
+                <!-- <v-text-field
+                  flat
+                  border
+                  color="secondary"
+                  
+                  v-model="otherNames"
+                  class="mb-0 "
+                  :error-messages="otherNamesErrors"
+                  label="Other Names"
+                  required
+                  @input="$v.otherNames.$touch()"
+                ></v-text-field>-->
+                <v-text-field
+                  flat
+                  border
+                  color="secondary"
+                  v-model="phone"
+                  class="mb-0"
+                  :error-messages="phoneErrors"
+                  label="Phone Number"
+                  type="phone"
+                  required
+                  @input="$v.phone.$touch()"
+                ></v-text-field>
+
                 <v-text-field
                   flat
                   border
@@ -48,44 +84,33 @@
                   required
                   @input="$v.password.$touch()"
                 ></v-text-field>
-                <!-- <v-text-field
+
+                <v-text-field
                   class="mb-0 shadow"
                   flat
                   border
                   color="secondary"
                   type="password"
-                  v-model="password"
-                  :error-messages="passwordErrors"
-                  :background-color="$vuetify.breakpoint.smAndDown?'rgba(255,255,255,0.9)': ''"
-                  :="!$vuetify.breakpoint.smAndDown"
-                  label="Password"
+                  v-model="confPassword"
+                  :error-messages="confPasswordErrors"
+                  label="Confirm Password"
                   required
-                  @input="$v.password.$touch()"
-                ></v-text-field>-->
+                  @input="$v.confPassword.$touch()"
+                ></v-text-field>
+
                 <v-btn
                   :disabled="$v.$anyDirty ? $v.$anyError: true"
                   flat
                   block
-                  class="mt-0 mb-3 button button--block button__primary"
+                  class="mt-0 mb-3 mt-2 button button--block button__primary"
                   @click="submit"
                 >{{!isLogin? "Register": "Login"}}</v-btn>
-
-                <v-layout class="remember-me" align-center justify-space-between>
-                  <!-- <v-flex class="mt-4">
-                    <v-checkbox v-model="checkbox" label="Remember me?" class="mt-0"></v-checkbox>
-                  </v-flex>-->
-                  <span class="mt-4 link">Forgot Password??</span>
-                </v-layout>
-
-                <v-layout v-if="error" class="error">
-                  <span class="shadow color-white text-xs-center pa-3">{{error}}</span>
-                </v-layout>
               </form>
             </div>
 
-            <div class="login-image"></div>
-            <div>Don't have an account?
-              <div @click="gotoSignUp" class="link text-bold">Sign Up"</div>
+            <div class="login-image signup"></div>
+            <div>Already have an account?
+              <div @click="gotoLogin" class="link text-bold">Login</div>
             </div>
           </v-flex>
         </v-layout>
@@ -104,34 +129,35 @@ import {
   sameAs
 } from "vuelidate/lib/validators";
 import { validationMixin } from "vuelidate";
-import AuthService from "@/services/auth";
+import authService from "@/services/auth";
 
 export default {
   mixins: [validationMixin],
 
   validations: {
-    password: { required, minLength: minLength(4) },
+    password: { required, minLength: minLength(6) },
+    confPassword: {
+      required,
+      minLength: minLength(6),
+      sameAs: sameAs("password")
+    },
+    firstName: { required, minLength: minLength(3) },
+    phone: { required },
     email: { required, email }
   },
 
   data: () => ({
-    password: "12345",
-    email: "shamnex@icloud.com",
+    password: "",
+    email: "",
+    userName: "",
+    confPassword: "",
+    address: "",
+    phone: "",
+    otherNames: "",
+    firstName: "",
     checkbox: false,
-    isLogin: true,
-    loading: false,
-    error: ""
+    isLogin: true
   }),
-  beforeCreate() {
-      console.log
-      this.$store.state.user 
-  },
-
-  watch: {
-    email(newValues) {
-      console.log(this.$v);
-    }
-  },
 
   computed: {
     passwordErrors() {
@@ -192,41 +218,19 @@ export default {
       return this.$route.query.nextUrl == "/checkout";
     },
 
-    formHasErrors() {
-      console.log(this.$v);
-    }
   },
 
   mounted() {
     console.log(this.$route.query);
-    console.log(this.$v);
+  },
+  watch: {
+    confPassword(x) {
+    }
   },
 
   methods: {
     submit() {
       this.$v.$touch();
-      this.loading = true;
-      const payload = {
-        email: this.email,
-        password: this.password
-      };
-      AuthService.login(payload)
-        .then(user => {
-          this.$store.commit("setUser", user);
-          if(this.$route.query.nextUrl === '/checkout') {
-              this.$router.push(this.$route.query.nextUrl);
-          } else {
-              this.$router.push('/shop')
-          }
-          this.loading = false;
-        })
-        .catch(err => {
-          console.log(err);
-          if (err.message) {
-            this.error = err.message;
-            this.loading = false;
-          }
-        });
     },
     clear() {
       this.$v.$reset();
@@ -235,12 +239,12 @@ export default {
       this.select = null;
       this.checkbox = false;
     },
-    gotoSignUp() {
+    gotoLogin() {
       const query = this.$route.query;
       if (query.nextUrl === "/checkout") {
-        this.$router.push(`/signup?nexUrl=${query.nextUrl}`);
+        this.$router.push(`/login?nexUrl=${query.nextUrl}`);
       } else {
-        this.$router.push(`/signup`);
+        this.$router.push(`/login`);
       }
     }
   }
@@ -278,6 +282,7 @@ export default {
 
     overflow-x: hidden;
     overflow-y: hidden;
+
     & .loading {
       height: 100%;
       width: 100%;
@@ -295,6 +300,15 @@ export default {
       animation-name: bgAnimation;
       animation-iteration-count: infinite;
       animation-duration: 4s;
+    }
+  }
+
+  @keyframes bgAnimation {
+    from {
+      background-position: 0;
+    }
+    to {
+      background-position: 100%;
     }
   }
 
