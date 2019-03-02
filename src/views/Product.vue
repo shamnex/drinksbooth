@@ -190,8 +190,6 @@ export default {
     ProductsApi.getProductById(id).then(res => {
       this.product = res;
     });
-
-    OrdersAPi.getOrder();
   },
 
   data() {

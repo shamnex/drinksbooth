@@ -56,11 +56,11 @@
       <v-spacer></v-spacer>
 
       <v-menu transition="slide-y-transition" bottom>
-        <v-btn slot="activator" :flat="isWhite">
-          <v-layout v-if="getUser">
+        <v-btn slot="activator" flat>
+          <v-layout>
             <div class="link text-bold text-secondary"
               v-bind:style="{ color: isWhite? '#4A5378': 'white',  }"
-            >Hi! {{getUser.first_name || Guest}} </div>
+            >Hi! {{getUser.first_name || "Guest"}} </div>
             <!-- <v-avatar size="28"  :color="!isWhite?'primary': '#fff'"> -->
             <!-- <span
               v-bind:style="{ color: !isWhite? '#4A5378': 'white',  }"
@@ -71,13 +71,18 @@
             <!-- </v-avatar> -->
           </v-layout>
 
-          <v-icon v-else :color="isWhite?'primary': '#fff'">account_circle</v-icon>
+          <!-- <v-icon flat v-else :color="isWhite?'primary': '#fff'">account_circle</v-icon> -->
         </v-btn>
 
         <v-list>
-          <v-list-tile>
+          <v-list-tile v-if="!getUser">
             <v-list-tile-title>
-              <router-link class="link" to="item.link">Login/Signup</router-link>
+              <router-link  class="link" to="/login">Login/Signup</router-link>
+            </v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile v-if="getUser">
+            <v-list-tile-title>
+              <div  class="link" @click="signOut">Sign Out</div>
             </v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -132,6 +137,13 @@ export default {
     toggleSearch(event) {
       this.$store.commit("toggleSearch");
     },
+
+    signOut() {
+        AuthService.signOut();
+        this.$router.push('/shop')
+                 this.$store.commit('setUser', '');
+
+    },
     // onScroll(e) {
     //   this.scrollOffset =
     //     window.pageYOffset || document.documentElement.scrollTop;
@@ -177,7 +189,9 @@ export default {
   watch: {
     $route(to, from) {}
   },
-  mounted() {},
+  mounted() {
+     console.log(this.getUser)
+  },
   created() {},
 
   props: {

@@ -244,8 +244,10 @@ export default {
     };
   },
   created() {
-    const user = AuthService.getUser()
-    this.$store.commit('setUser', user.data[0])
+      const user = AuthService.getUser();
+      if(AuthService.getUser() !== null) {
+         this.$store.commit('setUser', user.data[0]);
+      }
   },
   methods: {
     viewCart() {

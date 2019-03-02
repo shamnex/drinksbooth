@@ -224,7 +224,6 @@ export default {
   color: #fff;
   position: relative;
 
-  // background-color: red;
   background-size: cover;
   &__background {
     background-color: $color-primary;

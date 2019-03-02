@@ -55,7 +55,6 @@ export default new Vuex.Store({
     setAllProducts (state, product) {
       state.products = product
     }
-
   },
   actions: {
     addItem (context, item) {

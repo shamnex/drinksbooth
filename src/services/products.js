@@ -1,13 +1,10 @@
 import axios from 'axios'
 
-// var username = 'roots'
-// var password = 'pass1234'
-// axios.defaults.baseURL = 'http://159.89.30.225:8000/api-v1'
-// axios.defaults.headers.common['Authorization'] = 'Basic ' + btoa(username + ':' + password)
-
 export default {
-  getProducts () {
-    return axios.get('/products')
+  getProducts (page = 1) {
+    return axios.get('/products', {
+      page: page
+    })
   },
   getProductById (id) {
     return new Promise((resolve, reject) => {

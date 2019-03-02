@@ -31,8 +31,7 @@
                 <v-layout align-center justify-center>
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
-                      <div class="heading-tertiary background-gradient-2 color-white pa-4">SUMMARY</div>
-                      <v-divider></v-divider>
+                      <div class="background-gradient-2 color-white ">SUMMARY</div>
                     </div>
                     <v-layout column class="checkout-card-body">
                       <v-flex class="mb-2">
@@ -107,7 +106,7 @@
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
                       <div
-                        class="heading-tertiary background-gradient-2 color-white pa-4"
+                        class=" background-gradient-2 color-white "
                       >DELIVERY METHOD</div>
                       <v-divider></v-divider>
                     </div>
@@ -170,7 +169,7 @@
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
                       <div
-                        class="heading-tertiary background-gradient-2 color-white pa-4"
+                        class=" background-gradient-2 color-white "
                       >PAYMENT METHOD</div>
                       <v-divider></v-divider>
                     </div>
@@ -248,7 +247,7 @@
                 <v-layout aalign-center justify-center>
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
-                      <div class="heading-tertiary background-gradient-2 color-white pa-4">CONFIRM</div>
+                      <div class=" background-gradient-2 color-white ">CONFIRM</div>
                       <v-divider></v-divider>
                     </div>
                     <v-divider></v-divider>
@@ -401,7 +400,7 @@
                 <v-layout align-center justify-center>
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
-                      <div class="heading-tertiary background-gradient-2 color-white pa-4">SUMMARY</div>
+                      <div class=" background-gradient-2 color-white ">SUMMARY</div>
                       <v-divider></v-divider>
                     </div>
                     <v-divider></v-divider>
@@ -521,14 +520,13 @@
 
                     <v-layout justify-space-between class="checkout-card-footer">
                       <v-btn
-                        large
+                        
                         @click="e1 = 3"
                         class="text-xs-center"
                         flat
                         color="primary"
                       >GO BACK</v-btn>
                       <v-btn
-                        large
                         class="text-xs-center button__primary"
                         flat
                         color="#fff"
@@ -680,6 +678,9 @@ export default {
 
     &-header {
       box-shadow: $box-shadow;
+      .background-gradient-2  {
+          padding: 10px 10px;
+      }
     }
     &-footer {
       position: absolute;
@@ -691,7 +692,7 @@ export default {
     }
     &-body {
       height: 70vh;
-      padding: 10px 10px 300px;
+      padding: 0 10px 300px;
       overflow: scroll;
       position: relative;
     }

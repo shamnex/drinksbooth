@@ -120,7 +120,7 @@ router.beforeEach((to, from, next) => {
 
       next()
     }
-  } else if (to.matched.some(record => record.meta.isAuth)) {
+  } else if (to.matched.some(record => record.meta.isAuth) && authService.getUser() !== null) {
     next({
       path: '/'
     })

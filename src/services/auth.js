@@ -34,17 +34,10 @@ export default {
 
   getUser () {
     return JSON.parse(localStorage.getItem('drinks-booth-user-id'))
-  }
+  },
 
-  //   getOrderTotal (order) {
-  //     return new Promise((resolve, reject) => {
-  //       this.getCart(order).then(cart => {
-  //           console.log(cart)
-  //         cart.reduce((prev, next) => {
-  //           return resolve(prev.prod_price + next.prod_price)
-  //         })
-  //       }).catch(err => reject(err))
-  //     })
-  //   }
+  signOut () {
+    return localStorage.removeItem('drinks-booth-user-id')
+  }
 
 }

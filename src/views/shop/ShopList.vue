@@ -102,9 +102,11 @@
         <v-container v-if="products && products.length > 0">
           <v-layout justify-center>
             <v-flex xs12>
-              <div class="shop-footer">
+                <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+
+              <!-- <div class="shop-footer">
                 <v-pagination v-model="currentPage" :length="pages"></v-pagination>
-              </div>
+              </div> -->
             </v-flex>
           </v-layout>
         </v-container>
@@ -118,15 +120,19 @@ import ShopHeader from "../../components/shop-header/ShopHeader";
 import ItemCard from "../../components/item_card/ItemCard";
 import ProductsApi from "@/services/products";
 import { mapGetters } from "vuex";
+import InfiniteLoading from 'vue-infinite-loading';
+
 
 export default {
   data: () => ({
     items: ["Most Popular", "Best Seller", "Lowest Price", "Highest Price"],
     panel: [false, true, true],
-    currentPage: 1
+    page: 1
   }),
   components: {
-    ItemCard
+    ItemCard,
+        InfiniteLoading,
+
   },
   methods: {
     search() {
@@ -136,6 +142,9 @@ export default {
       ProductsApi.getProducts().then(res => {
         this.$store.commit("setAllProducts", res.data.results);
       });
+    },
+    infiniteHandler($state) {
+
     }
   },
   created() {

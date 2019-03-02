@@ -212,7 +212,8 @@ export default {
       };
       AuthService.login(payload)
         .then(user => {
-          this.$store.commit("setUser", user);
+         this.$store.commit('setUser', user[0]);
+          console.log(user)
           if(this.$route.query.nextUrl === '/checkout') {
               this.$router.push(this.$route.query.nextUrl);
           } else {
