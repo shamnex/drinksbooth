@@ -55,15 +55,15 @@
               <div
                 class="stylish-header"
                 v-bind:class="{'stylish-header--border-bottom': $vuetify.breakpoint.smAndDown }"
-              >{{routeName}}</div>
+              >{{category.cat_name}}</div>
             </v-flex>
 
             <v-flex
               class="shop-header-category__description text-md-left text-xs-center"
-            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas sint accusamus reprehenderit labore veniam. Facilis nam earum commodi itaque, quas quidem quam, sint voluptatum reprehenderit molestias fuga officiis ipsam?</v-flex>
+            >{{category.cat_discrip}}</v-flex>
           </v-layout>
           <v-layout class="shop-header" align-center justify-space-between>
-            <v-flex class="shop-header__breadcrumbs" xs12>Showing of {{products.length}} items</v-flex>
+            <v-flex class="shop-header__breadcrumbs" xs12>Showing of {{count}} items</v-flex>
 
             <v-select
               style="transform:translateY(12px)"
@@ -91,6 +91,16 @@
               </v-layout>
             </v-container>
           </div>
+          <paginate
+            :page-count="pages_"
+            :page-range="3"
+            :margin-pages="2"
+            :click-handler="clickCallback"
+            :prev-text="'Prev'"
+            :next-text="'Next'"
+            :container-class="'pagination'"
+            :page-class="'page-item'">
+          </paginate>
         </v-flex>
       </v-layout>
       
@@ -102,7 +112,7 @@
         <v-container v-if="products && products.length > 0">
           <v-layout justify-center>
             <v-flex xs12>
-                <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+                <!-- <infinite-loading @infinite="infiniteHandler"></infinite-loading> -->
 
               <!-- <div class="shop-footer">
                 <v-pagination v-model="currentPage" :length="pages"></v-pagination>
@@ -121,44 +131,97 @@ import ItemCard from "../../components/item_card/ItemCard";
 import ProductsApi from "@/services/products";
 import { mapGetters } from "vuex";
 import InfiniteLoading from 'vue-infinite-loading';
+import Paginate from 'vuejs-paginate'
 
 
 export default {
   data: () => ({
     items: ["Most Popular", "Best Seller", "Lowest Price", "Highest Price"],
     panel: [false, true, true],
-    page: 1
+    page: 1,
+    count: 0,
+    pages_: 1
   }),
   components: {
     ItemCard,
-        InfiniteLoading,
+    InfiniteLoading,
+    Paginate
 
   },
   methods: {
     search() {
       console.log("search");
     },
-    getAllProducts() {
-      ProductsApi.getProducts().then(res => {
-        this.$store.commit("setAllProducts", res.data.results);
-      });
+    clickCallback (pageNum) {
+      console.log(pageNum)
     },
-    infiniteHandler($state) {
+    getAllProducts() {
+        let query_str = window.location.href.split('=')[1];
+        // console.log(query_str)
+        // console.log(typeof this.$route.params.category)
+        if ( typeof query_str != 'undefined') {
+            ProductsApi.queryProduct(query_str).then(res => {
+                this.$store.commit("setAllProducts", res.data.results);
+                this.count = res.data.count;
+            });
+        } else if (typeof this.$route.params.category != 'undefined') {            
+            ProductsApi.getProductByCategory(this.$route.params.category).then(res => {
+                this.$store.commit("setAllProducts", res.data.results);
+                this.count = res.data.count;
+            });
+        } else {
+            ProductsApi.getProducts().then(res => {
+                this.$store.commit("setAllProducts", res.data.results);
+                this.count = res.data.count;
+            });
+        }
 
+    },
+    getAllCategories() {
+        let query_str = window.location.href.split('=')[1];
+        if ( typeof query_str == 'undefined' ) {
+
+            ProductsApi.getCategories().then(res => {
+                this.$store.commit("setCategories", res.data.results);
+                this.getCategory();
+            });
+        } else {
+
+            ProductsApi.getCategories().then(res => {
+                this.$store.commit("setCategories", res.data.results);
+            });
+
+        }
+    }, 
+    getCategory() {
+        console.log(this.categories)
+        let cat = this.categories.filter( (el) => {
+            return el.cat_slug == this.$route.params.category
+        })
+        this.$store.commit("setCategory", cat[0]);
+    },
+
+    infiniteHandler($state) {
+        // return false;
     }
   },
   created() {
+    this.getAllCategories();
     this.getAllProducts();
   },
 
   watch: {
     $route(to, from) {
       this.route = to;
+      this.getAllCategories();
+      this.getAllProducts();
     }
   },
 
   computed: {
     routeName: function() {
+        // console.log(this.$route.params)
+
       return this.$route.params.category === undefined
         ? "Shop"
         : this.$route.params.category;
@@ -168,7 +231,9 @@ export default {
       return Math.round(this.products.length / 10);
     },
     ...mapGetters({
-      products: "getAllProducts"
+      products: "getAllProducts", 
+      categories: "getAllCategories",
+      category: "getCategory"
     })
   }
 };
@@ -246,5 +311,13 @@ export default {
     box-shadow: 0 20px 20px rgba($color-primary, 0.05);
     background-color: $color-white;
   }
+
+    .pagination {
+        list-style-type: none;
+        position: relative;
+    }
+    .page-item {
+        list-style-type: none;
+    }
 }
 </style>

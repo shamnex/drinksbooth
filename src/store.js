@@ -13,8 +13,8 @@ export default new Vuex.Store({
     cartOpen: false,
     searchOpen: false,
     currentProduct: null,
-    order: '',
-    user: '',
+    order: {},
+    user: {},
     itemsInCart: [
 
     ],
@@ -22,7 +22,10 @@ export default new Vuex.Store({
 
     ],
     cartTotal: 0.0,
-    products: []
+    products: [],
+    categories: [],
+    category: {},
+    loading: false
   },
   mutations: {
     toggleCart (state) {
@@ -52,8 +55,19 @@ export default new Vuex.Store({
     setUser (state, user) {
       state.user = user
     },
+    setOrder (state, order) {
+      state.order = order
+    },
     setAllProducts (state, product) {
-      state.products = product
+      state.products = product;
+      state.loading = false;
+    },
+    setCategories (state, categories) {
+      state.categories = categories;
+      state.loading = false;
+    },
+    setCategory (state, category) {
+      state.category = category
     }
   },
   actions: {
@@ -88,8 +102,17 @@ export default new Vuex.Store({
     getAllProducts (state) {
       return state.products
     },
+    getAllCategories (state) {
+      return state.categories
+    },
+    getCategory (state) {
+      return state.category
+    },
     getUser (state) {
       return state.user
+    },
+    getOrder (state) {
+      return state.order
     }
   }
 })

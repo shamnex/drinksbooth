@@ -24,7 +24,7 @@
                     </v-btn>
                   </div>
 
-                  <v-btn color="#fff" large flat class="item-card__button button__primary">
+                  <v-btn color="#fff" large flat class="item-card__button button__primary" @click.stop="onAddToCart">
                     <div>Add To Cart</div>
                   </v-btn>
                 </div>
@@ -187,8 +187,9 @@ export default {
   },
   created() {
     const id = this.$route.params.buydrink;
-    ProductsApi.getProductById(id).then(res => {
-      this.product = res;
+    ProductsApi.getProduct(id).then(res => {
+      this.product = res.data;
+      console.log(this.product)
     });
   },
 
@@ -216,6 +217,7 @@ export default {
       },
 
       product: "",
+      price: 0,
       items: [
         {
           name: "Drink 1",
@@ -256,9 +258,9 @@ export default {
       this.loading = true;
       this.product = null;
       const id = this.$route.params.buydrink;
-      ProductsApi.getProductById(id).then(res => {
+      ProductsApi.getProduct(id).then(res => {
         this.loading = false;
-        this.product = res;
+        this.product = res.data;
       });
     },
 
@@ -269,6 +271,22 @@ export default {
 
   mounted() {
     this.product = this.$store.state.currentProduct;
+  },
+
+  methods: {
+    onAddToCart() {
+      const payload = {
+        name: this.product.prod_name,
+        isFavorite: true,
+        price: this.product.prod_price,
+        image: this.product.prod_image,
+        id: this.product.id,
+        quantity: this.quantity
+      };
+      // console.log(payload)
+      this.$store.dispatch("addItem", payload);
+      this.$store.commit("toggleCart", true);
+    }
   },
 
   computed: {

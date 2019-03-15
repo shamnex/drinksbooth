@@ -253,7 +253,9 @@ export default {
         image: this.image,
         id: this.id
       };
+      // console.log(payload)
       this.$store.dispatch("addItem", payload);
+      this.$store.commit("toggleCart", true);
     },
     goto() {
       this.$router.push(`/buy/${this.id}`);

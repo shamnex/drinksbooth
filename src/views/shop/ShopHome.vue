@@ -12,12 +12,13 @@
 
          <!-- <router-link  :key="index" v-for="(cat, index) of categories"
            class="categories-header__link" :to="'/shop/'+cat" append @click="goTo(cat)">{{cat}}</router-link> -->
+           
 
      <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="categories-header__link "  :key="index" v-for="(cat, index) of categories">
             <router-link
             style="font-size: 16px"
-           class="link categories-header__link" :to="'/shop/'+cat" append @click="goTo(cat)">{{cat}}</router-link>
+           class="link categories-header__link" :to="'/shop/'+cat.cat_slug" append @click="goTo(cat.cat_slug)">{{cat.cat_name}}</router-link>
         </swiper-slide>
     </swiper>
   </div>
@@ -32,6 +33,8 @@ import ShopHeader from '../../components/shop-header/ShopHeader'
 import 'swiper/dist/css/swiper.css'
 import ItemCard from '../../components/item_card/ItemCard'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import ProductsApi from "@/services/products";
+import { mapGetters } from "vuex";
 
 export default {
   data: () => ({
@@ -46,19 +49,7 @@ export default {
         el: '.swiper-pagination',
         dynamicBullets: true
       }
-    },
-    categories: [
-      'Cognac',
-      'Champagne',
-      'Whisky',
-      'Wines',
-      'Sparkling Wine',
-      'Beers & Ciders',
-      'Spirits',
-      'Mixers & Soft Drinks',
-      'Promos & Gift Ideas',
-      'Spirit Magazine'
-    ]
+    }
   }),
   components: {
     ShopHeader,
@@ -70,8 +61,13 @@ export default {
     search () {
       console.log('search')
     },
-    goTo (link) {
-      this.$router.push(route)
+    goTo (cat) {
+      this.$router.push('search?q='+cat)
+    },
+    getAllCategories() {
+      ProductsApi.getCategories().then(res => {
+        this.$store.commit("setCategories", res.data.results);
+      });
     }
   },
   watch: {
@@ -86,9 +82,12 @@ export default {
         ? 'Shop'
         : this.$route.params.category
     },
+    ...mapGetters({
+      categories: "getAllCategories"
+    })
    
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

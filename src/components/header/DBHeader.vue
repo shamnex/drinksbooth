@@ -42,12 +42,12 @@
 
       <router-link class="db-navbar-link" to="/shop">Shop</router-link>
 
-      <router-link
+      <a
         target="_blank"
         class="db-navbar-link"
         v-bind:class="{ 'link-primary': isWhite }"
-        to="/chat"
-      >chat</router-link>
+        href="https://chat-with-agatha.firebaseapp.com/"
+      >chat</a>
 
       <router-link class="db-navbar-link" to="/planner">Party Planner</router-link>
       <v-spacer></v-spacer>

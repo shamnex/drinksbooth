@@ -20,12 +20,18 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post('/accounts', payload)
         .then(res => {
-          if (res.status === 'success') {
-            const parsed = JSON.stringify(res.data)
+          console.log(res)
+          if (res.data) {
+            let saved = {}
+            let dt = []
+            dt[0] = res.data
+            saved.status = 'success'
+            saved.data = dt
+            let parsed = JSON.stringify(saved)
             localStorage.setItem('drinks-booth-user-id', parsed)
             return resolve(res.data)
           } else {
-            reject(res)
+            reject(res.data)
           }
         })
         .catch(err => reject(err))

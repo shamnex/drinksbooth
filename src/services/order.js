@@ -90,6 +90,20 @@ export default {
           return reject(err)
         })
     })
+  },
+
+  updateOrder (payload) {
+    return new Promise((resolve, reject) => {
+      axios.put(`/order/${payload.id}`, payload)
+        .then(res => {
+          // if (res.status === 'success') {
+            resolve(res.data)
+          // } else {
+          //   reject(res)
+          // }
+        })
+        .catch(err => reject(err))
+    })
   }
 
   //   getOrderTotal (order) {

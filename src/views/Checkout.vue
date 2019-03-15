@@ -360,6 +360,17 @@
                                   </v-flex>
                                 </v-layout>
                               </v-flex>
+
+                          <span class="delivery-method-info">
+                            <v-icon
+                              class="text-xs-center"
+                              style="display: block"
+                              color="error"
+                            >warning</v-icon>Split Payments Coming sooing
+                            <span
+                              class="text-bold"
+                            >NORMAL/ONE-TIME-PAYMENT</span> option is selected
+                          </span>
                             </v-layout>
                           </div>
                         </v-layout>
@@ -489,10 +500,10 @@
                             >DELIVERY ADDRESS </div>
 
                             <v-layout class="ml-3 pb-4" column>
-                              <div class="text-bold pt-2">Okeme Enemona</div>
-                              <div>shamnex@icloud.com</div>
-                              <div class>+2348186044605</div>
-                              <div class>Kado Estate C Close Flat 5</div>
+                              <div class="text-bold pt-2">{{user.first_name +' '+  user.other_names}}</div>
+                              <div>{{user.email}}</div>
+                              <div class>{{user.phone}}</div>
+                              <div class>{{user.address}}</div>
                               <div class>Abuja, Nigeria</div>
                             </v-layout>
                           </v-layout>
@@ -526,12 +537,29 @@
                         flat
                         color="primary"
                       >GO BACK</v-btn>
-                      <v-btn
+                      <!-- <v-btn
                         class="text-xs-center button__primary"
                         flat
                         color="#fff"
-                        @click="e1 = 3"
-                      >PLACE ORDER</v-btn>
+                        @click="placeOrder()"
+                      >PLACE ORDER</v-btn> -->
+                      <paystack
+                          :disabled="$store.state.cartTotal < 2000"
+                          class="text-xs-center button__primary"
+                          :amount="($store.state.cartTotal * 100 )+ 100000"
+                          :email="user.email"
+                          :paystackkey="paystackkey"
+                          :reference=" 'transaction-' + reference +'-'+ order.id"
+                          :callback="callback"
+                          :close="close"
+                          :embed="false"
+                          flat
+                          color="#fff"
+                      >
+                         <i class="fas fa-money-bill-alt"></i>
+                         Make Payment
+                      </paystack>
+
                     </v-layout>
                   </v-flex>
                 </v-layout>
@@ -558,10 +586,15 @@
 import ItemCard from "../components/item_card/ItemCard";
 import { required, maxLength, email } from "vuelidate/lib/validators";
 import { validationMixin } from "vuelidate";
+import UserServices from "@/services/auth";
+import OrderServices from "@/services/order";
+import { mapGetters } from "vuex";
+import paystack from 'vue-paystack';
 
 export default {
   components: {
-    ItemCard
+    ItemCard,
+    paystack
   },
 
   mixins: [validationMixin],
@@ -582,10 +615,13 @@ export default {
     return {
       e1: 0,
       splitSlider: 50,
-      total: 2000,
+      total: 0,
       doorDelivery: true,
       payStack: true,
-      email: ""
+      email: "",
+      paystackkey: "pk_test_8f7fa78dc8f8d0472f819cbb2a05802ee8dcc928", //paystack public key
+      // email: "", // Customer email
+      // amount: 1000000 // in kobo
     };
   },
 
@@ -599,7 +635,61 @@ export default {
   methods: {
     goto(route) {
       this.$router.push(`/${route}`);
+    },
+    getUserInfo() {
+      let user_ = UserServices.getUser();
+      // console.log(user_)
+      this.$store.commit("setUser", user_.data[0])
+    },
+    getorder() {
+      OrderServices.getOrder().then( (res)=> {
+        let order_ = res
+        // console.log(order_)
+        this.$store.commit("setOrder", order_)
+      })
+      
+    },
+    placeOrder() {
+      console.log(this.user)
+      console.log(this.order)
+      console.log(this.$store.state.cartTotal)
+      console.log(this.$store.state.itemsInCart)
+      if (this.$store.state.cartTotal < 2000) {
+        alert("please you have to make a minimum purchase of N 2000.00 for you order to successfully checkout")
+      } else {
+        // complete payment with paystack and update order and register delivery
+        // lunch the paystack button
+      }
+    },
+    callback: function(response) {
+      console.log(response.status)
+      if (response.status === 'success') {
+        // update order
+        this.order.order_amount = this.$store.state.cartTotal + 1000
+        this.order.customer = this.user.id
+        this.order.amount_paid_1 = this.$store.state.cartTotal + 1000
+        this.order.amount_paid_1_reg_by = this.user.email
+        this.order.order_status = 'paid'
+        this.order.payment_status = 'paid'
+        console.log(response.status) 
+        console.log(this.order) 
+
+        OrderServices.updateOrder(this.order).then( (res)=> {
+          localStorage.removeItem('drinks-booth-order-id')
+          alert("Payment was successful. you will receive your order within the next 8hrs. Thank you")
+          this.goto('')
+        })
+        // register for delivery
+      }
+    },
+    close: function(){
+      console.log("Payment closed")
     }
+  },
+
+  created() {
+    this.getUserInfo();
+    this.getorder();
   },
 
   computed: {
@@ -635,6 +725,19 @@ export default {
     remainingAmount() {
       const x = this.cartTotal - this.splitAmount;
       return x > this.cartTotal ? this.cartTotal : x || 0;
+    },
+    ...mapGetters({
+      user: "getUser",
+      order: "getOrder"
+    }),
+    reference() {
+      let text = "";
+      let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for( let i=0; i < 4; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
     }
   }
 };

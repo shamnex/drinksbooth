@@ -4,12 +4,12 @@
       <div class="header"></div>
 
       <v-container column class="login-card">
-        <div class="loading">
+        <!-- <div class="loading">
           <v-layout column class justify-center fill-height align-center>
             <v-progress-circular :size="50" color="primary pb-5" indeterminate></v-progress-circular>
             <div class="mt-2 stylish-header stylish-header--xs">Chill!, we are creating your account</div>
           </v-layout>
-        </div>
+        </div> -->
         <v-layout align-center>
           <v-flex :xs6="!$vuetify.breakpoint.smAndDown">
             <div class="login-form pb-3 pl-3">
@@ -156,7 +156,7 @@ export default {
     otherNames: "",
     firstName: "",
     checkbox: false,
-    isLogin: true
+    isLogin: false
   }),
 
   computed: {
@@ -231,6 +231,38 @@ export default {
   methods: {
     submit() {
       this.$v.$touch();
+
+      this.loading = true;
+      const payload = {
+        email: this.email,
+        password: this.password,
+        first_name: this.firstName,
+        other_names: this.otherNames,
+        phone: this.phone,
+        address: this.address,
+        username: this.userName,
+      };
+      console.log(payload)
+      // return false
+      authService.register(payload)
+        .then(user => {
+         this.$store.commit('setUser', user);
+          console.log(user)
+          if(this.$route.query.nextUrl === '/checkout') {
+              this.$router.push(this.$route.query.nextUrl);
+          } else {
+              this.$router.push('/shop')
+          }
+          this.loading = false;
+        })
+        .catch(err => {
+          console.log(err);
+          if (err.message) {
+            this.error = err.message;
+            this.loading = false;
+          }
+        });
+
     },
     clear() {
       this.$v.$reset();

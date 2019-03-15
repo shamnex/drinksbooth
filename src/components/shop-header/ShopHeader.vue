@@ -10,34 +10,35 @@ class="inner-header">
                 <v-layout v-if="hasSearch" align-center justify-center row >
                     <v-flex justify-center  md6 xs8>
 
-                            <v-layout>
+                        <v-layout>
 
-                            <v-text-field
-                            color="#fff"
-                            bottom
-                            flat
-                            
-                            height="30px"
-                            append-icon="search"
-                            dark
-                            placeholder="Search"
-                            required
-                            ></v-text-field>
+                        <v-text-field
+                        color="#fff"
+                        bottom
+                        flat
+                        height="30px"
+                        append-icon="search"
+                        dark
+                        placeholder="Search"
+                        required
+                        v-model="search_q"
+                        v-on:keyup="goTo(search_q)" 
+                        ></v-text-field>
 
-                            <!-- <v-text-field
-                            color="#fff"
-                            background-color="rgba(255,255,255,0.3)"
-                            bottom
-                            flat
-                            solo
-                            height="30px"
-                            append-icon="search"
-                            dark
-                            placeholder="Search"
-                            required
-                            ></v-text-field> -->
+                        <!-- <v-text-field
+                        color="#fff"
+                        background-color="rgba(255,255,255,0.3)"
+                        bottom
+                        flat
+                        solo
+                        height="30px"
+                        append-icon="search"
+                        dark
+                        placeholder="Search"
+                        required
+                        ></v-text-field> -->
 
-                            </v-layout>
+                        </v-layout>
                     </v-flex>
                 </v-layout>
 
@@ -58,28 +59,41 @@ export default {
     components: {
         VideoBg
     },
-  name: 'ShopHeader',
-  methods: {},
-  props: {
-    title: {
-      type: String,
-      required: true
+    name: 'ShopHeader',
+    data: function () {
+        return {
+            search_q: ''
+        }
     },
-    hasSearch: {
-      type: Boolean,
-      default: false
+    methods: {
+        goTo (cat) {
+            this.$router.push('search?q='+cat)
+        }
     },
+    props: {
+        title: {
+            type: String,
+            required: true
+        },
+        hasSearch: {
+            type: Boolean,
+            default: false
+        },
 
-    image: {
-      type: String,
-      default: 'images/drinks/1.png'
+        image: {
+            type: String,
+            default: 'images/drinks/1.png'
 
-    },
-    height: {
-      type: String,
-      default: '40vh'
-
-    }
+        },
+        height: {
+            type: String,
+            default: '40vh'
+    }   
+    // ,
+    // search_q: {
+    //     type: String,
+    //     default: ''
+    // }
   }
 }
 </script>
