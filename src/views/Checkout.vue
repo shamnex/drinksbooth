@@ -549,7 +549,7 @@
                           :amount="($store.state.cartTotal * 100 )+ 100000"
                           :email="user.email"
                           :paystackkey="paystackkey"
-                          :reference=" 'transaction-' + reference +'-'+ order.id"
+                          :reference=" 'transaction___' + reference +'___'+ order.id"
                           :callback="callback"
                           :close="close"
                           :embed="false"
