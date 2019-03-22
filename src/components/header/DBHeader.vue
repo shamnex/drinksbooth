@@ -20,7 +20,7 @@
         @click="goHome"
         v-show="!isWhite"
         class="db-navbar__brand"
-        src="/graphics/logo_white.svg"
+        src="/graphics/new_logo.png"
         alt
         srcset
       >
@@ -28,7 +28,7 @@
         @click="goHome"
         v-show="isWhite"
         class="db-navbar__brand"
-        src="/graphics/logo.svg"
+        src="/graphics/new_logo.png"
         alt
         srcset
       >

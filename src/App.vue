@@ -70,7 +70,7 @@
       ></db-header>
       <v-navigation-drawer class="drawer" v-model="drawer" absolute temporary>
         <v-layout column class="drawer-items-list">
-          <img class="drawer-logo" src="/graphics/logo_white.svg" alt srcset>
+          <img class="drawer-logo" src="/graphics/new_logo.png" alt srcset>
           <v-list-tile class="drawer-item-wrapper">
             <router-link class="drawer-item" to="/">
               <v-list-tile-content>
