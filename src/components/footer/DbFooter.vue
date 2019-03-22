@@ -1,7 +1,7 @@
 <template>
-  <v-footer class="db__footer" height="300px">
+  <v-footer style="background-color:#333541 " class="db__footer">
     <v-container>
-      <p class="text-sm-center color-white">Footer Stuff here</p>
+      <p class="text-sm-center color-white">Copyright 2019</p>
     </v-container>
   </v-footer>
 </template>
@@ -41,6 +41,6 @@ export default {
 <style  lang="scss" scoped>
 @import "../../scss/abstract/variables";
 .db__footer {
-  background: $color-background;
+  background-color: $color-gradient-2;
 }
 </style>

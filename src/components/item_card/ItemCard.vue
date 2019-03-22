@@ -364,9 +364,13 @@ export default {
 
   &__info {
     color: $color-white;
-    background: color-primary;
+    background-color: color-primary;
+    width: 100%;
     opacity: 1;
     transition: all 0.3s ease;
+    &::before {
+      position: absolute;
+    }
   }
   &__price {
     color: $color-primary;

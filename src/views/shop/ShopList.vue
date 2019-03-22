@@ -1,5 +1,5 @@
-<template>
-  <v-app>
+<template style="background-color: #333541">
+  <v-app style="background-color: #333541">
     <v-container
       v-bind:fluid="$vuetify.breakpoint.mdAndDown"
       justify-center
@@ -239,6 +239,7 @@ export default {
 @import "../../scss/abstract/_variables";
 
 .shop {
+  background-color: $color-background;
   margin-top: 30px;
   &-filter {
     background-color: $color-white;
@@ -253,6 +254,7 @@ export default {
     }
 
     &-body {
+      background-color: $color-background;
     }
   }
   &-header {

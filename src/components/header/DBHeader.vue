@@ -17,21 +17,29 @@
     ></v-toolbar-side-icon>
     <v-toolbar-title center>
       <img
-        @click="goHome"
-        v-show="!isWhite"
         class="db-navbar__brand"
+        v-if="!$vuetify.breakpoint.smAndDown"
         src="/graphics/new_logo.png"
         alt
         srcset
       >
       <img
         @click="goHome"
+        class="db-navbar__brand"
+        v-if="$vuetify.breakpoint.smAndDown"
+        src="/graphics/logo_small.png"
+        alt
+        srcset
+      >
+
+      <!-- <img
+        @click="goHome"
         v-show="isWhite"
         class="db-navbar__brand"
         src="/graphics/new_logo.png"
         alt
         srcset
-      >
+      >-->
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items

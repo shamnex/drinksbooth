@@ -1,6 +1,6 @@
 <template>
   <div v-bind:class="{ 'disableScroll': isCartOpen || isSearchOpen }">
-    <v-app class="body" id="#app">
+    <v-app style="background-color: #333541" class="body" id="#app">
       <cart></cart>
 
       <transition name="fade">
@@ -70,20 +70,9 @@
       ></db-header>
       <v-navigation-drawer class="drawer" v-model="drawer" absolute temporary>
         <v-layout column class="drawer-items-list">
-          <img
-            v-if="$vuetify.breakpoint.smAndDown"
-            class="drawer-logo"
-            src="/graphics/new_logo.png"
-            alt
-            srcset
-          >
-          <img
-            v-if="!$vuetify.breakpoint.smAndDown"
-            class="drawer-logo"
-            src="/graphics/logo_small.png"
-            alt
-            srcset
-          >
+          <div class="drawer-logo">
+            <img src="/graphics/new_logo.png" alt srcset>
+          </div>
           <v-list-tile class="drawer-item-wrapper">
             <router-link class="drawer-item" to="/">
               <v-list-tile-content>
@@ -120,7 +109,8 @@
       </v-navigation-drawer>
 
       <router-view v-blur="blurConfig"/>
-      <div v-if="!isHeaderDark" class="sponsors">
+      <!-- <div v-if="!isHeaderDark" class="sponsors"> -->
+      <div class="sponsors">
         <swiper :options="swiperOption" ref="mySwiper">
           <swiper-slide class="swiper-slide" v-for="(sponsor, i) in sponsors" :key="i">
             <img class="sponsor__image" :src="sponsor.image">
@@ -422,8 +412,11 @@ export default {
 .drawer {
   z-index: 1000 !important;
   &-logo {
+    padding: 40px;
     background: $color-gradient-2;
-    padding: 40px 40px;
+    img {
+      width: 100%;
+    }
   }
 }
 .drawer-items-list {
@@ -462,6 +455,7 @@ export default {
 }
 
 .sponsors {
+  margin-top: 20vh;
   overflow: hidden;
   background-color: #fff;
   padding: 60px;
