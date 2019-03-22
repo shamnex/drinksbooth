@@ -22,7 +22,7 @@
 
               <div
                 ref="searchTitle"
-                class="stylish-header search-title stylish-header--sm stylish-header--border-bottom-white color-white text-xs-center"
+                class="normal-header search-title normal-header--sm normal-header--border-bottom-white color-white text-xs-center"
               >Search</div>
               <v-container>
                 <v-layout class="search-body" ref="searchBody" column>
@@ -167,7 +167,7 @@ export default {
   mounted() {
     WebFontLoader.load({
       google: {
-        families: ["Montserrat:300,400,700", "Dynalight:400"]
+        families: ["Montserrat:300,400,700,", "Dynalight:400"]
       },
       active: this.setFontLoaded
     });
@@ -244,10 +244,10 @@ export default {
     };
   },
   created() {
-      const user = AuthService.getUser();
-      if(AuthService.getUser() !== null) {
-         this.$store.commit('setUser', user.data[0]);
-      }
+    const user = AuthService.getUser();
+    if (AuthService.getUser() !== null) {
+      this.$store.commit("setUser", user.data[0]);
+    }
   },
   methods: {
     viewCart() {

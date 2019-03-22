@@ -39,15 +39,15 @@
           flat
           class="item-card__button"
         >-->
-          <div
+        <div
           flat
           small
-            @click.stop="onAddToCart"
-            class="button button__outline ma-2 pa-3 button__outline--white button__block"
-          >
-            Add To Cart:
-            <span class="ml-2 text-bold">{{price}}</span>
-          </div>
+          @click.stop="onAddToCart"
+          class="button button__outline ma-2 pa-3 button__outline--white button__block"
+        >
+          Add To Cart:
+          <span class="ml-2 text-bold">{{price}}</span>
+        </div>
         <!-- </v-btn> -->
       </v-layout>
     </div>
@@ -288,23 +288,22 @@ export default {
     height: 200px;
     width: 200px;
 
-
-      &.item-card__ctas {
-    opacity: 0;
-    position: absolute;
-    z-index: 4;
-    bottom: 0;
-    left: 50%;
-    padding: 20px;
-    margin: 0 auto;
-
-    transform: translateX(-50%);
-    & .button {
-      width: 20% !important;
-      overflow: hidden;
+    &.item-card__ctas {
+      opacity: 0;
+      position: absolute;
+      z-index: 4;
+      bottom: 0;
+      left: 50%;
+      padding: 20px;
       margin: 0 auto;
+
+      transform: translateX(-50%);
+      & .button {
+        width: 20% !important;
+        overflow: hidden;
+        margin: 0 auto;
+      }
     }
-  }
   }
 
   &::before {
@@ -320,7 +319,7 @@ export default {
     background-image: linear-gradient(
       to bottom right,
       rgba($color-primary, 0.5),
-      rgba(#4a5378, 0.5),
+      rgba(#23b5da, 0.5),
       rgba($color-secondary, 0.5)
     );
   }
@@ -585,7 +584,7 @@ export default {
       //   background-image: linear-gradient(
       //     to bottom right,
       //     rgba($color-primary, 0.2),
-      //     rgba(#4a5378, 0.5),
+      //     rgba(#23B5DA, 0.5),
       //     rgba($color-secondary, 0.1)
       //   );
 
@@ -657,9 +656,9 @@ export default {
     // background-image: linear-gradient(
     //   to bottom right,
     //   rgba($color-primary, 0.3),
-    //   rgba(#4a5378, 0.1),
+    //   rgba(#23B5DA, 0.1),
     //   rgba($color-primary, 0.3),
-    //   rgba(#4a5378, 0.1),
+    //   rgba(#23B5DA, 0.1),
     //   rgba($color-primary, 0.3),
     //   rgba($color-secondary, 0.3)
     // );
@@ -732,7 +731,7 @@ export default {
       background-image: linear-gradient(
         to bottom right,
         rgba($color-primary, 0.2),
-        rgba(#4a5378, 0.5),
+        rgba(#23b5da, 0.5),
         rgba($color-secondary, 0.1)
       );
       height: 100%;

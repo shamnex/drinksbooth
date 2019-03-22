@@ -30,7 +30,7 @@
                   <v-flex xs12>
                     <v-layout class="text-xs-center" column justify-space-between>
                       <div
-                        class="stylish-header stylish-header--sm stylish-header--border-bottom"
+                        class="normal-header normal-header--sm normal-header--border-bottom"
                       >Let us plan with you</div>
 
                       <p
@@ -55,7 +55,7 @@
                   <v-flex xs12>
                     <v-layout column justify-space-between align-center>
                       <div
-                        class="stylish-header stylish-header--sm d-block stylish-header--border-bottom"
+                        class="normal-header normal-header--sm d-block normal-header--border-bottom"
                       >How deep is your pocket?</div>
 
                       <p
@@ -83,7 +83,7 @@
                   <v-flex xs12 fill-height>
                     <v-layout column align-center justify-space-between>
                       <div
-                        class="stylish-header stylish-header--sm d-block stylish-header--border-bottom"
+                        class="normal-header normal-header--sm d-block normal-header--border-bottom"
                       >How many guests are you expecting</div>
 
                       <p
@@ -109,7 +109,7 @@
                   <v-flex xs12>
                     <v-layout column justify-space-between>
                       <div
-                        class="stylish-header stylish-header--sm text-xs-center d-block stylish-header--border-bottom"
+                        class="normal-header normal-header--sm text-xs-center d-block normal-header--border-bottom"
                       >Category of Drinks</div>
 
                       <p
@@ -146,7 +146,7 @@
                   <v-flex xs12>
                     <v-layout column justify-space-between>
                       <div
-                        class="stylish-header stylish-header--sm d-block stylish-header--border-bottom"
+                        class="normal-header normal-header--sm d-block normal-header--border-bottom"
                       >Here's what you can do with your budget</div>
 
                       <p

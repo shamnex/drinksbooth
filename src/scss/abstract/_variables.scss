@@ -1,26 +1,19 @@
-
-
-$color-primary: #4A5378;
-$color-secondary:#5F86AD;
+$color-primary: #23B5DA;
+$color-secondary:darken($color-primary, 40%);
 $color-error: #FF5252;
 $color-info: #2196F3;
 $color-success: #4CAF50;
 $color-warning: #FFC107;
 $color-white: #fff;
 $color-black: #464855;
-$color-background: #F4F5FA;
+$color-background: #333541;
 $color-tertiary: #232F32;
-
-$color-gradient: linear-gradient(to bottom right, $color-primary, #4A5378, $color-secondary);
-
-$color-gradient-2: linear-gradient(to bottom right, #232F32, #414355, $color-secondary);
+$color-gradient: linear-gradient(to bottom right, $color-primary, darken($color-primary, 40%));
+$color-gradient-2: linear-gradient(to bottom right, $color-primary, darken($color-primary, 40%));
+// $color-gradient-2: linear-gradient(to bottom right, #232F32, #414355, $color-secondary);
 $color-gradient-2-light: linear-gradient(to bottom right, rgba($color-secondary, 0.1) 20%, $color-white, rgba($color-secondary, 0.1));
-
-
 $box-shadow: 0 20px 20px rgba($color-primary, 0.05);
 $box-shadow-inverse: 0 -20px 20px rgba($color-primary, 0.05);
-
-
 // $grid-breakpoints = {
 //     xs: 0
 //     sm: 600px
@@ -29,27 +22,24 @@ $box-shadow-inverse: 0 -20px 20px rgba($color-primary, 0.05);
 //     xl: (1440px - 16px) // https://material.io/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
 //   }
 @mixin respond($breakpoint) {
-  
-    @if $breakpoint == xs {
-        @media (max-width: 600px ) {
-            @content 
+    @if $breakpoint==xs {
+        @media (max-width: 600px) {
+            @content
         }
     }
-    @if $breakpoint == sm {
+    @if $breakpoint==sm {
         @media (max-width: 960px) {
-            @content 
+            @content
         }
     }
-    @if $breakpoint ==  md  {
+    @if $breakpoint==md {
         @media (max-width: 1280px) {
-            @content 
+            @content
         }
     }
-    @if $breakpoint == uhd
-     {
+    @if $breakpoint==uhd {
         @media (min-width: 1440px) {
-            @content 
+            @content
         }
     }
-
 }

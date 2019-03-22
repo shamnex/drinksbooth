@@ -8,7 +8,7 @@
         justify-center
         align-center
       >
-        <p class="stylish-header stylish-header--border-bottom text-xs-center pt-4 ma-5">New Items</p>
+        <p class="normal-header normal-header--border-bottom text-xs-center pt-4 ma-5">New Items</p>
         <v-layout class="mb-5">
           <swiper :options="swiperOption" ref="mySwiper">
             <swiper-slide class="swiper-slide" v-for="(item, i) in items" :key="i">
@@ -36,12 +36,11 @@
       </v-container>
 
       <div class="section__planner">
-        <!-- <v-parallax height="100%" src="images/planner.jpg" >
-        </v-parallax>-->
+        <!-- <v-parallax height="80%" width="80%" src="images/planner.jpg"></v-parallax> -->
         <div class="section__planner__background"></div>
         <div class="section__planner__content">
           <v-container>
-            <p class="stylish-header color-white text-xs-center">Party Planner</p>
+            <p class="title-header color-white text-xs-center">Party Planner</p>
             <v-layout align-center justify-center row wrap>
               <v-flex justify-center align-content-center>
                 <div
@@ -61,7 +60,7 @@
             <v-container justify-center align-center>
                 <v-layout justify-center align-center>
                            <v-flex>
-                    <div class="stylish-header text-center mb-3">
+                    <div class="normal-header text-center mb-3">
                                 Drinks On Us
                     </div>
 
@@ -93,7 +92,7 @@
         <v-container justify-center align-center>
           <v-layout justify-center align-center>
             <v-flex>
-              <div class="stylish-header text-center mb-3">Drinks On Us</div>
+              <div class="normal-header text-center mb-3">Drinks On Us</div>
 
               <p class="text-center mb-5">Lorem ipsum dolor sitspernatur, option.</p>
 
@@ -203,7 +202,7 @@ export default {
   min-height: 100vh;
 
   .swiper-slide {
-    max-width:400px;
+    max-width: 400px;
     // margin: 0 40px;
     margin-bottom: 80px;
     @include respond(sm) {
@@ -222,12 +221,15 @@ export default {
 .section__planner {
   min-height: 80vh;
   color: #fff;
+  width: 80vw;
   position: relative;
+  margin: 0 auto;
 
   background-size: cover;
   &__background {
+    padding: 20vw;
     background-color: $color-primary;
-    background-image: url("/images/6.jpg");
+    background-image: url("/images/planner2.jpg");
     background-size: cover;
     height: 80vh;
     background-attachment: fixed;

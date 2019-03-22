@@ -1,7 +1,69 @@
 // @font-face {
 //     font-family: "Taken By Vultures";
 //     src: url("../assets/fonts/taken_by_vultures.otf") format('otf');
-//   }
+//   }'
+.massive-header {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 12vw;
+}
+
+.title-header {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 7vw;
+}
+
+.normal-header {
+    font-family: "Montserrat";
+    color: $color-primary;
+    font-size: 40px;
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+    @include respond(md) {
+        font-size: 55px;
+    }
+    @include respond(sm) {
+        font-size: 48px;
+    } // @include respond(xs) {
+    //     font-size: 40px;
+    // }
+    &--sm {
+        transform: scale(.8); // line-height: 1;
+        margin-bottom: 10px;
+    }
+    &--xs {
+        transform: scale(.6); // line-height: 1;
+        margin-bottom: 5px;
+        line-height: .8;
+    }
+    &--border-bottom {
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            height: 100%;
+            left: 50%;
+            transform: translate3d(-50%, 10%, 0);
+            border-bottom: solid 5px $color-primary;
+        }
+    }
+    &--border-bottom-white {
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            height: 100%;
+            left: 50%;
+            transform: translate3d(-50%, 10%, 0);
+            border-bottom: solid 5px $color-white;
+        }
+    }
+}
+
 .stylish-header {
     font-family: "Dynalight";
     color: $color-primary;
@@ -101,7 +163,6 @@
     @include respond(sm) {
         font-size: 20px;
     }
-
 }
 
 .heading-tertiary {

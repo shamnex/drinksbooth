@@ -11,7 +11,7 @@
   >
     <v-toolbar-side-icon
       flat
-      v-bind:style="{ color: isWhite? '#4A5378': 'white',  }"
+      v-bind:style="{ color: isWhite? '#23B5DA': 'white',  }"
       @click.stop="toggleDrawer($event)"
       class="hidden-md-and-up"
     ></v-toolbar-side-icon>
@@ -58,12 +58,13 @@
       <v-menu transition="slide-y-transition" bottom>
         <v-btn slot="activator" flat>
           <v-layout>
-            <div class="link text-bold text-secondary"
-              v-bind:style="{ color: isWhite? '#4A5378': 'white',  }"
-            >Hi! {{getUser.first_name || "Guest"}} </div>
+            <div
+              class="link text-bold text-secondary"
+              v-bind:style="{ color: isWhite? '#23B5DA': 'white',  }"
+            >Hi! {{getUser.first_name || "Guest"}}</div>
             <!-- <v-avatar size="28"  :color="!isWhite?'primary': '#fff'"> -->
             <!-- <span
-              v-bind:style="{ color: !isWhite? '#4A5378': 'white',  }"
+              v-bind:style="{ color: !isWhite? '#23B5DA': 'white',  }"
               class="headline"
             >
             {{getUser[0].first_name}}
@@ -77,20 +78,20 @@
         <v-list>
           <v-list-tile v-if="!getUser">
             <v-list-tile-title>
-              <router-link  class="link" to="/login">Login/Signup</router-link>
+              <router-link class="link" to="/login">Login/Signup</router-link>
             </v-list-tile-title>
           </v-list-tile>
           <v-list-tile v-if="getUser">
             <v-list-tile-title>
-              <div  class="link" @click="signOut">Sign Out</div>
+              <div class="link" @click="signOut">Sign Out</div>
             </v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
 
-      <v-btn @click="toggleSearch" :flat="isWhite" icon>
+      <!-- <v-btn @click="toggleSearch" :flat="isWhite" icon>
         <v-icon :color="isWhite?'primary': '#fff'">search</v-icon>
-      </v-btn>
+      </v-btn>-->
 
       <v-btn @click="toggleOpenCart" :flat="isWhite" icon>
         <span
@@ -139,10 +140,9 @@ export default {
     },
 
     signOut() {
-        AuthService.signOut();
-        this.$router.push('/shop')
-                 this.$store.commit('setUser', '');
-
+      AuthService.signOut();
+      this.$router.push("/shop");
+      this.$store.commit("setUser", "");
     },
     // onScroll(e) {
     //   this.scrollOffset =
@@ -190,7 +190,7 @@ export default {
     $route(to, from) {}
   },
   mounted() {
-     console.log(this.getUser)
+    console.log(this.getUser);
   },
   created() {},
 

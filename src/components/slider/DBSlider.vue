@@ -2,75 +2,36 @@
   <div ref="slideshow" class="slideshow">
     <div class="slides">
       <div class="slide slide--current">
-        <!-- <div class="slide__img image-overlay" style="background-image:  url('./images/2.jpg');"></div> -->
-        <video-bg
-          class="slide__img slide__video image-overlay"
-          :sources="videos"
-          img="/images/22.jpg"
-        ></video-bg>
+        <div
+          class="slide__img image-overlay"
+          style="background-image:  url('./images/banner.jpg');"
+        ></div>
+        <!-- <video-bg  class="slide__img image-overlay" :sources="videos" img="videos/drip_4.png"></video-bg> -->
         <div class="slider__info--center layout column wrap align-center">
-          <p class="slide__title stylish-header color-white">We are Drinksbooth</p>
+          <p class="slide__title massive-header color-white">Original Only</p>
+
           <p
-            class="slide__desc color-primary text-center"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p>
+            class="slide__desc title heading-secondary color-white text-center"
+          >Introducing the new mark of originality</p>
           <v-btn outline large class="slide__link">
-            <a class href="#">We do this</a>
+            <a class href="#">Discover</a>
           </v-btn>
         </div>
       </div>
-
-      <div class="slide slide--one">
-        <img
-          v-if="!$vuetify.breakpoint.smAndDown"
-          class="slide__cover"
-          src="graphics/triangle.svg"
-          alt
-        >
-        <div
-          class="slide__img"
-          :class="{'image-overlay': $vuetify.breakpoint.smAndDown}"
-          style="background-image:  url('./images/22.jpg');"
-        ></div>
-
-        <v-container>
-          <v-layout class="slider__info" column wrap :align-end="!$vuetify.breakpoint.smAndDown">
-            <v-flex>
-              <p
-                :class="{'color-white': $vuetify.breakpoint.smAndDown}"
-                class="slide__title stylish-header"
-              >You Name it, We have it</p>
-            </v-flex>
-            <v-flex>
-              <p
-                :class="{'color-white': $vuetify.breakpoint.smAndDown}"
-                class="slide__desc text-xs-left"
-              >Lorem ipsum dolor si aliquid magnam maxime laudantium deleniti!.</p>
-            </v-flex>
-
-            <v-flex>
-              <v-btn
-                :outline="$vuetify.breakpoint.smAndDown"
-                class="slide__link button button__primary"
-                large
-                flat
-              >Shop</v-btn>
-            </v-flex>
-          </v-layout>
-        </v-container>
-
-        <div></div>
-      </div>
-
       <div class="slide">
-        <div class="slide__img image-overlay" style="background-image:  url('./images/2.jpg');"></div>
+        <div
+          class="slide__img image-overlay"
+          style="background-image:  url('./images/banner.jpg');"
+        ></div>
         <!-- <video-bg  class="slide__img image-overlay" :sources="videos" img="videos/drip_4.png"></video-bg> -->
         <div class="slider__info--center layout column wrap align-center">
-          <p class="slide__title stylish-header color-white">Plan with Us</p>
+          <p class="slide__title massive-header color-white">Original Only</p>
+
           <p
-            class="slide__desc color-white text-center"
-          >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet veritatis alias sapiente, obcaecati, eum at debitis quidem volum dicta est tenetur.</p>
+            class="slide__desc title heading-secondary color-white text-center"
+          >Introducing the new mark of originality</p>
           <v-btn outline large class="slide__link">
-            <a class href="#">We do this</a>
+            <a class href="#">Discover</a>
           </v-btn>
         </div>
       </div>
@@ -150,9 +111,12 @@ export default {
           easing: { in: "easeOutQuad", out: "easeOutQuad" }
         }
       },
-      frameFill: "#4A5378"
+      frameFill: "#333541"
     };
     this.init();
+    setTimeout(100, () => {
+      this.nextSlide();
+    });
   },
   methods: {
     nextSlide() {},

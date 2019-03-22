@@ -15,7 +15,7 @@
         <v-icon color="#fff" large>close</v-icon>
       </v-btn>
 
-      <div class="sidebar-cart-title stylish-header text-center">Shopping Cart</div>
+      <div class="sidebar-cart-title normal-header text-center">Shopping Cart</div>
     </div>
     <div ref="sideBarCart" class="sidebar-cart-content">
       <v-container class="sidebar-cart-body">
@@ -506,7 +506,7 @@ export default {
       background-image: linear-gradient(
         to bottom right,
         rgba($color-primary, 0.2),
-        rgba(#4a5378, 0.5),
+        rgba(#23b5da, 0.5),
         rgba($color-secondary, 0.1)
       );
     }

@@ -7,14 +7,14 @@
         <!-- <div class="loading">
           <v-layout column class justify-center fill-height align-center>
             <v-progress-circular :size="50" color="primary pb-5" indeterminate></v-progress-circular>
-            <div class="mt-2 stylish-header stylish-header--xs">Chill!, we are creating your account</div>
+            <div class="mt-2 normal-header normal-header--xs">Chill!, we are creating your account</div>
           </v-layout>
-        </div> -->
+        </div>-->
         <v-layout align-center>
           <v-flex :xs6="!$vuetify.breakpoint.smAndDown">
             <div class="login-form pb-3 pl-3">
               <div
-                class="stylish-header stylish-header--sm pb-1 stylish-header--border-bottom text-xs-center"
+                class="normal-header normal-header--sm pb-1 normal-header--border-bottom text-xs-center"
               >Sign up</div>
 
               <p v-if="isCheckout" class="color-error text-xs-center">
@@ -109,7 +109,8 @@
             </div>
 
             <div class="login-image signup"></div>
-            <div>Already have an account?
+            <div>
+              Already have an account?
               <div @click="gotoLogin" class="link text-bold">Login</div>
             </div>
           </v-flex>
@@ -216,16 +217,14 @@ export default {
     },
     isCheckout() {
       return this.$route.query.nextUrl == "/checkout";
-    },
-
+    }
   },
 
   mounted() {
     console.log(this.$route.query);
   },
   watch: {
-    confPassword(x) {
-    }
+    confPassword(x) {}
   },
 
   methods: {
@@ -240,18 +239,19 @@ export default {
         other_names: this.otherNames,
         phone: this.phone,
         address: this.address,
-        username: this.userName,
+        username: this.userName
       };
-      console.log(payload)
+      console.log(payload);
       // return false
-      authService.register(payload)
+      authService
+        .register(payload)
         .then(user => {
-         this.$store.commit('setUser', user);
-          console.log(user)
-          if(this.$route.query.nextUrl === '/checkout') {
-              this.$router.push(this.$route.query.nextUrl);
+          this.$store.commit("setUser", user);
+          console.log(user);
+          if (this.$route.query.nextUrl === "/checkout") {
+            this.$router.push(this.$route.query.nextUrl);
           } else {
-              this.$router.push('/shop')
+            this.$router.push("/shop");
           }
           this.loading = false;
         })
@@ -262,7 +262,6 @@ export default {
             this.loading = false;
           }
         });
-
     },
     clear() {
       this.$v.$reset();

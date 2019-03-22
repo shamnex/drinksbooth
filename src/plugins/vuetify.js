@@ -5,14 +5,14 @@ import Vuetify, {
 import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify, {
-  theme: {
-    primary: '#4A5378',
-    secondary: '#5F86AD',
-    accent: '#6AA2BC',
-    error: '#FF5252',
-    info: '#2196F3',
-    success: '#4CAF50',
-    warning: '#FFC107'
-  },
-  iconfont: 'md'
+    theme: {
+        primary: '#23B5DA',
+        secondary: '#5F86AD',
+        accent: '#6AA2BC',
+        error: '#FF5252',
+        info: '#2196F3',
+        success: '#4CAF50',
+        warning: '#FFC107'
+    },
+    iconfont: 'md'
 })

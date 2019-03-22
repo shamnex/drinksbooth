@@ -8,7 +8,7 @@
           <v-layout column class justify-center fill-height align-center>
             <v-progress-circular :size="50" color="primary pb-5" indeterminate></v-progress-circular>
             <div
-              class="mt-2 stylish-header stylish-header--xs text-xs-center"
+              class="mt-2 normal-header normal-header--xs text-xs-center"
             >Chill!, we are creating your account</div>
           </v-layout>
         </div>
@@ -16,7 +16,7 @@
           <v-flex :xs7="!$vuetify.breakpoint.smAndDown">
             <div class="login-form pt-2 pb-5 pl-2">
               <div
-                class="stylish-header stylish-header--sm mb-3 stylish-header--border-bottom text-xs-center"
+                class="normal-header normal-header--sm mb-3 normal-header--border-bottom text-xs-center"
               >Welcome back</div>
 
               <p v-if="isCheckout" class="color-error text-xs-center">
@@ -84,7 +84,8 @@
             </div>
 
             <div class="login-image"></div>
-            <div>Don't have an account?
+            <div>
+              Don't have an account?
               <div @click="gotoSignUp" class="link text-bold">Sign Up"</div>
             </div>
           </v-flex>
@@ -123,8 +124,8 @@ export default {
     error: ""
   }),
   beforeCreate() {
-      console.log
-      this.$store.state.user 
+    console.log;
+    this.$store.state.user;
   },
 
   watch: {
@@ -212,12 +213,12 @@ export default {
       };
       AuthService.login(payload)
         .then(user => {
-         this.$store.commit('setUser', user[0]);
-          console.log(user)
-          if(this.$route.query.nextUrl === '/checkout') {
-              this.$router.push(this.$route.query.nextUrl);
+          this.$store.commit("setUser", user[0]);
+          console.log(user);
+          if (this.$route.query.nextUrl === "/checkout") {
+            this.$router.push(this.$route.query.nextUrl);
           } else {
-              this.$router.push('/shop')
+            this.$router.push("/shop");
           }
           this.loading = false;
         })

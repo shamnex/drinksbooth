@@ -31,7 +31,7 @@
                 <v-layout align-center justify-center>
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
-                      <div class="background-gradient-2 color-white ">SUMMARY</div>
+                      <div class="background-gradient-2 color-white">SUMMARY</div>
                     </div>
                     <v-layout column class="checkout-card-body">
                       <v-flex class="mb-2">
@@ -105,9 +105,7 @@
                 <v-layout aalign-center justify-center>
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
-                      <div
-                        class=" background-gradient-2 color-white "
-                      >DELIVERY METHOD</div>
+                      <div class="background-gradient-2 color-white">DELIVERY METHOD</div>
                       <v-divider></v-divider>
                     </div>
                     <v-divider></v-divider>
@@ -120,7 +118,7 @@
                         <v-icon large color="primary" class="delivery-method-icon">check_mark</v-icon>
                         <v-layout column fill-height align-center justify-center>
                           <div
-                            class="stylish-header stylish-header--sm stylish-header--border-bottom color-primary"
+                            class="normal-header normal-header--sm normal-header--border-bottom color-primary"
                           >Home Delivery</div>
 
                           <div
@@ -137,7 +135,7 @@
                         <v-icon large color="primary" class="delivery-method-icon">check_mark</v-icon>
                         <v-layout column fill-height align-center justify-center>
                           <div
-                            class="stylish-header stylish-header--sm stylish-header--border-bottom color-primary"
+                            class="normal-header normal-header--sm normal-header--border-bottom color-primary"
                           >Pick-up</div>
 
                           <div
@@ -168,9 +166,7 @@
                 <v-layout aalign-center justify-center>
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
-                      <div
-                        class=" background-gradient-2 color-white "
-                      >PAYMENT METHOD</div>
+                      <div class="background-gradient-2 color-white">PAYMENT METHOD</div>
                       <v-divider></v-divider>
                     </div>
                     <v-divider></v-divider>
@@ -183,7 +179,7 @@
                         <v-icon large color="primary" class="delivery-method-icon">check_mark</v-icon>
                         <v-layout column fill-height align-center justify-center>
                           <div
-                            class="stylish-header stylish-header--sm stylish-header--border-bottom color-primary"
+                            class="normal-header normal-header--sm normal-header--border-bottom color-primary"
                           >Paystack</div>Make payment using VISA QR or your debit and credit cards (both local and International) with Paystack
                           <!-- <div
                             style="background-image:url(/images/paystack.jpg)"
@@ -205,7 +201,7 @@
                         <v-icon v-else large flat color="primary" class="delivery-method-icon">close</v-icon>
                         <v-layout column fill-height align-center justify-center>
                           <div
-                            class="stylish-header stylish-header--sm stylish-header--border-bottom color-primary"
+                            class="normal-header normal-header--sm normal-header--border-bottom color-primary"
                           >Cash</div>No card? No problem...
                           <div
                             slot="activator"
@@ -247,7 +243,7 @@
                 <v-layout aalign-center justify-center>
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
-                      <div class=" background-gradient-2 color-white ">CONFIRM</div>
+                      <div class="background-gradient-2 color-white">CONFIRM</div>
                       <v-divider></v-divider>
                     </div>
                     <v-divider></v-divider>
@@ -261,7 +257,7 @@
                         <v-icon large color="primary" class="delivery-method-icon">check_mark</v-icon>
                         <v-layout column fill-height align-center justify-center>
                           <div
-                            class="stylish-header stylish-header--sm stylish-header--border-bottom color-primary"
+                            class="normal-header normal-header--sm normal-header--border-bottom color-primary"
                           >Normal Payment</div>
                           <div style="font-size: 18px" class="text-center color-primary pa-2">
                             You will pay the full sum of
@@ -280,7 +276,7 @@
                           <div>
                             <v-layout justify-center fill-height column>
                               <div
-                                class="text-center stylish-header stylish-header--sm stylish-header--border-bottom color-primary"
+                                class="text-center normal-header normal-header--sm normal-header--border-bottom color-primary"
                               >Split Payment</div>
                               <v-flex>
                                 <v-layout justify-center fill-height>
@@ -361,16 +357,16 @@
                                 </v-layout>
                               </v-flex>
 
-                          <span class="delivery-method-info">
-                            <v-icon
-                              class="text-xs-center"
-                              style="display: block"
-                              color="error"
-                            >warning</v-icon>Split Payments Coming sooing
-                            <span
-                              class="text-bold"
-                            >NORMAL/ONE-TIME-PAYMENT</span> option is selected
-                          </span>
+                              <span class="delivery-method-info">
+                                <v-icon
+                                  class="text-xs-center"
+                                  style="display: block"
+                                  color="error"
+                                >warning</v-icon>Split Payments Coming sooing
+                                <span
+                                  class="text-bold"
+                                >NORMAL/ONE-TIME-PAYMENT</span> option is selected
+                              </span>
                             </v-layout>
                           </div>
                         </v-layout>
@@ -411,7 +407,7 @@
                 <v-layout align-center justify-center>
                   <v-flex class="checkout-card">
                     <div class="checkout-card-header">
-                      <div class=" background-gradient-2 color-white ">SUMMARY</div>
+                      <div class="background-gradient-2 color-white">SUMMARY</div>
                       <v-divider></v-divider>
                     </div>
                     <v-divider></v-divider>
@@ -424,7 +420,7 @@
                             column
                           >
                             <div
-                              class="text-xs-center stylish-header stylish-header--xs color-primary"
+                              class="text-xs-center normal-header normal-header--xs color-primary"
                             >Items</div>
                             <v-divider></v-divider>
 
@@ -449,14 +445,13 @@
                               </v-layout>
                             </v-flex>
 
-                                <v-divider class="ma-3"></v-divider>
+                            <v-divider class="ma-3"></v-divider>
                             <v-flex class="mb-3">
                               <v-layout>
                                 <v-flex xs6>
                                   <div class="item-name ml-4">Shipping</div>
                                 </v-flex>
                                 <v-flex></v-flex>
-
 
                                 <v-flex xs3 class="text-xs-left item-price">
                                   <span class="color-primary">‎₦</span>
@@ -486,80 +481,70 @@
                             column
                           >
                             <div
-                              class="text-xs-center stylish-header stylish-header--xs color-primary"
+                              class="text-xs-center normal-header normal-header--xs color-primary"
                             >Shipping Info</div>
 
-                          <v-layout column>
+                            <v-layout column>
+                              <v-divider></v-divider>
 
+                              <div
+                                style="font-size: 18px"
+                                class="text-bold color-primary pt-2"
+                              >DELIVERY ADDRESS</div>
 
-                            <v-divider></v-divider>
-
-                            <div
-                              style="font-size: 18px"
-                              class="text-bold color-primary pt-2"
-                            >DELIVERY ADDRESS </div>
-
-                            <v-layout class="ml-3 pb-4" column>
-                              <div class="text-bold pt-2">{{user.first_name +' '+  user.other_names}}</div>
-                              <div>{{user.email}}</div>
-                              <div class>{{user.phone}}</div>
-                              <div class>{{user.address}}</div>
-                              <div class>Abuja, Nigeria</div>
+                              <v-layout class="ml-3 pb-4" column>
+                                <div
+                                  class="text-bold pt-2"
+                                >{{user.first_name +' '+ user.other_names}}</div>
+                                <div>{{user.email}}</div>
+                                <div class>{{user.phone}}</div>
+                                <div class>{{user.address}}</div>
+                                <div class>Abuja, Nigeria</div>
+                              </v-layout>
                             </v-layout>
-                          </v-layout>
 
-                          <v-layout column>
-                            <v-divider></v-divider>
+                            <v-layout column>
+                              <v-divider></v-divider>
 
-                            <div
-                              style="font-size: 18px"
-                              class="text-bold color-primary pt-2"
-                            >PAYAMENT INFO</div>
+                              <div
+                                style="font-size: 18px"
+                                class="text-bold color-primary pt-2"
+                              >PAYAMENT INFO</div>
 
-                            <v-layout class="ml-3 pb-4" column>
-
-                              <div class="text-bold pt-2">Card/MasterCard </div>
-                              <div>Secured with paystack</div>
-                             
+                              <v-layout class="ml-3 pb-4" column>
+                                <div class="text-bold pt-2">Card/MasterCard</div>
+                                <div>Secured with paystack</div>
+                              </v-layout>
                             </v-layout>
-                          </v-layout>
-
                           </v-layout>
                         </v-flex>
                       </v-layout>
                     </v-layout>
 
                     <v-layout justify-space-between class="checkout-card-footer">
-                      <v-btn
-                        
-                        @click="e1 = 3"
-                        class="text-xs-center"
-                        flat
-                        color="primary"
-                      >GO BACK</v-btn>
+                      <v-btn @click="e1 = 3" class="text-xs-center" flat color="primary">GO BACK</v-btn>
                       <!-- <v-btn
                         class="text-xs-center button__primary"
                         flat
                         color="#fff"
                         @click="placeOrder()"
-                      >PLACE ORDER</v-btn> -->
+                      >PLACE ORDER</v-btn>-->
                       <paystack
-                          :disabled="$store.state.cartTotal < 2000"
-                          class="text-xs-center button__primary"
-                          :amount="($store.state.cartTotal * 100 )+ 100000"
-                          :email="user.email"
-                          :paystackkey="paystackkey"
-                          :reference=" 'transaction___' + reference +'___'+ order.id"
-                          :callback="callback"
-                          :close="close"
-                          :embed="false"
-                          flat
-                          color="#fff"
+                        :disabled="$store.state.cartTotal < 2000"
+                        class="text-xs-center button__primary"
+                        :amount="($store.state.cartTotal * 100 )+ 100000"
+                        :email="user.email"
+                        :paystackkey="paystackkey"
+                        :reference=" 'transaction___' + reference +'___'+ order.id"
+                        :callback="callback"
+                        :close="close"
+                        :embed="false"
+                        flat
+                        color="#fff"
                       >
-                         <i class="fas fa-money-bill-alt"></i>
-                         Make Payment
+                        <i class="fas fa-money-bill-alt"></i>
+                        Make Payment
                       </paystack>
-
                     </v-layout>
                   </v-flex>
                 </v-layout>
@@ -589,7 +574,7 @@ import { validationMixin } from "vuelidate";
 import UserServices from "@/services/auth";
 import OrderServices from "@/services/order";
 import { mapGetters } from "vuex";
-import paystack from 'vue-paystack';
+import paystack from "vue-paystack";
 
 export default {
   components: {
@@ -619,7 +604,7 @@ export default {
       doorDelivery: true,
       payStack: true,
       email: "",
-      paystackkey: "pk_test_8f7fa78dc8f8d0472f819cbb2a05802ee8dcc928", //paystack public key
+      paystackkey: "pk_test_8f7fa78dc8f8d0472f819cbb2a05802ee8dcc928" //paystack public key
       // email: "", // Customer email
       // amount: 1000000 // in kobo
     };
@@ -639,51 +624,54 @@ export default {
     getUserInfo() {
       let user_ = UserServices.getUser();
       // console.log(user_)
-      this.$store.commit("setUser", user_.data[0])
+      this.$store.commit("setUser", user_.data[0]);
     },
     getorder() {
-      OrderServices.getOrder().then( (res)=> {
-        let order_ = res
+      OrderServices.getOrder().then(res => {
+        let order_ = res;
         // console.log(order_)
-        this.$store.commit("setOrder", order_)
-      })
-      
+        this.$store.commit("setOrder", order_);
+      });
     },
     placeOrder() {
-      console.log(this.user)
-      console.log(this.order)
-      console.log(this.$store.state.cartTotal)
-      console.log(this.$store.state.itemsInCart)
+      console.log(this.user);
+      console.log(this.order);
+      console.log(this.$store.state.cartTotal);
+      console.log(this.$store.state.itemsInCart);
       if (this.$store.state.cartTotal < 2000) {
-        alert("please you have to make a minimum purchase of N 2000.00 for you order to successfully checkout")
+        alert(
+          "please you have to make a minimum purchase of N 2000.00 for you order to successfully checkout"
+        );
       } else {
         // complete payment with paystack and update order and register delivery
         // lunch the paystack button
       }
     },
     callback: function(response) {
-      console.log(response.status)
-      if (response.status === 'success') {
+      console.log(response.status);
+      if (response.status === "success") {
         // update order
-        this.order.order_amount = this.$store.state.cartTotal + 1000
-        this.order.customer = this.user.id
-        this.order.amount_paid_1 = this.$store.state.cartTotal + 1000
-        this.order.amount_paid_1_reg_by = this.user.email
-        this.order.order_status = 'paid'
-        this.order.payment_status = 'paid'
-        console.log(response.status) 
-        console.log(this.order) 
+        this.order.order_amount = this.$store.state.cartTotal + 1000;
+        this.order.customer = this.user.id;
+        this.order.amount_paid_1 = this.$store.state.cartTotal + 1000;
+        this.order.amount_paid_1_reg_by = this.user.email;
+        this.order.order_status = "paid";
+        this.order.payment_status = "paid";
+        console.log(response.status);
+        console.log(this.order);
 
-        OrderServices.updateOrder(this.order).then( (res)=> {
-          localStorage.removeItem('drinks-booth-order-id')
-          alert("Payment was successful. you will receive your order within the next 8hrs. Thank you")
-          this.goto('')
-        })
+        OrderServices.updateOrder(this.order).then(res => {
+          localStorage.removeItem("drinks-booth-order-id");
+          alert(
+            "Payment was successful. you will receive your order within the next 8hrs. Thank you"
+          );
+          this.goto("");
+        });
         // register for delivery
       }
     },
-    close: function(){
-      console.log("Payment closed")
+    close: function() {
+      console.log("Payment closed");
     }
   },
 
@@ -732,9 +720,10 @@ export default {
     }),
     reference() {
       let text = "";
-      let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-      for( let i=0; i < 4; i++ )
+      for (let i = 0; i < 4; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
       return text;
@@ -781,8 +770,8 @@ export default {
 
     &-header {
       box-shadow: $box-shadow;
-      .background-gradient-2  {
-          padding: 10px 10px;
+      .background-gradient-2 {
+        padding: 10px 10px;
       }
     }
     &-footer {

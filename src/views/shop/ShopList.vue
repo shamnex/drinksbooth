@@ -53,8 +53,8 @@
           >
             <v-flex class="shop-header-category__title">
               <div
-                class="stylish-header"
-                v-bind:class="{'stylish-header--border-bottom': $vuetify.breakpoint.smAndDown }"
+                class="normal-header"
+                v-bind:class="{'normal-header--border-bottom': $vuetify.breakpoint.smAndDown }"
               >{{category.cat_name}}</div>
             </v-flex>
 
@@ -99,11 +99,11 @@
             :prev-text="'Prev'"
             :next-text="'Next'"
             :container-class="'pagination'"
-            :page-class="'page-item'">
-          </paginate>
+            :page-class="'page-item'"
+          ></paginate>
         </v-flex>
       </v-layout>
-      
+
       <v-layout class="pa-5 ma-5" v-else justify-center align-center>
         <v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
       </v-layout>
@@ -112,11 +112,11 @@
         <v-container v-if="products && products.length > 0">
           <v-layout justify-center>
             <v-flex xs12>
-                <!-- <infinite-loading @infinite="infiniteHandler"></infinite-loading> -->
+              <!-- <infinite-loading @infinite="infiniteHandler"></infinite-loading> -->
 
               <!-- <div class="shop-footer">
                 <v-pagination v-model="currentPage" :length="pages"></v-pagination>
-              </div> -->
+              </div>-->
             </v-flex>
           </v-layout>
         </v-container>
@@ -130,9 +130,8 @@ import ShopHeader from "../../components/shop-header/ShopHeader";
 import ItemCard from "../../components/item_card/ItemCard";
 import ProductsApi from "@/services/products";
 import { mapGetters } from "vuex";
-import InfiniteLoading from 'vue-infinite-loading';
-import Paginate from 'vuejs-paginate'
-
+import InfiniteLoading from "vue-infinite-loading";
+import Paginate from "vuejs-paginate";
 
 export default {
   data: () => ({
@@ -146,63 +145,60 @@ export default {
     ItemCard,
     InfiniteLoading,
     Paginate
-
   },
   methods: {
     search() {
       console.log("search");
     },
-    clickCallback (pageNum) {
-      console.log(pageNum)
+    clickCallback(pageNum) {
+      console.log(pageNum);
     },
     getAllProducts() {
-        let query_str = window.location.href.split('=')[1];
-        // console.log(query_str)
-        // console.log(typeof this.$route.params.category)
-        if ( typeof query_str != 'undefined') {
-            ProductsApi.queryProduct(query_str).then(res => {
-                this.$store.commit("setAllProducts", res.data.results);
-                this.count = res.data.count;
-            });
-        } else if (typeof this.$route.params.category != 'undefined') {            
-            ProductsApi.getProductByCategory(this.$route.params.category).then(res => {
-                this.$store.commit("setAllProducts", res.data.results);
-                this.count = res.data.count;
-            });
-        } else {
-            ProductsApi.getProducts().then(res => {
-                this.$store.commit("setAllProducts", res.data.results);
-                this.count = res.data.count;
-            });
-        }
-
+      let query_str = window.location.href.split("=")[1];
+      // console.log(query_str)
+      // console.log(typeof this.$route.params.category)
+      if (typeof query_str != "undefined") {
+        ProductsApi.queryProduct(query_str).then(res => {
+          this.$store.commit("setAllProducts", res.data.results);
+          this.count = res.data.count;
+        });
+      } else if (typeof this.$route.params.category != "undefined") {
+        ProductsApi.getProductByCategory(this.$route.params.category).then(
+          res => {
+            this.$store.commit("setAllProducts", res.data.results);
+            this.count = res.data.count;
+          }
+        );
+      } else {
+        ProductsApi.getProducts().then(res => {
+          this.$store.commit("setAllProducts", res.data.results);
+          this.count = res.data.count;
+        });
+      }
     },
     getAllCategories() {
-        let query_str = window.location.href.split('=')[1];
-        if ( typeof query_str == 'undefined' ) {
-
-            ProductsApi.getCategories().then(res => {
-                this.$store.commit("setCategories", res.data.results);
-                this.getCategory();
-            });
-        } else {
-
-            ProductsApi.getCategories().then(res => {
-                this.$store.commit("setCategories", res.data.results);
-            });
-
-        }
-    }, 
+      let query_str = window.location.href.split("=")[1];
+      if (typeof query_str == "undefined") {
+        ProductsApi.getCategories().then(res => {
+          this.$store.commit("setCategories", res.data.results);
+          this.getCategory();
+        });
+      } else {
+        ProductsApi.getCategories().then(res => {
+          this.$store.commit("setCategories", res.data.results);
+        });
+      }
+    },
     getCategory() {
-        console.log(this.categories)
-        let cat = this.categories.filter( (el) => {
-            return el.cat_slug == this.$route.params.category
-        })
-        this.$store.commit("setCategory", cat[0]);
+      console.log(this.categories);
+      let cat = this.categories.filter(el => {
+        return el.cat_slug == this.$route.params.category;
+      });
+      this.$store.commit("setCategory", cat[0]);
     },
 
     infiniteHandler($state) {
-        // return false;
+      // return false;
     }
   },
   created() {
@@ -220,7 +216,7 @@ export default {
 
   computed: {
     routeName: function() {
-        // console.log(this.$route.params)
+      // console.log(this.$route.params)
 
       return this.$route.params.category === undefined
         ? "Shop"
@@ -231,7 +227,7 @@ export default {
       return Math.round(this.products.length / 10);
     },
     ...mapGetters({
-      products: "getAllProducts", 
+      products: "getAllProducts",
       categories: "getAllCategories",
       category: "getCategory"
     })
@@ -312,12 +308,12 @@ export default {
     background-color: $color-white;
   }
 
-    .pagination {
-        list-style-type: none;
-        position: relative;
-    }
-    .page-item {
-        list-style-type: none;
-    }
+  .pagination {
+    list-style-type: none;
+    position: relative;
+  }
+  .page-item {
+    list-style-type: none;
+  }
 }
 </style>

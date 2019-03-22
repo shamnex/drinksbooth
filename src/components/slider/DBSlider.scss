@@ -1,160 +1,140 @@
 @import "../../scss/abstract/variables";
 @import "../../scss/abstract/mixins";
-
-
 @keyframes loaderAnim {
-	to {
-		opacity: 1;
-		transform: scale3d(0.5,0.5,1);
-	}
+    to {
+        opacity: 1;
+        transform: scale3d(0.5, 0.5, 1);
+    }
 }
 
-
 .hidden {
-	position: absolute;
-	overflow: hidden;
-	width: 0;
-	height: 0;
-	pointer-events: none;
+    position: absolute;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    pointer-events: none;
 }
 
 /* Icons */
+
 .icon {
-	display: block;
-	width: 1.5em;
-	height: 1.5em;
-	margin: 0 auto;
-	fill: currentColor;
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0 auto;
+    fill: currentColor;
 }
 
 .icon--arrow-rot {
-	transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 main {
-	position: relative;
-	width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .content {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0 auto;
-	min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    min-height: 100vh;
 }
 
 .content--fixed {
-	position: fixed;
-	z-index: 10000;
-	top: 0;
-	left: 0;
-	display: grid;
-	align-content: space-between;
-	width: 100%;
-	max-width: none;
-	min-height: 0;
-	height: 100vh;
-	padding: 1.5em;
-	pointer-events: none;
-	grid-template-columns: 50% 50%;
-	grid-template-rows: auto auto 4em;
-	grid-template-areas: 'header github'
-	'... ...'
-	'... demos';
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    display: grid;
+    align-content: space-between;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    height: 100vh;
+    padding: 1.5em;
+    pointer-events: none;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto 4em;
+    grid-template-areas: 'header github' '... ...' '... demos';
 }
 
 .content--fixed a {
-	pointer-events: auto;
+    pointer-events: auto;
 }
 
-
-
-
 .slideshow {
-	width: 100%;
-	height: 100vh;
+    width: 100%;
+    height: 100vh;
     position: relative;
     overflow: hidden;
     z-index: 1;
     background-position: top center;
-
     .container {
         position: relative;
     }
-    
 }
 
 .slides {
-	position: absolute;
-	width: 100%;
-	height: 100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .slide {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	opacity: 0;
-	pointer-events: none;
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
-	align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .slide--current {
-	opacity: 1;
-	pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .slide__img {
-	position: absolute;
-	top: -200px;
-	left: -200px;
-	width: calc(100% + 400px);
-	height: calc(100% + 400px);
-	background-size: cover;
-    background-position: 50% 50%;
-    // clip-path: polygon(0 0, 50% 15vh, 100% 0%, 100% calc(100% - 15vh), 50% 100%, 0% calc(100% - 15rem));
-
- 
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: calc(100% + 400px);
+    height: calc(100% + 400px);
+    background-size: cover;
+    background-position: 50% 50%; // clip-path: polygon(0 0, 50% 15vh, 100% 0%, 100% calc(100% - 15vh), 50% 100%, 0% calc(100% - 15rem));
     &::before {
         content: '';
         position: absolute;
         height: 50%;
         z-index: 2;
-        width: 100%;
-        background: linear-gradient(to bottom, $color-primary, 
-        rgba(red, 0.0),
-        );
+        width: 100%; // background: linear-gradient(to bottom, $color-primary, 
+        // rgba(red, 0.0),
+        // );
     }
-    
 }
+
 .slide__video {
-	position: absolute;
-	top: 0;
-	left: 0;
-
-	background-size: cover;
-    background-position: 50% 50%;
-    // clip-path: polygon(0 0, 50% 15vh, 100% 0%, 100% calc(100% - 15vh), 50% 100%, 0% calc(100% - 15rem));
-
- 
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%; // clip-path: polygon(0 0, 50% 15vh, 100% 0%, 100% calc(100% - 15vh), 50% 100%, 0% calc(100% - 15rem));
     &::before {
         content: '';
         position: absolute;
         height: 50%;
         z-index: 2;
         width: 100%;
-        background: linear-gradient(to bottom, $color-primary, 
-        rgba(red, 0.0),
-        );
+        background: linear-gradient(to bottom, $color-primary, rgba( $color-primary, 0.0), );
     }
-    
 }
 
 .slider__info {
@@ -164,9 +144,6 @@ main {
     right: 0;
     padding: 30px;
     z-index: 10;
-
-
-
     &--center {
         & * {
             color: #fff !important;
@@ -180,12 +157,12 @@ main {
 }
 
 .slidenav {
-	// position: absolute;
-	// width: 300px;
-	// margin-left: -150px;
-	// left: 50%;
-	// bottom: 0;
-	// text-align: center;
+    // position: absolute;
+    // width: 300px;
+    // margin-left: -150px;
+    // left: 50%;
+    // bottom: 0;
+    // text-align: center;
     // padding: 2em;
     // z-index: 2;
 }
@@ -195,7 +172,7 @@ main {
     &::before {
         position: absolute;
         content: "";
-        background-color:transparent;
+        background-color: transparent;
         height: 100%;
         width: 100%;
         z-index: 2;
@@ -211,12 +188,10 @@ main {
     @include respond(md) {
         transform: scale(1.2);
     }
-
 }
 
 .slidenav__item {
     z-index: 10;
-
     background: rgba($color-primary, 0.5) !important;
     &--prev {
         left: 0;
@@ -228,44 +203,40 @@ main {
         right: 0;
         position: absolute;
         top: 50% !important;
-
     }
 }
 
 .slidenav__item:focus {
-	outline: none;
+    outline: none;
 }
 
 .slidenav__item:hover {
     color: color-nav-hover;
-    
- 
 }
 
 .shape {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	fill: color-shape-fill;
-	top: 0;
-	pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    fill: color-shape-fill;
+    top: 0;
+    pointer-events: none;
 }
 
 .slide__title {
-	margin: 0;
+    margin: 0;
     cursor: default;
     text-align: left;
 }
 
 .slide__desc {
-
-	position: relative;
-	margin: 0 0 2em 0;
-	cursor: default;
+    position: relative;
+    margin: 0 0 2em 0;
+    cursor: default;
     color: $color-primary;
     font-size: 14px;
     text-align: center;
-	padding: 0 1em;
+    padding: 0 1em;
     max-width: 700px;
     padding: 0 30px;
     @include respond(md) {
@@ -274,14 +245,13 @@ main {
 }
 
 .slide__link {
-	position: relative;
+    position: relative;
     text-align: right;
-	display: block;
-	transition: color 0.3s, background 0.3s;
+    display: block;
+    transition: color 0.3s, background 0.3s;
 }
 
 .slide__link:hover {
-	color: color-slink-hover;
-	background: color-slink-hover-bg;
+    color: color-slink-hover;
+    background: color-slink-hover-bg;
 }
-
