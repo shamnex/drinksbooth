@@ -289,6 +289,7 @@ export default {
     width: 200px;
 
     &.item-card__ctas {
+      background: color-primary;
       opacity: 0;
       position: absolute;
       z-index: 4;
@@ -362,7 +363,8 @@ export default {
   }
 
   &__info {
-    color: $color-primary;
+    color: $color-white;
+    background: color-primary;
     opacity: 1;
     transition: all 0.3s ease;
   }

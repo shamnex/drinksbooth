@@ -1,32 +1,35 @@
 a,
 a:visited {
     text-decoration: none;
-    font-family:  'Montserrat', sans-serif;
-    
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
     box-sizing: border-box;
-    
+    background: $color-background;
 }
 
 /* width */
+
 ::-webkit-scrollbar {
     width: 7px;
     transition: all 0.2s ease;
 }
 
 /* Track */
+
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
 }
 
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
-    background: $color-primary; 
+    background: $color-primary;
 }
 
 /* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
-    background:darken($color-primary, 20); 
+    background: darken($color-primary, 20);
 }

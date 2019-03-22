@@ -80,7 +80,7 @@
           </v-list-tile>
 
           <v-list-tile class="drawer-item-wrapper">
-            <router-link class="drawer-item" to="/shop">
+            <router-link class="drawer-item" to="/shop/">
               <v-list-tile-content>
                 <v-list-tile-title>Shop</v-list-tile-title>
               </v-list-tile-content>
@@ -357,6 +357,10 @@ export default {
     width: 100vw;
     height: 100vh;
     background-color: transparent;
+  }
+
+  .body {
+    background: $color-background !important;
   }
 
   &-body,

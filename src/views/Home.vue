@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-content>
+    <v-content class="home">
       <db-slider></db-slider>
       <v-container
         v-bind:fluid="$vuetify.breakpoint.mdAndDown"
@@ -197,13 +197,19 @@ export default {
 @import "../scss/abstract/_variables";
 @import "../scss/abstract/_mixins";
 
+.home {
+  background: $color-background;
+}
+
 .section__new {
   //   position: relative;
   min-height: 100vh;
+  background: $color-background;
 
   .swiper-slide {
     max-width: 400px;
     // margin: 0 40px;
+
     margin-bottom: 80px;
     @include respond(sm) {
       width: 300px;

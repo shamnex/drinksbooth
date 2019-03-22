@@ -10,6 +10,7 @@ $color-background: #333541;
 $color-tertiary: #232F32;
 $color-gradient: linear-gradient(to bottom right, $color-primary, darken($color-primary, 40%));
 $color-gradient-2: linear-gradient(to bottom right, $color-primary, darken($color-primary, 40%));
+$color-gradient-3: linear-gradient(to bottom right, rgba($color-secondary, 0.8), rgba(lighten($color-secondary, 10%), 0.7));
 // $color-gradient-2: linear-gradient(to bottom right, #232F32, #414355, $color-secondary);
 $color-gradient-2-light: linear-gradient(to bottom right, rgba($color-secondary, 0.1) 20%, $color-white, rgba($color-secondary, 0.1));
 $box-shadow: 0 20px 20px rgba($color-primary, 0.05);
@@ -19,7 +20,7 @@ $box-shadow-inverse: 0 -20px 20px rgba($color-primary, 0.05);
 //     sm: 600px
 //     md: 960px
 //     lg: (1280px - 16px) // Desktop gets a 16dp reduction
-//     xl: (1440px - 16px) // https://material.io/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
+//     xl: (1440px - 16px) // https://material.iCPo/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
 //   }
 @mixin respond($breakpoint) {
     @if $breakpoint==xs {

@@ -11,7 +11,7 @@
   >
     <v-toolbar-side-icon
       flat
-      v-bind:style="{ color: isWhite? '#23B5DA': 'white',  }"
+      v-bind:style="{ color: isWhite? '#23B5DA': '#23B5DA',  }"
       @click.stop="toggleDrawer($event)"
       class="hidden-md-and-up"
     ></v-toolbar-side-icon>
@@ -60,7 +60,7 @@
           <v-layout>
             <div
               class="link text-bold text-secondary"
-              v-bind:style="{ color: isWhite? '#23B5DA': 'white',  }"
+              v-bind:style="{ color: isWhite? '#23B5DA': '#23B5DA',  }"
             >Hi! {{getUser.first_name || "Guest"}}</div>
             <!-- <v-avatar size="28"  :color="!isWhite?'primary': '#fff'"> -->
             <!-- <span
@@ -227,7 +227,7 @@ export default {
     &::before {
       box-shadow: 0 20px 20px rgba($color-primary, 0.1) !important;
       content: "";
-      background: rgba(white, 0.9) !important;
+      background: $color-gradient-3;
       width: 305vw !important;
       height: 100%;
       position: absolute;
@@ -358,7 +358,7 @@ export default {
 
 .white {
   a {
-    color: rgba($color-black, 0.5);
+    color: rgba($color-white, 0.5);
     text-decoration: none;
     text-align: center !important;
 
