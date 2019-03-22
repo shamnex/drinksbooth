@@ -40,7 +40,7 @@
     >
       <router-link class="db-navbar-link" exact to="/">Home</router-link>
 
-      <router-link class="db-navbar-link" to="/shop">Shop</router-link>
+      <router-link class="db-navbar-link" to="/shop/">Shop</router-link>
 
       <a
         target="_blank"
