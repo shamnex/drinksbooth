@@ -416,7 +416,7 @@
                       <v-layout row class="checkout-card-body">
                         <v-flex xs6>
                           <v-layout
-                            class="mb-2 background-gradient-2-light box-shadow-hover checkout-summary-card"
+                            class="mb-2 background-gradient-2-light checkout-summary-card"
                             column
                           >
                             <div
@@ -477,7 +477,7 @@
 
                         <v-flex xs6>
                           <v-layout
-                            class="ml-2 mb-2 pl-4 pr-4 background-gradient-2-light box-shadow-hover checkout-summary-card"
+                            class="ml-2 mb-2 pl-4 pr-4 background-gradient-2-light checkout-summary-card"
                             column
                           >
                             <div
@@ -846,7 +846,7 @@ export default {
         transform: translateY(10%) scale(0.7);
         border-radius: 50%;
         border: solid 2px $color-primary;
-        box-shadow: 5px 5px rgba($color-primary, 0.2);
+        // box-shadow: 5px 5px rgba($color-primary, 0.2);
         //   &::before {
         //     box-shadow: 5px 5px rgba($color-primary, 0.2);
         //     content: "";

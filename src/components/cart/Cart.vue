@@ -15,7 +15,7 @@
         <v-icon color="#fff" large>close</v-icon>
       </v-btn>
 
-      <div class="sidebar-cart-title normal-header text-center">Shopping Cart</div>
+      <div class="sidebar-cart-title text-uppercase text-center">Shopping Cart</div>
     </div>
     <div ref="sideBarCart" class="sidebar-cart-content">
       <v-container class="sidebar-cart-body">
@@ -23,7 +23,7 @@
           <v-layout v-if="itemsInCart.length === 0" justify-center column align-center>
             <v-flex class="sidebar-cart-content-main-empty text-xs-center">
               <v-layout></v-layout>
-              <p class="heading-secondary">YIKES!!!</p>
+              <p class="color-white heading-secondary">YIKES!!!</p>
               <p>Your Cart is Empty, Lets help you fix that</p>
               <img class="sidebar-cart-content-empty__image" src="/graphics/empty-cart.svg" alt>
               <v-btn
@@ -284,11 +284,12 @@ export default {
 
 .sidebar-cart {
   font-family: "Montserrat", sans-serif;
+  background: white;
 
   &-title {
     overflow-x: hidden;
     transform: translate3d(0px, -60px, 0);
-    font-size: 30px;
+    font-size: 19px;
     // border-bottom: solid 10px $color-primary;
   }
 
@@ -364,7 +365,7 @@ export default {
     right: 0;
     width: calc(400px + 20vw);
     height: 100vh;
-    background: $color-background;
+    background: white;
     transform: translate3d(110vw, 0, 0);
     @include respond(sm) {
       max-width: calc(400px + 20vw);
@@ -412,6 +413,7 @@ export default {
     top: 0;
     transform: translate3d(100vw, 0, 0);
     background-image: $color-gradient;
+    background: white;
   }
 
   &__close {

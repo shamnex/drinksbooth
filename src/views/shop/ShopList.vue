@@ -148,7 +148,7 @@ export default {
   },
   methods: {
     search() {
-      console.log("search");
+      //   console.log("search");
     },
     clickCallback(pageNum) {
       console.log(pageNum);

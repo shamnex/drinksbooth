@@ -2,13 +2,13 @@
   <div>
     <v-content class="home">
       <db-slider></db-slider>
-      <v-container
+      <!-- <v-container
         v-bind:fluid="$vuetify.breakpoint.mdAndDown"
         class="section__new"
         justify-center
         align-center
-      >
-        <p class="normal-header normal-header--border-bottom text-xs-center pt-4 ma-5">New Items</p>
+      >-->
+      <!-- <p class="normal-header normal-header--border-bottom text-xs-center pt-4 ma-5">New Items</p>
         <v-layout class="mb-5">
           <swiper :options="swiperOption" ref="mySwiper">
             <swiper-slide class="swiper-slide" v-for="(item, i) in items" :key="i">
@@ -23,21 +23,21 @@
             </swiper-slide>
 
             <div class="swiper-pagination" slot="pagination"></div>
-          </swiper>
+      </swiper>-->
 
-          <!-- <v-layout class="pa-5 ma-5" v-else justify-center align-center>
+      <!-- <v-layout class="pa-5 ma-5" v-else justify-center align-center>
             <v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
-          </v-layout>-->
-        </v-layout>
+      </v-layout>-->
+      <!-- </v-layout> -->
 
-        <div class="text-xs-center mt-5">
+      <!-- <div class="text-xs-center mt-5">
           <v-btn flat large @click="$router.push('/shop')" class="button__primary">View All</v-btn>
-        </div>
-      </v-container>
+      </div>-->
+      <!-- </v-container> -->
 
-      <div class="section__planner">
-        <!-- <v-parallax height="80%" width="80%" src="images/planner.jpg"></v-parallax> -->
-        <div class="section__planner__background"></div>
+      <!-- <div class="section__planner"> -->
+      <!-- <v-parallax height="80%" width="80%" src="images/planner.jpg"></v-parallax> -->
+      <!-- <div class="section__planner__background"></div>
         <div class="section__planner__content">
           <v-container>
             <p class="title-header color-white text-xs-center">Party Planner</p>
@@ -54,7 +54,7 @@
             </v-layout>
           </v-container>
         </div>
-      </div>
+      </div>-->
 
       <!-- <div  class="section__subscribe">
             <v-container justify-center align-center>
@@ -262,7 +262,7 @@ export default {
   }
 }
 .section__subscribe {
-  padding: 10vh 0;
+  //   padding: 10vh 0;
   position: relative;
   background-size: cover;
   position: relative;

@@ -455,7 +455,7 @@ export default {
 }
 
 .sponsors {
-  margin-top: 20vh;
+  //   margin-top: 20vh;
   overflow: hidden;
   background-color: #fff;
   padding: 60px;

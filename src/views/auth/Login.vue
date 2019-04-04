@@ -116,8 +116,8 @@ export default {
   },
 
   data: () => ({
-    password: "12345",
-    email: "shamnex@icloud.com",
+    password: "",
+    email: "",
     checkbox: false,
     isLogin: true,
     loading: false,

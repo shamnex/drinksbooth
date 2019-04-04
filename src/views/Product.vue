@@ -1,17 +1,21 @@
 <template>
-  <v-app >
+  <v-app>
     <div class="product__wrapper">
-          <div class="header"></div>
+      <div class="header"></div>
       <v-content v-if="product !== null">
         <div class="product">
           <v-container>
             <v-layout justify-space-between>
-              <v-flex sm7 class="product-content">
-                <p class="heading-primary product-content__title">{{product.prod_name}}</p>
+              <v-flex sm6 :xs12="$vuetify.breakpoint.smAndDown" class="product-content">
+                <p
+                  class="normal-header normal-header--md text-left color-primary product-content__title"
+                >{{product.prod_name}}</p>
                 <!-- <v-rating readonly color="orange" v-model="rating"></v-rating> -->
-                <p class="product-content__description mt-3">{{product.prod_description}}</p>
+                <p
+                  class="product-content__description color-white mt-3"
+                >{{product.prod_description}}</p>
 
-                <p class="product-content__price mt-5">₦ {{product.prod_price}}</p>
+                <p class="product-content__price mt-5 color-white">₦ {{product.prod_price}}</p>
                 <div class="product-content__ctas">
                   <div class="product-content__increment">
                     <v-btn :disabled="quantity === 1" @click="quantity--" flat icon back="#fff">
@@ -24,17 +28,23 @@
                     </v-btn>
                   </div>
 
-                  <v-btn color="#fff" large flat class="item-card__button button__primary" @click.stop="onAddToCart">
+                  <v-btn
+                    color="#fff"
+                    large
+                    flat
+                    class="item-card__button button__primary"
+                    @click.stop="onAddToCart"
+                  >
                     <div>Add To Cart</div>
                   </v-btn>
                 </div>
               </v-flex>
-              <v-flex md4 sm5 xs12 class="product__image">
+              <v-flex md4 sm5 :xs12="$vuetify.breakpoint.smAndDown" class="product__image">
                 <img :src="product.prod_image">
               </v-flex>
             </v-layout>
           </v-container>
-          <div class="product-footer__wrapper">
+          <!-- <div class="product-footer__wrapper">
             <v-container class="product-footer">
               <v-layout align-center align-content-end justify-space-between>
                 <v-flex xs12 sm10 class="product-footer-content">
@@ -69,9 +79,9 @@
               </v-layout>
               <v-container></v-container>
             </v-container>
-          </div>
+          </div>-->
         </div>
-        <div class="section-related-items">
+        <!-- <div class="section-related-items">
           <v-container>
             <div class="heading-primary">Related Items</div>
           </v-container>
@@ -88,18 +98,15 @@
                 </swiper-slide>
 
                 <div class="swiper-pagination" slot="pagination"></div>
-
-                <!-- <div class="swiper-button-prev" slot="button-prev"></div> -->
-                <!-- <div class="swiper-button-next" slot="button-next"></div> -->
               </swiper>
             </v-layout>
           </v-container>
-        </div>
-        <div class="section-related-items">
-          <v-container>
+        </div>-->
+        <!-- <div class="section-related-items"> -->
+        <!-- <v-container>
             <div class="heading-primary">Customers also bought</div>
-          </v-container>
-          <v-container>
+        </v-container>-->
+        <!-- <v-container>
             <v-layout>
               <swiper :options="swiperOption" ref="mySwiper">
                 <swiper-slide class="swiper-slide" v-for="(item, i) in items" :key="i">
@@ -112,13 +119,10 @@
                 </swiper-slide>
 
                 <div class="swiper-pagination" slot="pagination"></div>
-
-                <!-- <div class="swiper-button-prev" slot="button-prev"></div> -->
-                <!-- <div class="swiper-button-next" slot="button-next"></div> -->
               </swiper>
             </v-layout>
-          </v-container>
-        </div>
+        </v-container>-->
+        <!-- </div> -->
         <!-- <div class="section-reviews">
         <v-container>
           <div class="heading-primary mb-5">User Reviews</div>
@@ -189,7 +193,7 @@ export default {
     const id = this.$route.params.buydrink;
     ProductsApi.getProduct(id).then(res => {
       this.product = res.data;
-      console.log(this.product)
+      console.log(this.product);
     });
   },
 
@@ -312,7 +316,7 @@ export default {
   background: transparent;
   z-index: 1;
   height: 100px;
-//   box-shadow: $box-shadow;
+  //   box-shadow: $box-shadow;
   width: 100vw;
 }
 
@@ -340,22 +344,22 @@ export default {
 
   &__image {
     img {
-      transform: translate(-25%, -10%);
       z-index: 1;
-      height: 80vh;
+      height: 70vh;
+      right: 10vw;
       padding: 30px;
       position: relative;
-      @include respond(md) {
-        padding: 30px;
-        position: relative;
-        height: 80vh;
-      }
-      @include respond(md) {
-        padding: 30px;
-        position: relative;
-        height: 80vh;
-        // transform: translateY(0%);
-      }
+      //   @include respond(md) {
+      //     padding: 30px;
+      //     position: relative;
+      //     height: 80vh;
+      //   }
+      //   @include respond(md) {
+      //     padding: 30px;
+      //     position: relative;
+      //     height: 80vh;
+      //     // transform: translateY(0%);
+      //   }
       // transform: translateY(-30%);
       // right: 0;
     }
@@ -457,7 +461,7 @@ export default {
 .section-reviews {
   transform: translateY(-15vh);
   min-height: 40vh;
-  background-color: $color-white;
+  background-color: $color-background;
   &-item {
     position: relative;
     padding: 40px 0;
