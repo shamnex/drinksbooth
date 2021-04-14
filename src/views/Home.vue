@@ -2,38 +2,6 @@
   <div>
     <v-content>
       <db-slider></db-slider>
-      <v-container
-        v-bind:fluid="$vuetify.breakpoint.mdAndDown"
-        class="section__new"
-        justify-center
-        align-center
-      >
-        <p class="stylish-header stylish-header--border-bottom text-xs-center pt-4 ma-5">New Items</p>
-        <v-layout class="mb-5">
-          <swiper :options="swiperOption" ref="mySwiper">
-            <swiper-slide class="swiper-slide" v-for="(item, i) in items" :key="i">
-              <item-card
-                :size="$vuetify.breakpoint.smAndDown?'sm':'lg'"
-                :type="$vuetify.breakpoint.xsOnly? 3:1"
-                :name="item.name"
-                :price="item.price"
-                :isFavorite="item.isFavorite"
-                :image="item.image"
-              ></item-card>
-            </swiper-slide>
-
-            <div class="swiper-pagination" slot="pagination"></div>
-          </swiper>
-
-          <!-- <v-layout class="pa-5 ma-5" v-else justify-center align-center>
-            <v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
-          </v-layout>-->
-        </v-layout>
-
-        <div class="text-xs-center mt-5">
-          <v-btn flat large @click="$router.push('/shop')" class="button__primary">View All</v-btn>
-        </div>
-      </v-container>
 
       <div class="section__planner">
         <!-- <v-parallax height="100%" src="images/planner.jpg" >
@@ -41,15 +9,27 @@
         <div class="section__planner__background"></div>
         <div class="section__planner__content">
           <v-container>
-            <p class="stylish-header color-white text-xs-center">Party Planner</p>
+            <p class="stylish-header color-white text-xs-center">
+              Party Planner
+            </p>
             <v-layout align-center justify-center row wrap>
               <v-flex justify-center align-content-center>
-                <div
-                  class="text-xs-center mb-5"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam consequatur temporibus iure deserunt laboriosam, modi, cupiditate doloremque quidem eligendi minima iste asperiores adipisci dolores. Sint perspiciatis ab ipsa aspernatur nisi.</div>
+                <div class="text-xs-center mb-5">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                  consequatur temporibus iure deserunt laboriosam, modi,
+                  cupiditate doloremque quidem eligendi minima iste asperiores
+                  adipisci dolores. Sint perspiciatis ab ipsa aspernatur nisi.
+                </div>
 
                 <div class="text-center">
-                  <v-btn @click="navigateTo('planner')" flat large outline color="#fff">GET STARTED</v-btn>
+                  <v-btn
+                    @click="navigateTo('planner')"
+                    flat
+                    large
+                    outline
+                    color="#fff"
+                    >GET STARTED</v-btn
+                  >
                 </div>
               </v-flex>
             </v-layout>
@@ -127,7 +107,7 @@ export default {
     DbSlider,
     ItemCard,
     swiper,
-    swiperSlide
+    swiperSlide,
   },
 
   data() {
@@ -137,32 +117,32 @@ export default {
           name: "Drink 1",
           isFavorite: true,
           price: "32000",
-          image: "images/drinks/1.png"
+          image: "images/drinks/1.png",
         },
         {
           name: "Drink 3",
           isFavorite: false,
           price: "32000",
-          image: "images/drinks/2.png"
+          image: "images/drinks/2.png",
         },
         {
           name: "Drink 2",
           isFavorite: true,
           price: "32000",
-          image: "images/drinks/3.png"
+          image: "images/drinks/3.png",
         },
         {
           name: "Drink 2",
           isFavorite: true,
           price: "32000",
-          image: "images/drinks/3.png"
+          image: "images/drinks/3.png",
         },
         {
           name: "Drink 2",
           isFavorite: true,
           price: "32000",
-          image: "images/drinks/3.png"
-        }
+          image: "images/drinks/3.png",
+        },
       ],
       swiperOption: {
         freeMode: false,
@@ -175,9 +155,9 @@ export default {
 
         pagination: {
           el: ".swiper-pagination",
-          dynamicBullets: true
-        }
-      }
+          dynamicBullets: true,
+        },
+      },
     };
   },
 
@@ -185,12 +165,12 @@ export default {
     submit() {},
     navigateTo(route) {
       this.$router.push(`/${route}`);
-    }
+    },
   },
 
   mounted() {},
 
-  created() {}
+  created() {},
 };
 </script>
 
@@ -203,7 +183,7 @@ export default {
   min-height: 100vh;
 
   .swiper-slide {
-    max-width:400px;
+    max-width: 400px;
     // margin: 0 40px;
     margin-bottom: 80px;
     @include respond(sm) {

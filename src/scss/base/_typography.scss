@@ -3,27 +3,34 @@
 //     src: url("../assets/fonts/taken_by_vultures.otf") format('otf');
 //   }
 .stylish-header {
-    font-family: "Dynalight";
+    // font-family: "";
     color: $color-primary;
-    font-size: 66px;
+    font-size: 120px;
+    font-weight: 900;
     position: relative;
+
     @include respond(md) {
         font-size: 55px;
     }
+
     @include respond(sm) {
         font-size: 48px;
-    } // @include respond(xs) {
+    }
+
+    // @include respond(xs) {
     //     font-size: 40px;
     // }
     &--sm {
         transform: scale(.8); // line-height: 1;
         margin-bottom: 10px;
     }
+
     &--xs {
         transform: scale(.6); // line-height: 1;
         margin-bottom: 5px;
         line-height: .8;
     }
+
     &--border-bottom {
         &::before {
             content: "";
@@ -36,6 +43,7 @@
             border-bottom: solid 5px $color-primary;
         }
     }
+
     &--border-bottom-white {
         &::before {
             content: "";
@@ -63,6 +71,7 @@
     font-weight: 300;
     color: $color-primary;
     margin-bottom: 20px;
+
     &::before {
         position: absolute;
         bottom: 0;
@@ -77,12 +86,15 @@
     font-weight: 300;
     color: $color-black;
     margin-bottom: 20px;
+
     @include respond(md) {
         font-size: 36px;
     }
+
     @include respond(sm) {
         font-size: 24px;
     }
+
     &--bold {
         font-weight: 700;
         color: $color-primary;
@@ -95,9 +107,11 @@
     font-weight: 300;
     color: $color-black;
     margin-bottom: 20px;
+
     @include respond(md) {
         font-size: 24px;
     }
+
     @include respond(sm) {
         font-size: 20px;
     }
@@ -109,12 +123,15 @@
     font-size: 24px;
     font-weight: 300;
     color: $color-black;
+
     @include respond(md) {
         font-size: 18px;
     }
+
     @include respond(sm) {
         font-size: 16px;
     }
+
     &--bold {
         font-weight: 700;
         color: $color-primary;

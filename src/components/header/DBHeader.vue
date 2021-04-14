@@ -5,13 +5,13 @@
     class="db-navbar"
     height="90"
     color="transparent"
-    :class="{'fixed': isWhite}"
+    :class="{ fixed: isWhite }"
     flat
     fixed
   >
     <v-toolbar-side-icon
       flat
-      v-bind:style="{ color: isWhite? '#4A5378': 'white',  }"
+      v-bind:style="{ color: isWhite ? '#342925' : 'white' }"
       @click.stop="toggleDrawer($event)"
       class="hidden-md-and-up"
     ></v-toolbar-side-icon>
@@ -23,7 +23,7 @@
         src="/graphics/logo_white.svg"
         alt
         srcset
-      >
+      />
       <img
         @click="goHome"
         v-show="isWhite"
@@ -31,74 +31,29 @@
         src="/graphics/logo.svg"
         alt
         srcset
-      >
+      />
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items
-      v-bind:class="{'white': isWhite }"
+      v-bind:class="{ white: isWhite }"
       class="db-navbar-link-wrapper hidden-sm-and-down"
     >
       <router-link class="db-navbar-link" exact to="/">Home</router-link>
+      <router-link class="db-navbar-link" to="/shop">Lite Paper</router-link>
+      <router-link class="db-navbar-link" to="/shop">PankCake Swap</router-link>
 
-      <router-link class="db-navbar-link" to="/shop">Shop</router-link>
-
-      <router-link
+      <!-- <router-link
         target="_blank"
         class="db-navbar-link"
         v-bind:class="{ 'link-primary': isWhite }"
         to="/chat"
-      >chat</router-link>
+        >chat</router-link
+      > -->
 
-      <router-link class="db-navbar-link" to="/planner">Party Planner</router-link>
       <v-spacer></v-spacer>
     </v-toolbar-items>
     <v-toolbar-items>
       <v-spacer></v-spacer>
-
-      <v-menu transition="slide-y-transition" bottom>
-        <v-btn slot="activator" flat>
-          <v-layout>
-            <div class="link text-bold text-secondary"
-              v-bind:style="{ color: isWhite? '#4A5378': 'white',  }"
-            >Hi! {{getUser.first_name || "Guest"}} </div>
-            <!-- <v-avatar size="28"  :color="!isWhite?'primary': '#fff'"> -->
-            <!-- <span
-              v-bind:style="{ color: !isWhite? '#4A5378': 'white',  }"
-              class="headline"
-            >
-            {{getUser[0].first_name}}
-            </span>-->
-            <!-- </v-avatar> -->
-          </v-layout>
-
-          <!-- <v-icon flat v-else :color="isWhite?'primary': '#fff'">account_circle</v-icon> -->
-        </v-btn>
-
-        <v-list>
-          <v-list-tile v-if="!getUser">
-            <v-list-tile-title>
-              <router-link  class="link" to="/login">Login/Signup</router-link>
-            </v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile v-if="getUser">
-            <v-list-tile-title>
-              <div  class="link" @click="signOut">Sign Out</div>
-            </v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
-
-      <v-btn @click="toggleSearch" :flat="isWhite" icon>
-        <v-icon :color="isWhite?'primary': '#fff'">search</v-icon>
-      </v-btn>
-
-      <v-btn @click="toggleOpenCart" :flat="isWhite" icon>
-        <span
-          v-if="$store.state.itemsInCart.length > 0"
-          class="cart-badge"
-        >{{$store.state.itemsInCart.length}}</span>
-        <v-icon :color="isWhite?'primary': '#fff'">shopping_cart</v-icon>
-      </v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -117,9 +72,9 @@ export default {
       scrollOffset: null,
 
       userMenuItems: [
-        { title: "Login / Signup", link: "/login" }
+        { title: "Login / Signup", link: "/login" },
         // { title: "Favorites", link: "/favorites" }
-      ]
+      ],
     };
   },
 
@@ -139,10 +94,9 @@ export default {
     },
 
     signOut() {
-        AuthService.signOut();
-        this.$router.push('/shop')
-                 this.$store.commit('setUser', '');
-
+      AuthService.signOut();
+      this.$router.push("/shop");
+      this.$store.commit("setUser", "");
     },
     // onScroll(e) {
     //   this.scrollOffset =
@@ -183,30 +137,30 @@ export default {
         }
       }
       this.$router.push(route);
-    }
+    },
   },
 
   watch: {
-    $route(to, from) {}
+    $route(to, from) {},
   },
   mounted() {
-     console.log(this.getUser)
+    console.log(this.getUser);
   },
   created() {},
 
   props: {
     isWhite: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
 
   computed: {
     ...mapGetters({
       lastItemIncart: "lastItemIncart",
-      getUser: "getUser"
-    })
-  }
+      getUser: "getUser",
+    }),
+  },
 };
 </script>
 

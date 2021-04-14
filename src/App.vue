@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:class="{ 'disableScroll': isCartOpen || isSearchOpen }">
+  <div v-bind:class="{ disableScroll: isCartOpen || isSearchOpen }">
     <v-app class="body" id="#app">
       <cart></cart>
 
@@ -23,7 +23,9 @@
               <div
                 ref="searchTitle"
                 class="stylish-header search-title stylish-header--sm stylish-header--border-bottom-white color-white text-xs-center"
-              >Search</div>
+              >
+                Search
+              </div>
               <v-container>
                 <v-layout class="search-body" ref="searchBody" column>
                   <v-flex class="pa-5">
@@ -37,25 +39,6 @@
                       placeholder="E.g Moet & Chandon"
                     ></v-text-field>
                   </v-flex>
-                  <!-- <v-container  v-bind="{ [`grid-list-xl`]: true }" fluid>
-                    <v-layout row wrap>
-                        <v-flex
-                        v-for="n in 12"
-                        :key="n"
-                        xs12
-                        sm6
-                        md4
-                        lg4
-
-                        >
-                        <item-card
-                        size="lg"
-                        :type=1
-
-                        ></item-card>
-                        </v-flex>
-                    </v-layout>
-                  </v-container>-->
                 </v-layout>
               </v-container>
             </div>
@@ -64,25 +47,16 @@
       </transition>
 
       <db-header
-        v-if="!$route.fullPath.includes('/chat')"
         @drawerToggle="drawer = !drawer"
         :isWhite="isHeaderDark || scrollOffset > 300"
       ></db-header>
       <v-navigation-drawer class="drawer" v-model="drawer" absolute temporary>
         <v-layout column class="drawer-items-list">
-          <img class="drawer-logo" src="/graphics/logo_white.svg" alt srcset>
+          <img class="drawer-logo" src="/graphics/logo_white.svg" alt srcset />
           <v-list-tile class="drawer-item-wrapper">
             <router-link class="drawer-item" to="/">
               <v-list-tile-content>
                 <v-list-tile-title>Home</v-list-tile-title>
-              </v-list-tile-content>
-            </router-link>
-          </v-list-tile>
-
-          <v-list-tile class="drawer-item-wrapper">
-            <router-link class="drawer-item" to="/shop">
-              <v-list-tile-content>
-                <v-list-tile-title>Shop</v-list-tile-title>
               </v-list-tile-content>
             </router-link>
           </v-list-tile>
@@ -96,21 +70,25 @@
           </v-list-tile>
 
           <v-list-tile class="drawer-item-wrapper">
-            <router-link class="drawer-item" to="/chat">
-              <!-- <router-link class="drawer-item" to="/chat" target="_blank"> -->
+            <!-- <router-link class="drawer-item"  > -->
+            <router-link class="drawer-item" href="google.com" target="_blank">
               <v-list-tile-content>
-                <v-list-tile-title>Chat</v-list-tile-title>
+                <v-list-tile-title>Lite Paper</v-list-tile-title>
               </v-list-tile-content>
             </router-link>
           </v-list-tile>
         </v-layout>
       </v-navigation-drawer>
 
-      <router-view v-blur="blurConfig"/>
+      <router-view v-blur="blurConfig" />
       <div v-if="!isHeaderDark" class="sponsors">
         <swiper :options="swiperOption" ref="mySwiper">
-          <swiper-slide class="swiper-slide" v-for="(sponsor, i) in sponsors" :key="i">
-            <img class="sponsor__image" :src="sponsor.image">
+          <swiper-slide
+            class="swiper-slide"
+            v-for="(sponsor, i) in sponsors"
+            :key="i"
+          >
+            <img class="sponsor__image" :src="sponsor.image" />
           </swiper-slide>
 
           <!-- <div class="swiper-pagination" slot="pagination"></div> -->
@@ -131,9 +109,13 @@
           <span class="text-bold">{{ itemInCart }}</span>
           to the cart
         </div>
-        <v-btn class="button button__primary" flat @click="viewCart">View Cart</v-btn>
+        <v-btn class="button button__primary" flat @click="viewCart"
+          >View Cart</v-btn
+        >
 
-        <v-btn flat color="primary" button @click="snackbar = false">close</v-btn>
+        <v-btn flat color="primary" button @click="snackbar = false"
+          >close</v-btn
+        >
       </v-snackbar>
     </v-app>
   </div>
@@ -160,23 +142,23 @@ export default {
     ItemCard,
     DbFooter,
     swiper,
-    swiperSlide
+    swiperSlide,
   },
 
   store,
   mounted() {
     WebFontLoader.load({
       google: {
-        families: ["Montserrat:300,400,700", "Dynalight:400"]
+        families: ["Montserrat:300,400,700", "Dynalight:400"],
       },
-      active: this.setFontLoaded
+      active: this.setFontLoaded,
     });
 
     this.blurConfig = {
       isBlurred: false, // activate and deactivate blur directive example 2
       opacity: 1,
       filter: "contrast(160%) brightness(40%)",
-      transition: "all .3s linear"
+      transition: "all .3s linear",
     };
 
     window.addEventListener("scroll", this.onScroll);
@@ -197,57 +179,57 @@ export default {
         loop: true,
         autoplay: {
           delay: 2500,
-          disableOnInteraction: false
-        }
+          disableOnInteraction: false,
+        },
       },
       sponsors: [
         {
-          image: "/images/sponsors/img-1.png"
+          image: "/images/sponsors/img-1.png",
         },
         {
-          image: "/images/sponsors/img-2.png"
+          image: "/images/sponsors/img-2.png",
         },
         {
-          image: "/images/sponsors/img-3.png"
+          image: "/images/sponsors/img-3.png",
         },
         {
-          image: "/images/sponsors/img-4.png"
+          image: "/images/sponsors/img-4.png",
         },
         {
-          image: "/images/sponsors/img-6.png"
+          image: "/images/sponsors/img-6.png",
         },
         {
-          image: "/images/sponsors/img-9.png"
+          image: "/images/sponsors/img-9.png",
         },
         {
-          image: "/images/sponsors/img-11.png"
+          image: "/images/sponsors/img-11.png",
         },
         {
-          image: "/images/sponsors/img-12.png"
+          image: "/images/sponsors/img-12.png",
         },
         {
-          image: "/images/sponsors/img-13.png"
+          image: "/images/sponsors/img-13.png",
         },
         {
-          image: "/images/sponsors/img-14.png"
+          image: "/images/sponsors/img-14.png",
         },
         {
-          image: "/images/sponsors/img-15.png"
+          image: "/images/sponsors/img-15.png",
         },
         {
-          image: "/images/sponsors/img-16.png"
+          image: "/images/sponsors/img-16.png",
         },
         {
-          image: "/images/sponsors/img-17.png"
-        }
-      ]
+          image: "/images/sponsors/img-17.png",
+        },
+      ],
     };
   },
   created() {
-      const user = AuthService.getUser();
-      if(AuthService.getUser() !== null) {
-         this.$store.commit('setUser', user.data[0]);
-      }
+    const user = AuthService.getUser();
+    if (AuthService.getUser() !== null) {
+      this.$store.commit("setUser", user.data[0]);
+    }
   },
   methods: {
     viewCart() {
@@ -267,17 +249,17 @@ export default {
     onScroll(e) {
       this.scrollOffset =
         window.pageYOffset || document.documentElement.scrollTop;
-    }
+    },
   },
 
   computed: {
     ...mapGetters({
       lastItemIncart: "lastItemIncart",
-      getUser: "getUser"
+      getUser: "getUser",
     }),
     isHeaderDark: {
       // getter
-      get: function() {
+      get: function () {
         return (
           this.$route.fullPath.includes("/buy/") ||
           this.$route.fullPath.includes("/login") ||
@@ -287,7 +269,7 @@ export default {
           this.$route.fullPath.includes("/favorites") ||
           this.$route.fullPath.includes("/checkout")
         );
-      }
+      },
     },
 
     isCartOpen() {
@@ -299,7 +281,7 @@ export default {
 
     cart() {
       return this.$store.state.itemsInCart;
-    }
+    },
   },
   watch: {
     isCartOpen(newCount, oldCount) {
@@ -315,9 +297,9 @@ export default {
         translateY: this.isSearchOpen ? "0" : "100vh",
         duration: 600,
         easing: "easeInOutQuint",
-        delay: function(el, i, l) {
+        delay: function (el, i, l) {
           return i * 200;
-        }
+        },
       });
 
       //   this.blurConfig.filter = "blur(5px) contrast(160%) brightness(40%)";
@@ -326,8 +308,8 @@ export default {
     $route(to, from) {
       window.scrollTo(0, 0);
       //   console.log(to.query.search);
-    }
-  }
+    },
+  },
 };
 </script>
 

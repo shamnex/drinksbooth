@@ -2,83 +2,51 @@
   <div ref="slideshow" class="slideshow">
     <div class="slides">
       <div class="slide slide--current">
-        <!-- <div class="slide__img image-overlay" style="background-image:  url('./images/2.jpg');"></div> -->
-        <video-bg
+        <div
+          class="slide__img image-overlay"
+          style="background-image: url('./images/3.jpg')"
+        ></div>
+        <!-- <video-bg
           class="slide__img slide__video image-overlay"
           :sources="videos"
           img="/images/22.jpg"
-        ></video-bg>
+        ></video-bg> -->
         <div class="slider__info--center layout column wrap align-center">
-          <p class="slide__title stylish-header color-white">We are Drinksbooth</p>
-          <p
-            class="slide__desc color-primary text-center"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p>
+          <p class="slide__title stylish-header color-white">ROWKET MARKET</p>
+          <p class="slide__desc color-primary text-center">
+            A Decentralized Community-Driven NFTs Marketplace Centered Around
+            The Distribution Of Unique Art In The Form Of NFTs
+          </p>
           <v-btn outline large class="slide__link">
-            <a class href="#">We do this</a>
+            <a class href="#">JOIN US</a>
           </v-btn>
         </div>
       </div>
 
-      <div class="slide slide--one">
-        <img
-          v-if="!$vuetify.breakpoint.smAndDown"
-          class="slide__cover"
-          src="graphics/triangle.svg"
-          alt
-        >
-        <div
-          class="slide__img"
-          :class="{'image-overlay': $vuetify.breakpoint.smAndDown}"
-          style="background-image:  url('./images/22.jpg');"
-        ></div>
-
-        <v-container>
-          <v-layout class="slider__info" column wrap :align-end="!$vuetify.breakpoint.smAndDown">
-            <v-flex>
-              <p
-                :class="{'color-white': $vuetify.breakpoint.smAndDown}"
-                class="slide__title stylish-header"
-              >You Name it, We have it</p>
-            </v-flex>
-            <v-flex>
-              <p
-                :class="{'color-white': $vuetify.breakpoint.smAndDown}"
-                class="slide__desc text-xs-left"
-              >Lorem ipsum dolor si aliquid magnam maxime laudantium deleniti!.</p>
-            </v-flex>
-
-            <v-flex>
-              <v-btn
-                :outline="$vuetify.breakpoint.smAndDown"
-                class="slide__link button button__primary"
-                large
-                flat
-              >Shop</v-btn>
-            </v-flex>
-          </v-layout>
-        </v-container>
-
-        <div></div>
-      </div>
-
       <div class="slide">
-        <div class="slide__img image-overlay" style="background-image:  url('./images/2.jpg');"></div>
+        <div
+          class="slide__img image-overlay"
+          style="background-image: url('./images/2.jpg')"
+        ></div>
         <!-- <video-bg  class="slide__img image-overlay" :sources="videos" img="videos/drip_4.png"></video-bg> -->
         <div class="slider__info--center layout column wrap align-center">
-          <p class="slide__title stylish-header color-white">Plan with Us</p>
-          <p
-            class="slide__desc color-white text-center"
-          >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet veritatis alias sapiente, obcaecati, eum at debitis quidem volum dicta est tenetur.</p>
+          <p class="slide__title stylish-header color-white text-center">
+            ARTIST
+          </p>
+          <p class="slide__desc color-white text-center">
+            Rowket is going to be the first artist incubator for the rising NFTs
+            artists on BSC. The aim is to connect digital collectors with
+            creators while giving maximum exposure to creators.
+          </p>
           <v-btn outline large class="slide__link">
-            <a class href="#">We do this</a>
+            <a class href="#">Apply As Artist</a>
           </v-btn>
         </div>
       </div>
     </div>
     <nav class="slidenav">
       <v-btn
-        style="top: 50%;
-position: absolute;"
+        style="top: 50%; position: absolute"
         v-on:click="nextSlide"
         class="slidenav__item slidenav__item--prev"
         icon
@@ -87,8 +55,7 @@ position: absolute;"
       </v-btn>
 
       <v-btn
-        style="top: 50%;
-    position: absolute; right: 0"
+        style="top: 50%; position: absolute; right: 0"
         v-on:click="prevSlide"
         class="slidenav__item slidenav__item--next"
         icon
@@ -105,11 +72,11 @@ import VideoBg from "vue-videobg";
 
 function debounce(func, wait, immediate) {
   var timeout;
-  return function() {
+  return function () {
     var context = this;
 
     var args = arguments;
-    var later = function() {
+    var later = function () {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };
@@ -126,15 +93,15 @@ export default {
     return {
       DOM: "",
       settings: {},
-      videos: ["videos/cheers.mp4"]
+      videos: ["videos/cheers.mp4"],
     };
   },
 
   components: {
-    VideoBg
+    VideoBg,
   },
 
-  mounted: function() {
+  mounted: function () {
     const el = this.$refs.slideshow;
 
     this.DOM = {};
@@ -143,14 +110,14 @@ export default {
       animation: {
         slides: {
           duration: 600,
-          easing: "easeOutQuint"
+          easing: "easeOutQuint",
         },
         shape: {
           duration: 300,
-          easing: { in: "easeOutQuad", out: "easeOutQuad" }
-        }
+          easing: { in: "easeOutQuad", out: "easeOutQuad" },
+        },
       },
-      frameFill: "#4A5378"
+      frameFill: "#4A5378",
     };
     this.init();
   },
@@ -177,7 +144,7 @@ export default {
       this.frameSize = this.rect.width / 12;
       this.paths = {
         initial: this.calculatePath("initial"),
-        final: this.calculatePath("final")
+        final: this.calculatePath("final"),
       };
       this.DOM.svg = document.createElementNS(
         "http://www.w3.org/2000/svg",
@@ -190,9 +157,7 @@ export default {
         "viewbox",
         `0 0 ${this.rect.width} ${this.rect.height}`
       );
-      this.DOM.svg.innerHTML = `<path fill="${this.settings.frameFill}" d="${
-        this.paths.initial
-      }"/>`;
+      this.DOM.svg.innerHTML = `<path fill="${this.settings.frameFill}" d="${this.paths.initial}"/>`;
       this.DOM.el.insertBefore(this.DOM.svg, this.DOM.nav);
       this.DOM.shape = this.DOM.svg.lastElementChild;
     },
@@ -210,28 +175,25 @@ export default {
     },
     calculatePath(path = "initial") {
       if (path === "initial") {
-        return `M 0,0 0,${this.rect.height} ${this.rect.width},${
-          this.rect.height
-        } ${this.rect.width},0 0,0 Z M 0,0 ${this.rect.width},0 ${
-          this.rect.width
-        },${this.rect.height} 0,${this.rect.height} Z`;
+        return `M 0,0 0,${this.rect.height} ${this.rect.width},${this.rect.height} ${this.rect.width},0 0,0 Z M 0,0 ${this.rect.width},0 ${this.rect.width},${this.rect.height} 0,${this.rect.height} Z`;
       } else {
         return {
           next: `M 0,0 0,${this.rect.height} ${this.rect.width},${
             this.rect.height
-          } ${this.rect.width},0 0,0 Z M ${this.frameSize},${
-            this.frameSize
-          } ${this.rect.width - this.frameSize},${this.frameSize / 2} ${this
-            .rect.width - this.frameSize},${this.rect.height -
-            this.frameSize / 2} ${this.frameSize},${this.rect.height -
-            this.frameSize} Z`,
+          } ${this.rect.width},0 0,0 Z M ${this.frameSize},${this.frameSize} ${
+            this.rect.width - this.frameSize
+          },${this.frameSize / 2} ${this.rect.width - this.frameSize},${
+            this.rect.height - this.frameSize / 2
+          } ${this.frameSize},${this.rect.height - this.frameSize} Z`,
           prev: `M 0,0 0,${this.rect.height} ${this.rect.width},${
             this.rect.height
-          } ${this.rect.width},0 0,0 Z M ${this.frameSize},${this.frameSize /
-            2} ${this.rect.width - this.frameSize},${this.frameSize} ${this.rect
-            .width - this.frameSize},${this.rect.height - this.frameSize} ${
-            this.frameSize
-          },${this.rect.height - this.frameSize / 2} Z`
+          } ${this.rect.width},0 0,0 Z M ${this.frameSize},${
+            this.frameSize / 2
+          } ${this.rect.width - this.frameSize},${this.frameSize} ${
+            this.rect.width - this.frameSize
+          },${this.rect.height - this.frameSize} ${this.frameSize},${
+            this.rect.height - this.frameSize / 2
+          } Z`,
         };
       }
     },
@@ -247,7 +209,7 @@ export default {
         }, 20)
       );
 
-      document.addEventListener("keydown", ev => {
+      document.addEventListener("keydown", (ev) => {
         const keyCode = ev.keyCode || ev.which;
         if (keyCode === 37) {
           this.navigate("prev");
@@ -265,7 +227,7 @@ export default {
         targets: this.DOM.shape,
         duration: this.settings.animation.shape.duration,
         easing: this.settings.animation.shape.easing.in,
-        d: dir === "next" ? this.paths.final.next : this.paths.final.prev
+        d: dir === "next" ? this.paths.final.next : this.paths.final.prev,
       });
 
       const animateSlides = () => {
@@ -279,7 +241,7 @@ export default {
             complete: () => {
               currentSlide.classList.remove("slide--current");
               resolve();
-            }
+            },
           });
 
           this.current =
@@ -299,8 +261,8 @@ export default {
             easing: this.settings.animation.slides.easing,
             translateX: [
               dir === "next" ? this.rect.width : -1 * this.rect.width,
-              0
-            ]
+              0,
+            ],
           });
 
           const newSlideImg = newSlide.querySelector(".slide__img");
@@ -313,14 +275,14 @@ export default {
             easing: "easeOutElastic",
             elasticity: 350,
             scale: [1.2, 1],
-            rotate: [dir === "next" ? 4 : -4, 0]
+            rotate: [dir === "next" ? 4 : -4, 0],
           });
 
           anime({
             targets: [
               newSlide.querySelector(".slide__title"),
               newSlide.querySelector(".slide__desc"),
-              newSlide.querySelector(".slide__link")
+              newSlide.querySelector(".slide__link"),
             ],
             duration: this.settings.animation.slides.duration,
             easing: this.settings.animation.slides.easing,
@@ -328,7 +290,7 @@ export default {
               dir === "next" ? i * 100 + 750 : (total - i - 1) * 100 + 750,
             translateY: [dir === "next" ? 300 : -300, 0],
             rotate: [15, 0],
-            opacity: [0, 1]
+            opacity: [0, 1],
           });
         });
       };
@@ -340,13 +302,13 @@ export default {
           delay: 150,
           easing: this.settings.animation.shape.easing.out,
           d: this.paths.initial,
-          complete: () => (this.isAnimating = false)
+          complete: () => (this.isAnimating = false),
         });
       };
 
       animateShapeIn.finished.then(animateSlides).then(animateShapeOut);
-    }
-  }
+    },
+  },
 };
 </script>
 

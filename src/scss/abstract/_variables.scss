@@ -1,6 +1,4 @@
-
-
-$color-primary: #4A5378;
+$color-primary: #342925;
 $color-secondary:#5F86AD;
 $color-error: #FF5252;
 $color-info: #2196F3;
@@ -29,26 +27,28 @@ $box-shadow-inverse: 0 -20px 20px rgba($color-primary, 0.05);
 //     xl: (1440px - 16px) // https://material.io/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
 //   }
 @mixin respond($breakpoint) {
-  
-    @if $breakpoint == xs {
-        @media (max-width: 600px ) {
-            @content 
+
+    @if $breakpoint==xs {
+        @media (max-width: 600px) {
+            @content
         }
     }
-    @if $breakpoint == sm {
+
+    @if $breakpoint==sm {
         @media (max-width: 960px) {
-            @content 
+            @content
         }
     }
-    @if $breakpoint ==  md  {
+
+    @if $breakpoint==md {
         @media (max-width: 1280px) {
-            @content 
+            @content
         }
     }
-    @if $breakpoint == uhd
-     {
+
+    @if $breakpoint==uhd {
         @media (min-width: 1440px) {
-            @content 
+            @content
         }
     }
 
