@@ -2,45 +2,70 @@
   <div ref="slideshow" class="slideshow">
     <div class="slides">
       <div class="slide slide--current">
-        <div
+        <!-- <div
           class="slide__img image-overlay"
           style="background-image: url('./images/3.jpg')"
-        ></div>
-        <!-- <video-bg
+        ></div> -->
+        <video-bg
           class="slide__img slide__video image-overlay"
           :sources="videos"
-          img="/images/22.jpg"
-        ></video-bg> -->
+          img="/images/2.jpg"
+        ></video-bg>
         <div class="slider__info--center layout column wrap align-center">
           <p class="slide__title stylish-header color-white">ROWKET MARKET</p>
           <p class="slide__desc color-primary text-center">
             A Decentralized Community-Driven NFTs Marketplace Centered Around
             The Distribution Of Unique Art In The Form Of NFTs
           </p>
-          <v-btn outline large class="slide__link">
-            <a class href="#">JOIN US</a>
-          </v-btn>
+          <a class="slide__link" href="http://bit.ly/RowketCommunity"
+            >Join Us</a
+          >
         </div>
       </div>
 
       <div class="slide">
         <div
           class="slide__img image-overlay"
-          style="background-image: url('./images/2.jpg')"
+          style="background-image: url('./images/1.jpg')"
         ></div>
         <!-- <video-bg  class="slide__img image-overlay" :sources="videos" img="videos/drip_4.png"></video-bg> -->
         <div class="slider__info--center layout column wrap align-center">
           <p class="slide__title stylish-header color-white text-center">
-            ARTIST
+            ARTIST INCUBATION
           </p>
           <p class="slide__desc color-white text-center">
             Rowket is going to be the first artist incubator for the rising NFTs
             artists on BSC. The aim is to connect digital collectors with
             creators while giving maximum exposure to creators.
           </p>
-          <v-btn outline large class="slide__link">
-            <a class href="#">Apply As Artist</a>
-          </v-btn>
+
+          <a
+            class="slide__link"
+            target="_blank"
+            href="https://forms.gle/J1w5iVLx6o8oHinb8"
+            >Apply As Artist</a
+          >
+        </div>
+      </div>
+
+      <div class="slide">
+        <div
+          class="slide__img image-overlay"
+          style="background-image: url('./images/5.jpg')"
+        ></div>
+        <!-- <video-bg  class="slide__img image-overlay" :sources="videos" img="videos/drip_4.png"></video-bg> -->
+        <div class="slider__info--center layout column wrap align-center">
+          <p class="slide__title stylish-header color-white text-center">
+            NFT TOKEN
+          </p>
+          <p class="slide__desc color-white text-center">
+            $KET is a deflationary instant yield token with an adjustable tax
+            rate of 3% on transactions which will give a 1% frictionless yield
+            to hodlers and burns the other 2% for an ever-increasing price
+            floor.
+          </p>
+
+          <a class="slide__link" target="_blank" href="#">LEARN MORE</a>
         </div>
       </div>
     </div>
@@ -93,7 +118,7 @@ export default {
     return {
       DOM: "",
       settings: {},
-      videos: ["videos/cheers.mp4"],
+      videos: ["videos/video_bg.mp4"],
     };
   },
 
@@ -117,7 +142,7 @@ export default {
           easing: { in: "easeOutQuad", out: "easeOutQuad" },
         },
       },
-      frameFill: "#4A5378",
+      frameFill: "#6C6C58",
     };
     this.init();
   },

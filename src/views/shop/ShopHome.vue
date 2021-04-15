@@ -1,94 +1,45 @@
 <template>
-<v-app>
-<shop-header
-
- :title="routeName"
- :hasSearch="true"
- height="40vh"
- image="/images/champagne.jpg"
-
-></shop-header>
- <div   class="categories-header">
-
-         <!-- <router-link  :key="index" v-for="(cat, index) of categories"
-           class="categories-header__link" :to="'/shop/'+cat" append @click="goTo(cat)">{{cat}}</router-link> -->
-
-     <swiper :options="swiperOption" ref="mySwiper">
-        <swiper-slide class="categories-header__link "  :key="index" v-for="(cat, index) of categories">
-            <router-link
-            style="font-size: 16px"
-           class="link categories-header__link" :to="'/shop/'+cat" append @click="goTo(cat)">{{cat}}</router-link>
-        </swiper-slide>
-    </swiper>
-  </div>
-
+  <v-app>
     <router-view></router-view>
-
-</v-app>
+  </v-app>
 </template>
 
 <script>
-import ShopHeader from '../../components/shop-header/ShopHeader'
-import 'swiper/dist/css/swiper.css'
-import ItemCard from '../../components/item_card/ItemCard'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import ShopHeader from "../../components/shop-header/ShopHeader";
+import "swiper/dist/css/swiper.css";
+import ItemCard from "../../components/item_card/ItemCard";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
-  data: () => ({
-    items: ['Most Popular', 'Best Seller', 'Lowest Price', 'Highest Price'],
-    page: 1,
-    swiperOption: {
-      freeMode: false,
-      slidesPerView: 'auto',
-      loop: true,
-
-      pagination: {
-        el: '.swiper-pagination',
-        dynamicBullets: true
-      }
-    },
-    categories: [
-      'Cognac',
-      'Champagne',
-      'Whisky',
-      'Wines',
-      'Sparkling Wine',
-      'Beers & Ciders',
-      'Spirits',
-      'Mixers & Soft Drinks',
-      'Promos & Gift Ideas',
-      'Spirit Magazine'
-    ]
-  }),
+  data: () => ({}),
   components: {
     ShopHeader,
     ItemCard,
     swiper,
-    swiperSlide
+    swiperSlide,
   },
   methods: {
-    search () {
-      console.log('search')
+    search() {
+      console.log("search");
     },
-    goTo (link) {
-      this.$router.push(route)
-    }
+    goTo(link) {
+      this.$router.push(route);
+    },
   },
   watch: {
-    $route (to, from) {
-      this.route = to
-    }
+    $route(to, from) {
+      this.route = to;
+    },
   },
 
   computed: {
     routeName: function () {
       return this.$route.params.category === undefined
-        ? 'Shop'
-        : this.$route.params.category
+        ? "Shop"
+        : this.$route.params.category;
     },
-   
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -116,7 +67,7 @@ export default {
     text-align: center;
     width: 250px;
     @include respond(sm) {
-        width: 140px;
+      width: 140px;
     }
     height: 100%;
     &:hover {

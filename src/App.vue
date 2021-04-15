@@ -1,58 +1,17 @@
 <template>
   <div v-bind:class="{ disableScroll: isCartOpen || isSearchOpen }">
-    <v-app class="body" id="#app">
-      <cart></cart>
-
-      <transition name="fade">
-        <div v-show="isSearchOpen" class="search-wrapper">
-          <div class="search">
-            <div ref="searchBackground" class="search-background"></div>
-            <div class="search-content">
-              <v-btn
-                v-if="isSearchOpen"
-                @click="$store.commit('toggleSearch')"
-                flat
-                large
-                color="#fff"
-                icon
-                class="search-close-btn"
-              >
-                <v-icon ref="closeBtn" flat large>close</v-icon>
-              </v-btn>
-
-              <div
-                ref="searchTitle"
-                class="stylish-header search-title stylish-header--sm stylish-header--border-bottom-white color-white text-xs-center"
-              >
-                Search
-              </div>
-              <v-container>
-                <v-layout class="search-body" ref="searchBody" column>
-                  <v-flex class="pa-5">
-                    <v-text-field
-                      color="#fff"
-                      flat
-                      append-icon="search"
-                      dark
-                      v-model="search"
-                      @keyup="searchInput($event)"
-                      placeholder="E.g Moet & Chandon"
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </div>
-          </div>
-        </div>
-      </transition>
-
+    <v-app style="background-color: #333541" class="body" id="#app">
       <db-header
+        v-if="!$route.fullPath.includes('/chat')"
         @drawerToggle="drawer = !drawer"
         :isWhite="isHeaderDark || scrollOffset > 300"
       ></db-header>
       <v-navigation-drawer class="drawer" v-model="drawer" absolute temporary>
         <v-layout column class="drawer-items-list">
-          <img class="drawer-logo" src="/graphics/logo_white.svg" alt srcset />
+          <div class="drawer-logo">
+            <img src="/graphics/logo.svg" alt srcset />
+          </div>
+
           <v-list-tile class="drawer-item-wrapper">
             <router-link class="drawer-item" to="/">
               <v-list-tile-content>
@@ -62,38 +21,27 @@
           </v-list-tile>
 
           <v-list-tile class="drawer-item-wrapper">
-            <router-link class="drawer-item" to="/planner">
-              <v-list-tile-content>
-                <v-list-tile-title>Planner</v-list-tile-title>
-              </v-list-tile-content>
-            </router-link>
-          </v-list-tile>
-
-          <v-list-tile class="drawer-item-wrapper">
-            <!-- <router-link class="drawer-item"  > -->
-            <router-link class="drawer-item" href="google.com" target="_blank">
+            <router-link class="drawer-item" to="/lite">
               <v-list-tile-content>
                 <v-list-tile-title>Lite Paper</v-list-tile-title>
               </v-list-tile-content>
             </router-link>
           </v-list-tile>
+
+          <v-list-tile class="drawer-item-wrapper">
+            <a
+              target="_blank"
+              class="drawer-item"
+              v-bind:class="{ 'link-primary': isWhite }"
+              href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x5ddAe05d2f854926E8070b435d2dfe5edCa246D9"
+              >PankCake Swap</a
+            >
+          </v-list-tile>
         </v-layout>
       </v-navigation-drawer>
 
       <router-view v-blur="blurConfig" />
-      <div v-if="!isHeaderDark" class="sponsors">
-        <swiper :options="swiperOption" ref="mySwiper">
-          <swiper-slide
-            class="swiper-slide"
-            v-for="(sponsor, i) in sponsors"
-            :key="i"
-          >
-            <img class="sponsor__image" :src="sponsor.image" />
-          </swiper-slide>
 
-          <!-- <div class="swiper-pagination" slot="pagination"></div> -->
-        </swiper>
-      </div>
       <db-footer v-if="!$route.fullPath.includes('/chat')"></db-footer>
       <v-snackbar
         color="white"
@@ -149,7 +97,7 @@ export default {
   mounted() {
     WebFontLoader.load({
       google: {
-        families: ["Montserrat:300,400,700", "Dynalight:400"],
+        families: ["Montserrat:300,400,700,", "Dynalight:400"],
       },
       active: this.setFontLoaded,
     });
@@ -173,6 +121,7 @@ export default {
       scrollOffset: 0,
       search: "",
       blurConfig: {},
+
       swiperOption: {
         freeMode: false,
         slidesPerView: this.$vuetify.breakpoint.smAndDown ? 2 : 5,
@@ -262,12 +211,7 @@ export default {
       get: function () {
         return (
           this.$route.fullPath.includes("/buy/") ||
-          this.$route.fullPath.includes("/login") ||
-          this.$route.fullPath.includes("/signup") ||
-          this.$route.fullPath.includes("/chat") ||
-          this.$route.fullPath.includes("/search") ||
-          this.$route.fullPath.includes("/favorites") ||
-          this.$route.fullPath.includes("/checkout")
+          this.$route.fullPath.includes("/lite")
         );
       },
     },
@@ -341,6 +285,10 @@ export default {
     background-color: transparent;
   }
 
+  .body {
+    background: $color-background !important;
+  }
+
   &-body,
   &-title {
     transform: translateY(100vh);
@@ -387,8 +335,11 @@ export default {
 .drawer {
   z-index: 1000 !important;
   &-logo {
+    padding: 40px;
     background: $color-gradient-2;
-    padding: 40px 40px;
+    img {
+      width: 100%;
+    }
   }
 }
 .drawer-items-list {
@@ -427,6 +378,7 @@ export default {
 }
 
 .sponsors {
+  //   margin-top: 20vh;
   overflow: hidden;
   background-color: #fff;
   padding: 60px;

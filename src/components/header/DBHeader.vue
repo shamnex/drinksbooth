@@ -20,7 +20,7 @@
         @click="goHome"
         v-show="!isWhite"
         class="db-navbar__brand"
-        src="/graphics/logo_white.svg"
+        src="/graphics/logo_type_white.svg"
         alt
         srcset
       />
@@ -28,7 +28,7 @@
         @click="goHome"
         v-show="isWhite"
         class="db-navbar__brand"
-        src="/graphics/logo.svg"
+        src="/graphics/logo_type.svg"
         alt
         srcset
       />
@@ -39,16 +39,16 @@
       class="db-navbar-link-wrapper hidden-sm-and-down"
     >
       <router-link class="db-navbar-link" exact to="/">Home</router-link>
-      <router-link class="db-navbar-link" to="/shop">Lite Paper</router-link>
-      <router-link class="db-navbar-link" to="/shop">PankCake Swap</router-link>
 
-      <!-- <router-link
+      <router-link class="db-navbar-link" to="/lite">Lite Paper</router-link>
+
+      <a
         target="_blank"
         class="db-navbar-link"
         v-bind:class="{ 'link-primary': isWhite }"
-        to="/chat"
-        >chat</router-link
-      > -->
+        href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x5ddAe05d2f854926E8070b435d2dfe5edCa246D9"
+        >PankCake Swap</a
+      >
 
       <v-spacer></v-spacer>
     </v-toolbar-items>
@@ -70,11 +70,6 @@ export default {
       isDrawerOpen: false,
       isCartOpen: false,
       scrollOffset: null,
-
-      userMenuItems: [
-        { title: "Login / Signup", link: "/login" },
-        // { title: "Favorites", link: "/favorites" }
-      ],
     };
   },
 
@@ -85,12 +80,6 @@ export default {
     toggleDrawer(event) {
       this.isDrawerOpen = !this.isDrawerOpen;
       this.$emit("drawerToggle", this.isDrawerOpen);
-    },
-    toggleOpenCart(event) {
-      this.$store.commit("toggleCart");
-    },
-    toggleSearch(event) {
-      this.$store.commit("toggleSearch");
     },
 
     signOut() {
@@ -117,21 +106,12 @@ export default {
             route = "/";
           }
           break;
-        case "partyplanner":
+        case "lite":
           {
-            route = "/planner";
+            route = "/lite";
           }
           break;
-        case "shop":
-          {
-            route = "/shop";
-          }
-          break;
-        case "chat":
-          {
-            route = "/chat";
-          }
-          break;
+
         default: {
           null;
         }
@@ -144,7 +124,7 @@ export default {
     $route(to, from) {},
   },
   mounted() {
-    console.log(this.getUser);
+    // console.log(this.getUser);
   },
   created() {},
 
@@ -156,10 +136,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-      lastItemIncart: "lastItemIncart",
-      getUser: "getUser",
-    }),
+    ...mapGetters({}),
   },
 };
 </script>

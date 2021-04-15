@@ -9,26 +9,22 @@
         <div class="section__planner__background"></div>
         <div class="section__planner__content">
           <v-container>
-            <p class="stylish-header color-white text-xs-center">
-              Party Planner
-            </p>
+            <p class="stylish-header text-xs-center">ONE FAMILY</p>
             <v-layout align-center justify-center row wrap>
               <v-flex justify-center align-content-center>
-                <div class="text-xs-center mb-5">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                  consequatur temporibus iure deserunt laboriosam, modi,
-                  cupiditate doloremque quidem eligendi minima iste asperiores
-                  adipisci dolores. Sint perspiciatis ab ipsa aspernatur nisi.
-                </div>
+                <p class="text-xs-center mb-4 description">
+                  Our community is the basis for Rowket Market. We have
+                  Collectors, NFT Artsts, Marketers and all in all amazing
+                  people. Join our Telegram channel or follow us on Twitter. And
+                  don’t forget to share.
+                </p>
 
                 <div class="text-center">
-                  <v-btn
-                    @click="navigateTo('planner')"
-                    flat
-                    large
-                    outline
-                    color="#fff"
-                    >GET STARTED</v-btn
+                  <a
+                    class="button"
+                    target="_blank"
+                    href="http://bit.ly/RowketCommunity"
+                    >Join the community</a
                   >
                 </div>
               </v-flex>
@@ -36,62 +32,6 @@
           </v-container>
         </div>
       </div>
-
-      <!-- <div  class="section__subscribe">
-            <v-container justify-center align-center>
-                <v-layout justify-center align-center>
-                           <v-flex>
-                    <div class="stylish-header text-center mb-3">
-                                Drinks On Us
-                    </div>
-
-                <p class=" text-center mb-5"> Lorem ipsum dolor sitspernatur, option. </p>
-
-                <v-layout  align-center justify-center row >
-                    <v-flex justify-center  xs6>
-                        <form>
-
-                            <v-layout>
-
-                            <v-text-field
-                            placeholder="enter your email"
-                            class="input__field"
-
-                            ></v-text-field>
-
-                            <v-btn flat large class="button button__primary" @clBick="submit">submit</v-btn>
-                            </v-layout>
-                        </form>
-                    </v-flex>
-                </v-layout>
-                </v-flex>
-                </v-layout>
-            </v-container>
-
-      </div>-->
-      <!-- <div class="section__subscribe">
-        <v-container justify-center align-center>
-          <v-layout justify-center align-center>
-            <v-flex>
-              <div class="stylish-header text-center mb-3">Drinks On Us</div>
-
-              <p class="text-center mb-5">Lorem ipsum dolor sitspernatur, option.</p>
-
-              <v-layout align-center justify-center row>
-                <v-flex justify-center xs6>
-                  <form>
-                    <v-layout>
-                      <v-text-field placeholder="enter your email" class="input__field"></v-text-field>
-
-                      <v-btn flat large class="button button__primary" @click="submit">submit</v-btn>
-                    </v-layout>
-                  </form>
-                </v-flex>
-              </v-layout>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </div>-->
     </v-content>
   </div>
 </template>
@@ -99,67 +39,14 @@
 <script>
 import DbSlider from "../components/slider/DBSlider";
 import ItemCard from "../components/item_card/ItemCard";
-import { ItemModel } from "../components/item_card/ItemCard.vue";
-import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   components: {
     DbSlider,
     ItemCard,
-    swiper,
-    swiperSlide,
   },
 
-  data() {
-    return {
-      items: [
-        {
-          name: "Drink 1",
-          isFavorite: true,
-          price: "32000",
-          image: "images/drinks/1.png",
-        },
-        {
-          name: "Drink 3",
-          isFavorite: false,
-          price: "32000",
-          image: "images/drinks/2.png",
-        },
-        {
-          name: "Drink 2",
-          isFavorite: true,
-          price: "32000",
-          image: "images/drinks/3.png",
-        },
-        {
-          name: "Drink 2",
-          isFavorite: true,
-          price: "32000",
-          image: "images/drinks/3.png",
-        },
-        {
-          name: "Drink 2",
-          isFavorite: true,
-          price: "32000",
-          image: "images/drinks/3.png",
-        },
-      ],
-      swiperOption: {
-        freeMode: false,
-        slidesPerView: "auto",
-        loop: true,
-        // autoplay: {
-        //   delay: 2500,
-        //   disableOnInteraction: true
-        // },
-
-        pagination: {
-          el: ".swiper-pagination",
-          dynamicBullets: true,
-        },
-      },
-    };
-  },
+  data() {},
 
   methods: {
     submit() {},
@@ -200,22 +87,22 @@ export default {
 }
 
 .section__planner {
-  min-height: 80vh;
+  min-height: 70vh;
   color: #fff;
   position: relative;
 
   background-size: cover;
   &__background {
-    background-color: $color-primary;
-    background-image: url("/images/6.jpg");
+    background-color: #fff;
+    // background-image: url("/images/4.jpg");
     background-size: cover;
-    height: 80vh;
+    height: 70vh;
     background-attachment: fixed;
     height: 100%;
     width: 100%;
     position: absolute;
     left: 0;
-    opacity: 0.8;
+    opacity: 1;
     &::before {
       content: "";
       width: 100%;
@@ -227,12 +114,33 @@ export default {
     background-blend-mode: multiply;
   }
   &__content {
+    .stylish-header {
+      color: $color-secondary;
+    }
+
     position: absolute;
     margin: 0 auto;
     width: 100%;
+    font-size: 16px;
+    color: #000;
     @include absolutecenter;
+
+    .button {
+      position: relative;
+      text-align: right;
+      color: white;
+      background-color: $color-secondary;
+      //   display: block;
+      font-weight: 700;
+      padding: 16px 34px;
+      transition: color 0.3s, background 0.3s;
+      border: solid 2px $color-secondary;
+      border-radius: 30px;
+      margin: 40px 40px;
+    }
   }
 }
+
 .section__subscribe {
   padding: 10vh 0;
   position: relative;
