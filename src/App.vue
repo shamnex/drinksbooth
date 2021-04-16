@@ -37,6 +37,16 @@
               >PankCake Swap</a
             >
           </v-list-tile>
+
+          <v-list-tile class="drawer-item-wrapper">
+            <a
+              target="_blank"
+              class="drawer-item"
+              v-bind:class="{ 'link-primary': isWhite }"
+              href="https://bscscan.com/token/0x5ddae05d2f854926e8070b435d2dfe5edca246d9"
+              >BscScan</a
+            >
+          </v-list-tile>
         </v-layout>
       </v-navigation-drawer>
 
@@ -97,7 +107,7 @@ export default {
   mounted() {
     WebFontLoader.load({
       google: {
-        families: ["Montserrat:300,400,700,", "Dynalight:400"],
+        families: ["Montserrat:300,400,700,900", "Dynalight:400"],
       },
       active: this.setFontLoaded,
     });
@@ -191,7 +201,6 @@ export default {
     setFontLoaded() {
       this.$emit("font-loaded");
     },
-
     navigateTo(route) {
       this.$router.push("/" + route);
     },
@@ -202,17 +211,12 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-      lastItemIncart: "lastItemIncart",
-      getUser: "getUser",
-    }),
+    ...mapGetters({}),
     isHeaderDark: {
       // getter
       get: function () {
-        return (
-          this.$route.fullPath.includes("/buy/") ||
-          this.$route.fullPath.includes("/lite")
-        );
+        // return false;
+        // return this.$route.fullPath.includes("/lite");
       },
     },
 

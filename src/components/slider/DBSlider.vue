@@ -18,7 +18,7 @@
             The Distribution Of Unique Art In The Form Of NFTs
           </p>
           <a class="slide__link" href="http://bit.ly/RowketCommunity"
-            >Join Us</a
+            >ABOUT US</a
           >
         </div>
       </div>

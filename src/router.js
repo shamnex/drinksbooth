@@ -17,11 +17,8 @@ const router = new Router({
         {
             path: '/lite',
             name: 'lite',
-
             component: () => import(/* webpackChunkName: "Planner" */ './views/PartyPlanner.vue')
         },
-
-
 
     ]
 })

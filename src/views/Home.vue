@@ -4,21 +4,22 @@
       <db-slider></db-slider>
 
       <div class="section__planner">
-        <!-- <v-parallax height="100%" src="images/planner.jpg" >
-        </v-parallax>-->
         <div class="section__planner__background"></div>
         <div class="section__planner__content">
           <v-container>
             <p class="stylish-header text-xs-center">ONE FAMILY</p>
             <v-layout align-center justify-center row wrap>
               <v-flex justify-center align-content-center>
-                <p class="text-xs-center mb-4 description">
-                  Our community is the basis for Rowket Market. We have
-                  Collectors, NFT Artsts, Marketers and all in all amazing
-                  people. Join our Telegram channel or follow us on Twitter. And
-                  don’t forget to share.
-                </p>
-
+                <v-container>
+                  <p
+                    class="text-xs-center mb-4 col-sm-6 description d-inline-flex pa-2"
+                  >
+                    Our community is the basis for Rowket Market. We have
+                    Collectors, NFT Artsts, Marketers and all in all amazing
+                    people. Join our Telegram channel or follow us on Twitter.
+                    And don’t forget to share.
+                  </p>
+                </v-container>
                 <div class="text-center">
                   <a
                     class="button"
@@ -46,7 +47,9 @@ export default {
     ItemCard,
   },
 
-  data() {},
+  data() {
+    return {};
+  },
 
   methods: {
     submit() {},

@@ -49,6 +49,13 @@
         href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x5ddAe05d2f854926E8070b435d2dfe5edCa246D9"
         >PankCake Swap</a
       >
+      <a
+        target="_blank"
+        class="db-navbar-link"
+        v-bind:class="{ 'link-primary': isWhite }"
+        href="https://bscscan.com/token/0x5ddae05d2f854926e8070b435d2dfe5edca246d9"
+        >BscScan</a
+      >
 
       <v-spacer></v-spacer>
     </v-toolbar-items>
@@ -124,7 +131,7 @@ export default {
     $route(to, from) {},
   },
   mounted() {
-    // console.log(this.getUser);
+    console.log(this.isWhite);
   },
   created() {},
 
